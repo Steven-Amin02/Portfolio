@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { Mail, Star, Award, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { initialProfileData } from '../data/portfolioData';
 
 /**
  * DiscussionCTA — Interactive callout section for project inquiries.
@@ -19,6 +20,9 @@ export default function DiscussionCTA() {
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
     if (email.trim()) {
+      const subject = encodeURIComponent('Project discussion');
+      const body = encodeURIComponent(`Please reach me at ${email.trim()}.`);
+      window.location.href = `mailto:${initialProfileData.email}?subject=${subject}&body=${body}`;
       setSubmitted(true);
       setTimeout(() => {
         setEmail('');

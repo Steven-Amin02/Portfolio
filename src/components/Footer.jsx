@@ -16,14 +16,18 @@ export default function Footer({ profile }) {
 
   const handleContactSubmit = useCallback((e) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.message) {
-      setSubmitted(true);
-      setTimeout(() => {
-        setFormData({ name: '', email: '', message: '' });
-        setSubmitted(false);
-      }, 4000);
-    }
-  }, [formData]);
+    if (!formData.name || !formData.email || !formData.message) return;
+
+    const subject = encodeURIComponent(`Portfolio inquiry from ${formData.name}`);
+    const body = encodeURIComponent(`${formData.message}\n\n— ${formData.name}\n${formData.email}`);
+    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+
+    setSubmitted(true);
+    setTimeout(() => {
+      setFormData({ name: '', email: '', message: '' });
+      setSubmitted(false);
+    }, 4000);
+  }, [formData, profile.email]);
 
   const contactItems = [
     {
@@ -65,14 +69,14 @@ export default function Footer({ profile }) {
                   <div className="contact-icon-box" aria-hidden="true">
                     <IconComp size={20} />
                   </div>
-                  <div>
-                    <div style={{ fontSize: '0.8rem', color: '#9CA3AF' }}>{item.label}</div>
-                    <div style={{ fontWeight: 600 }}>
+                <div className="contact-item-copy">
+                    <div className="contact-item-label">{item.label}</div>
+                    <div>
                       <a
                         href={item.href}
                         target={item.isExternal ? '_blank' : '_self'}
                         rel={item.isExternal ? 'noreferrer' : undefined}
-                        style={{ color: '#FFF' }}
+                        className="contact-item-value"
                       >
                         {item.value}
                       </a>
@@ -131,36 +135,24 @@ export default function Footer({ profile }) {
 
             <button type="submit" className="btn-submit">
               {submitted ? (
-                <>Sent Successfully <CheckCircle2 size={16} style={{ marginLeft: '8px', display: 'inline' }} /></>
+                <>Sent Successfully <CheckCircle2 size={16} /></>
               ) : (
-                <>Send Message <Send size={16} style={{ marginLeft: '8px', display: 'inline' }} /></>
+                <>Send Message <Send size={16} /></>
               )}
             </button>
 
             {submitted && (
-              <div style={{ color: '#10B981', marginTop: '12px', fontWeight: 600, fontSize: '0.9rem' }}>
-                ✓ Thank you, {formData.name}! Your message has been dispatched.
+              <div className="form-success">
+                Thank you, {formData.name}! Your email client should open next.
               </div>
             )}
           </form>
         </div>
 
         {/* Integrated Clean Bottom Bar */}
-        <footer className="contact-bottom-bar" style={{
-          gridColumn: '1 / -1',
-          borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-          paddingTop: '28px',
-          marginTop: '30px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '16px',
-          color: '#9CA3AF',
-          fontSize: '0.88rem'
-        }}>
+        <footer className="contact-bottom-bar">
           <div>
-            <span style={{ color: '#FFF', fontWeight: 700, fontSize: '1.1rem' }}>Steven<span style={{ color: '#FF6B2C' }}>.</span></span> — Full-Stack Software Engineer
+            <span className="contact-brand">Steven<span className="logo-dot">.</span></span> — Full-Stack Software Engineer
           </div>
           <div>
             © {new Date().getFullYear()} Steven Amin. Engineered with React &amp; Vite.

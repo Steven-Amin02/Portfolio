@@ -26,6 +26,19 @@ export default function Navbar({ activeSection }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth > 900) setMobileMenuOpen(false);
+    };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  useEffect(() => {
+    document.body.classList.toggle('nav-locked', mobileMenuOpen);
+    return () => document.body.classList.remove('nav-locked');
+  }, [mobileMenuOpen]);
+
   const handleNavClick = useCallback((e, targetId) => {
     e.preventDefault();
     setMobileMenuOpen(false);
@@ -101,19 +114,27 @@ export default function Navbar({ activeSection }) {
 
       {/* Mobile Menu Dropdown Overlay */}
       {mobileMenuOpen && (
-        <div className="mobile-menu-overlay" role="menu">
-          {ALL_NAV_ITEMS.map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              onClick={(e) => handleNavClick(e, item.id)}
-              className={activeSection === item.id ? 'active' : ''}
-              role="menuitem"
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
+        <>
+          <button
+            type="button"
+            className="mobile-menu-backdrop"
+            aria-label="Close navigation menu"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+          <div className="mobile-menu-overlay" role="menu">
+            {ALL_NAV_ITEMS.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={(e) => handleNavClick(e, item.id)}
+                className={activeSection === item.id ? 'active' : ''}
+                role="menuitem"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </>
       )}
     </header>
   );

@@ -1,10 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
-/**
- * Scroll-linked parallax + idle float. Transforms live on inner layers so
- * CSS entrance animations on the outer wrappers are not overwritten.
- */
 function useHeroMotion() {
   const layers = useRef({
     greeting: null,
@@ -17,58 +13,74 @@ function useHeroMotion() {
   });
 
   useEffect(() => {
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (reduce.matches) return undefined;
-
+    const reduceMq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const mobileMq = window.matchMedia('(max-width: 900px)');
     const { current: el } = layers;
     let rafId = 0;
+    let active = false;
+
+    const clear = () => {
+      Object.values(el).forEach((node) => {
+        if (node) node.style.transform = '';
+      });
+    };
 
     const loop = (now) => {
+      if (!active) return;
       const y = Math.min(Math.max(window.scrollY, 0), window.innerHeight * 1.35);
       const bob = Math.sin(now / 680) * 8;
       const spark = Math.sin(now / 430) * 4;
 
-      if (el.greeting) {
-        el.greeting.style.transform = `translate3d(0, ${y * 0.2 + bob}px, 0)`;
-      }
-      if (el.title) {
-        el.title.style.transform = `translate3d(0, ${y * 0.18}px, 0)`;
-      }
+      if (el.greeting) el.greeting.style.transform = `translate3d(0, ${y * 0.2 + bob}px, 0)`;
+      if (el.title) el.title.style.transform = `translate3d(0, ${y * 0.18}px, 0)`;
       if (el.arch) {
         const scale = 1 + y * 0.00028;
         el.arch.style.transform = `translate3d(0, ${y * 0.08}px, 0) scale(${scale})`;
       }
-      if (el.portrait) {
-        el.portrait.style.transform = `translate3d(0, ${y * 0.26}px, 0)`;
-      }
-      if (el.left) {
-        el.left.style.transform = `translate3d(${-y * 0.16}px, ${y * 0.2 + spark}px, 0)`;
-      }
-      if (el.right) {
-        el.right.style.transform = `translate3d(${y * 0.16}px, ${y * 0.2 - spark}px, 0)`;
-      }
-      if (el.cta) {
-        el.cta.style.transform = `translateX(-50%) translate3d(0, ${y * 0.14}px, 0)`;
-      }
+      if (el.portrait) el.portrait.style.transform = `translate3d(0, ${y * 0.26}px, 0)`;
+      if (el.left) el.left.style.transform = `translate3d(${-y * 0.16}px, ${y * 0.2 + spark}px, 0)`;
+      if (el.right) el.right.style.transform = `translate3d(${y * 0.16}px, ${y * 0.2 - spark}px, 0)`;
+      if (el.cta) el.cta.style.transform = `translateX(-50%) translate3d(0, ${y * 0.14}px, 0)`;
 
       rafId = requestAnimationFrame(loop);
     };
 
-    rafId = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(rafId);
+    const sync = () => {
+      const shouldRun = !reduceMq.matches && !mobileMq.matches;
+      if (shouldRun && !active) {
+        active = true;
+        rafId = requestAnimationFrame(loop);
+      } else if (!shouldRun && active) {
+        active = false;
+        cancelAnimationFrame(rafId);
+        clear();
+      }
+    };
+
+    sync();
+    reduceMq.addEventListener('change', sync);
+    mobileMq.addEventListener('change', sync);
+    return () => {
+      active = false;
+      cancelAnimationFrame(rafId);
+      clear();
+      reduceMq.removeEventListener('change', sync);
+      mobileMq.removeEventListener('change', sync);
+    };
   }, []);
 
   return layers;
 }
 
-/**
- * Hero — JCREA-style landing stage: greeting, headline, arch, portrait,
- * floating widgets, glass CTA, and scroll parallax.
- */
 export default function Hero({ profile }) {
   const layers = useHeroMotion();
   const firstName = profile.name.split(' ')[0];
   const roleHeadline = profile.role.split('&')[0].trim();
+
+  const scrollToProjects = (e) => {
+    e.preventDefault();
+    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <section id="home" className="hero-section">
@@ -152,7 +164,7 @@ export default function Hero({ profile }) {
           className="hero-cta-pill anim-cta"
           ref={(node) => { layers.current.cta = node; }}
         >
-          <a href="#projects" className="btn-portfolio anim-btn-glow">
+          <a href="#projects" className="btn-portfolio anim-btn-glow" onClick={scrollToProjects}>
             Portfolio <ArrowUpRight size={18} strokeWidth={2.5} />
           </a>
           <a href={`mailto:${profile.email}`} className="btn-hire">Hire me</a>
