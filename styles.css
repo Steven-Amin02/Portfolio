@@ -557,16 +557,16 @@ button {
   left: 50%;
   transform: translateX(-50%);
   z-index: 5;
-  background: rgba(255,255,255,0.32);
+  background: rgba(255, 255, 255, 0.40);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1.5px solid rgba(255,255,255,0.55);
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
   padding: 6px;
   border-radius: var(--radius-pill);
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  gap: 6px;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.15);
   white-space: nowrap;
 }
 
@@ -605,6 +605,7 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
 }
 
 .btn-hire:hover { background: rgba(255,255,255,0.18); }
@@ -1965,12 +1966,32 @@ textarea.form-input {
   }
   .hero-cta-pill {
     bottom: 18px;
-    max-width: calc(100% - 24px);
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1.5px solid rgba(255, 255, 255, 0.55);
+    border-radius: var(--radius-pill);
+    padding: 5px;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    white-space: nowrap;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
   }
-  .btn-portfolio,
-  .btn-hire {
-    padding: 12px 18px;
+  .btn-portfolio {
+    padding: 11px 22px;
     font-size: 0.9rem;
+    white-space: nowrap;
+    flex: 0 0 auto;
+  }
+  .btn-hire {
+    padding: 11px 20px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    flex: 0 0 auto;
   }
 
   .about-container,
@@ -2107,15 +2128,22 @@ textarea.form-input {
   }
   .hero-cta-pill {
     bottom: 12px;
-    flex-wrap: wrap;
-    justify-content: center;
-    white-space: normal;
-    padding: 8px;
+    padding: 4px;
+    flex-wrap: nowrap !important;
+    white-space: nowrap;
+    gap: 2px;
   }
-  .btn-portfolio,
+  .btn-portfolio {
+    padding: 9px 18px;
+    font-size: 0.85rem;
+    min-height: 38px;
+    flex: 0 0 auto;
+  }
   .btn-hire {
-    flex: 1 1 auto;
-    min-width: 120px;
+    padding: 9px 16px;
+    font-size: 0.85rem;
+    min-height: 38px;
+    flex: 0 0 auto;
   }
 
   .stats-grid {
