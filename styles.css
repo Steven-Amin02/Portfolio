@@ -162,7 +162,11 @@ button {
 .anim-title-1   { animation: slideUp       0.65s cubic-bezier(0.16,1,0.3,1) 0.36s both; }
 .anim-title-2   { animation: slideUp       0.65s cubic-bezier(0.16,1,0.3,1) 0.50s both; }
 .anim-arch      { animation: archRise      0.80s cubic-bezier(0.16,1,0.3,1) 0.58s both; transform-origin: bottom center; }
-.anim-portrait  { animation: none; }
+.anim-portrait  { animation: portraitUp    0.85s cubic-bezier(0.16,1,0.3,1) 0.70s both; }
+
+.parallax-layer {
+  will-change: transform;
+}
 .anim-widget-l  { animation: fadeInLeft    0.60s cubic-bezier(0.16,1,0.3,1) 0.85s both; }
 .anim-widget-r  { animation: fadeInRight   0.60s cubic-bezier(0.16,1,0.3,1) 0.92s both; }
 .anim-cta       { animation: ctaSpring     0.70s cubic-bezier(0.34,1.56,0.64,1) 1.05s both; }
@@ -200,7 +204,12 @@ button {
 }
 
 .navbar-header.scrolled {
-  top: 12px;
+  top: 10px;
+}
+
+.navbar-header.scrolled .nav-container,
+.navbar-header.scrolled .mobile-nav-bar {
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.42);
 }
 
 .nav-container {
@@ -360,17 +369,26 @@ button {
   margin-top: 24px;
 }
 
-/* Semicircle Arch */
-.hero-arch-bg {
+/* Semicircle Arch — wrapper holds centering + entrance; inner scales on scroll */
+.hero-arch-wrap {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 520px;
   height: 390px;
+  z-index: 1;
+  transform-origin: bottom center;
+  pointer-events: none;
+}
+
+.hero-arch-bg {
+  width: 100%;
+  height: 100%;
   background: #F5A56B;
   border-radius: 260px 260px 0 0;
-  z-index: 1;
+  transform-origin: bottom center;
+  will-change: transform;
 }
 
 /* Portrait */
@@ -469,6 +487,12 @@ button {
   gap: 4px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.12);
   white-space: nowrap;
+}
+
+.hero-cta-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .btn-portfolio {
@@ -1327,7 +1351,7 @@ button {
     letter-spacing: -1px;
     padding: 0 16px;
   }
-  .hero-arch-bg {
+  .hero-arch-wrap {
     width: 360px;
     height: 280px;
   }
@@ -1392,7 +1416,7 @@ button {
 
 @media (max-width: 600px) {
   /* Extra Small Mobile Devices */
-  .hero-arch-bg {
+  .hero-arch-wrap {
     width: 290px;
     height: 230px;
   }
@@ -1589,7 +1613,7 @@ textarea.form-input {
   .hero-stage {
     height: 440px;
   }
-  .hero-arch-bg {
+  .hero-arch-wrap {
     width: 340px;
     height: 300px;
   }
@@ -1619,6 +1643,33 @@ textarea.form-input {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-nav,
+  .anim-badge,
+  .anim-title-1,
+  .anim-title-2,
+  .anim-arch,
+  .anim-portrait,
+  .anim-widget-l,
+  .anim-widget-r,
+  .anim-cta,
+  .anim-btn-glow,
+  .spark-path {
+    animation: none !important;
+  }
+
+  .parallax-layer,
+  .hero-arch-bg {
+    transform: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 
