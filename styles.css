@@ -1246,6 +1246,195 @@ button {
   color: var(--primary-orange);
 }
 
+/* Contact & ===============================================
+   COMPREHENSIVE MOBILE & TABLET RESPONSIVE STYLES
+   =============================================== */
+
+/* Mobile Navigation Bar Styles */
+.mobile-nav-bar {
+  display: none;
+  background: #111111;
+  padding: 10px 16px;
+  border-radius: var(--radius-pill);
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+}
+
+.mobile-toggle-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.mobile-toggle-btn:hover {
+  background: var(--primary-orange);
+}
+
+.mobile-menu-overlay {
+  display: flex;
+  flex-direction: column;
+  background: rgba(17, 17, 17, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  margin-top: 10px;
+  padding: 16px;
+  gap: 8px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+}
+
+.mobile-menu-overlay a {
+  color: #E5E7EB;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 12px 18px;
+  border-radius: 14px;
+  transition: var(--transition-fast);
+  text-decoration: none;
+}
+
+.mobile-menu-overlay a:hover,
+.mobile-menu-overlay a.active {
+  background: var(--primary-orange);
+  color: #FFFFFF;
+}
+
+/* Tablet & Mobile Breakpoints */
+@media (max-width: 900px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  .mobile-nav-bar {
+    display: flex !important;
+  }
+
+  /* Hero Section Mobile */
+  .hero-section {
+    padding-top: 100px;
+    min-height: auto;
+  }
+  .hero-title {
+    font-size: clamp(2rem, 7vw, 3.2rem);
+    letter-spacing: -1px;
+    padding: 0 16px;
+  }
+  .hero-arch-bg {
+    width: 360px;
+    height: 280px;
+  }
+  .hero-portrait-container,
+  .hero-portrait {
+    height: 400px;
+  }
+  .widget-left {
+    left: 10px;
+    top: 15%;
+    max-width: 130px;
+  }
+  .widget-right {
+    right: 10px;
+    top: 15%;
+  }
+
+  /* About Section Mobile */
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .about-text h2 {
+    font-size: 2.1rem;
+  }
+
+  /* Timeline Section Mobile */
+  .timeline-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* Discussion Section Mobile */
+  .discussion-title {
+    font-size: 2.3rem;
+  }
+  .discussion-pill-bar {
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 12px;
+    gap: 12px;
+  }
+  .discussion-input-wrapper {
+    width: 100%;
+  }
+  .btn-send-cta {
+    width: 100%;
+  }
+
+  /* Contact Section Mobile */
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .contact-info h2 {
+    font-size: 2.2rem;
+  }
+  .contact-form {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Extra Small Mobile Devices */
+  .hero-arch-bg {
+    width: 290px;
+    height: 230px;
+  }
+  .hero-portrait-container,
+  .hero-portrait {
+    height: 320px;
+  }
+  .widget-left, .widget-right {
+    display: none; /* Hide side floating texts on small mobile to avoid image overlap */
+  }
+  .hero-cta-pill {
+    bottom: 20px;
+  }
+  .btn-cta-black {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+  .cta-link {
+    font-size: 0.82rem;
+    padding: 0 12px;
+  }
+
+  /* Stats Grid 2x2 */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .stat-box {
+    padding: 18px 14px;
+  }
+  .stat-number {
+    font-size: 1.8rem;
+  }
+
+  /* Contact Bottom Bar */
+  .contact-bottom-bar {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+}
+
 /* Contact & Footer Section */
 .contact-section {
   background: var(--dark-bg);
