@@ -47,13 +47,6 @@ export default function Navbar({ activeSection }) {
           About
         </a>
         <a 
-          href="#services" 
-          onClick={(e) => handleNavClick(e, 'services')} 
-          className={`nav-item ${activeSection === 'services' ? 'active' : ''}`}
-        >
-          Service
-        </a>
-        <a 
           href="#skills" 
           onClick={(e) => handleNavClick(e, 'skills')} 
           className={`nav-item ${activeSection === 'skills' ? 'active' : ''}`}
@@ -71,18 +64,25 @@ export default function Navbar({ activeSection }) {
         </a>
 
         <a 
+          href="#projects" 
+          onClick={(e) => handleNavClick(e, 'projects')} 
+          className={`nav-item ${activeSection === 'projects' ? 'active' : ''}`}
+        >
+          Projects
+        </a>
+        <a 
+          href="#services" 
+          onClick={(e) => handleNavClick(e, 'services')} 
+          className={`nav-item ${activeSection === 'services' ? 'active' : ''}`}
+        >
+          Services
+        </a>
+        <a 
           href="#resume" 
           onClick={(e) => handleNavClick(e, 'resume')} 
           className={`nav-item ${activeSection === 'resume' ? 'active' : ''}`}
         >
           Resume
-        </a>
-        <a 
-          href="#projects" 
-          onClick={(e) => handleNavClick(e, 'projects')} 
-          className={`nav-item ${activeSection === 'projects' ? 'active' : ''}`}
-        >
-          Project
         </a>
         <a 
           href="#contact" 
@@ -118,9 +118,9 @@ export default function Navbar({ activeSection }) {
         <div className="mobile-menu-overlay">
           <a href="#home" onClick={(e) => handleNavClick(e, 'home')} className={activeSection === 'home' ? 'active' : ''}>Home</a>
           <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className={activeSection === 'about' ? 'active' : ''}>About</a>
-          <a href="#services" onClick={(e) => handleNavClick(e, 'services')} className={activeSection === 'services' ? 'active' : ''}>Services</a>
           <a href="#skills" onClick={(e) => handleNavClick(e, 'skills')} className={activeSection === 'skills' ? 'active' : ''}>Skills</a>
           <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} className={activeSection === 'projects' ? 'active' : ''}>Projects</a>
+          <a href="#services" onClick={(e) => handleNavClick(e, 'services')} className={activeSection === 'services' ? 'active' : ''}>Services</a>
           <a href="#resume" onClick={(e) => handleNavClick(e, 'resume')} className={activeSection === 'resume' ? 'active' : ''}>Resume</a>
           <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className={activeSection === 'contact' ? 'active' : ''}>Contact</a>
         </div>

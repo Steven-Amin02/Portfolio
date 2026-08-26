@@ -18,7 +18,7 @@ export default function App() {
 
   // Active section tracker
   useEffect(() => {
-    const sections = ['home', 'services', 'about', 'skills', 'projects', 'resume', 'testimonials', 'contact'];
+    const sections = ['home', 'about', 'skills', 'projects', 'services', 'resume', 'testimonials', 'contact'];
     const onScroll = () => {
       const y = window.pageYOffset;
       sections.forEach((id) => {
@@ -54,13 +54,13 @@ export default function App() {
     <div className="app-main-root">
       <Navbar activeSection={activeSection} />
       <Hero profile={profile} />
-      <div className="reveal"><Services /></div>
-      <div className="reveal reveal-delay-1"><About profile={profile} /></div>
-      <div className="reveal"><Skills /></div>
+      <div className="reveal"><About profile={profile} /></div>
+      <div className="reveal reveal-delay-1"><Skills /></div>
       <div className="reveal"><Projects /></div>
-      <div className="reveal reveal-delay-1"><Timeline /></div>
-      <div className="reveal"><Testimonials /></div>
-      <div className="reveal reveal-delay-1"><DiscussionCTA /></div>
+      <div className="reveal reveal-delay-1"><Services /></div>
+      <div className="reveal"><Timeline /></div>
+      <div className="reveal reveal-delay-1"><Testimonials /></div>
+      <div className="reveal"><DiscussionCTA /></div>
       <MarqueeTicker />
       <div className="reveal"><Footer profile={profile} /></div>
     </div>
