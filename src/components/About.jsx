@@ -1,12 +1,24 @@
 import React from 'react';
 import { skillsData } from '../data/portfolioData';
 
+/**
+ * About — Profile bio, skill tags, and stats grid.
+ * Data-driven via `profile` prop and `skillsData` from the data layer.
+ */
+
+const STATS_CONFIG = [
+  { key: 'cgpa',             label: 'Ain Shams CGPA' },
+  { key: 'featuredCount',    label: 'Featured Projects' },
+  { key: 'internshipsCount', label: 'Trainings & Internships' },
+  { key: 'certifiedStatus',  label: 'Enterprise & Trainee Exposure' }
+];
+
 export default function About({ profile }) {
   return (
     <section id="about" className="about-section">
       <div className="about-container">
         <div className="about-text">
-          <h2>Full-Stack Software Engineer &amp; .NET Specialist</h2>
+          <h2>{profile.role}</h2>
           <p>{profile.bio}</p>
 
           <div className="skills-tags">
@@ -17,22 +29,12 @@ export default function About({ profile }) {
         </div>
 
         <div className="stats-grid">
-          <div className="stat-box">
-            <div className="stat-number">{profile.cgpa}</div>
-            <div className="stat-desc">Ain Shams CGPA</div>
-          </div>
-          <div className="stat-box">
-            <div className="stat-number">{profile.featuredCount}</div>
-            <div className="stat-desc">Featured Projects</div>
-          </div>
-          <div className="stat-box">
-            <div className="stat-number">{profile.internshipsCount}</div>
-            <div className="stat-desc">Trainings &amp; Internships</div>
-          </div>
-          <div className="stat-box">
-            <div className="stat-number">{profile.certifiedStatus}</div>
-            <div className="stat-desc">Enterprise &amp; Trainee Exposure</div>
-          </div>
+          {STATS_CONFIG.map(({ key, label }) => (
+            <div key={key} className="stat-box">
+              <div className="stat-number">{profile[key]}</div>
+              <div className="stat-desc">{label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

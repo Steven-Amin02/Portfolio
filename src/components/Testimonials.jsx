@@ -2,10 +2,15 @@ import React from 'react';
 import { Quote, Building2, Code, GraduationCap } from 'lucide-react';
 import { testimonialsData } from '../data/portfolioData';
 
-const iconMap = {
-  Building2: Building2,
-  Code: Code,
-  GraduationCap: GraduationCap
+/**
+ * Testimonials — Enterprise & Academic recommendations grid.
+ * Data-driven from testimonialsData in portfolioData.js.
+ */
+
+const ICON_MAP = {
+  Building2,
+  Code,
+  GraduationCap
 };
 
 export default function Testimonials() {
@@ -18,13 +23,13 @@ export default function Testimonials() {
 
       <div className="testimonials-grid">
         {testimonialsData.map((item) => {
-          const IconComp = iconMap[item.icon] || Building2;
+          const IconComp = ICON_MAP[item.icon] || Building2;
           return (
-            <div key={item.id} className="testimonial-card">
+            <article key={item.id} className="testimonial-card">
               <div>
                 <div className="testimonial-top">
                   <div className="testimonial-author">
-                    <div className="author-avatar">
+                    <div className="author-avatar" aria-hidden="true">
                       <IconComp size={22} />
                     </div>
                     <div className="author-info">
@@ -32,19 +37,19 @@ export default function Testimonials() {
                       <span>{item.role}</span>
                     </div>
                   </div>
-                  <div className="big-quote-icon">
+                  <div className="big-quote-icon" aria-hidden="true">
                     <Quote size={36} />
                   </div>
                 </div>
-                <div className="testimonial-rating">
-                  <span className="stars">★★★★★</span>
+                <div className="testimonial-rating" aria-label={`Rating: ${item.rating} out of 5 stars`}>
+                  <span className="stars" aria-hidden="true">★★★★★</span>
                   <span className="rating-num">{item.rating.toFixed(1)}</span>
                 </div>
-                <p className="testimonial-text">
+                <blockquote className="testimonial-text">
                   "{item.quote}"
-                </p>
+                </blockquote>
               </div>
-            </div>
+            </article>
           );
         })}
       </div>

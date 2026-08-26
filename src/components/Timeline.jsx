@@ -2,22 +2,38 @@ import React from 'react';
 import { Briefcase, GraduationCap } from 'lucide-react';
 import { experienceData, educationData } from '../data/portfolioData';
 
+/**
+ * Timeline — Split-panel resume section: Trainings & Internships + Education.
+ * Data-driven from experienceData and educationData in the data layer.
+ */
+
+const CERTIFICATIONS = [
+  'IBM Full Stack Software Developer Certificate (In Progress)',
+  'Python Programming — SprintsUp',
+  'USAID Egyptian Pioneers Scholar',
+  'AUC English Language Program',
+  'EURECA Research Competition',
+  'ASPIRE Leadership Program'
+];
+
 export default function Timeline() {
   return (
     <section id="resume" className="about-section">
       <h2 className="section-title">Trainings &amp; Internships</h2>
-      <p className="section-subtitle">Enterprise deployment, full-stack training, front-end development, and professional development programs</p>
+      <p className="section-subtitle">
+        Enterprise deployment, full-stack training, front-end development, and professional development programs
+      </p>
 
       <div className="timeline-container">
         {/* Trainings & Internships */}
         <div>
           <h3 className="timeline-heading">
-            <Briefcase size={22} color="#FF6B2C" /> Experience &amp; Trainings
+            <Briefcase size={22} color="#FF6B2C" aria-hidden="true" /> Experience &amp; Trainings
           </h3>
           <div className="timeline-border">
             {experienceData.map((item) => (
               <div key={item.id} className="timeline-item">
-                <div className="timeline-dot"></div>
+                <div className="timeline-dot" />
                 {item.period && (
                   <span className="timeline-period">{item.period}</span>
                 )}
@@ -32,12 +48,12 @@ export default function Timeline() {
         {/* Education & Certifications */}
         <div>
           <h3 className="timeline-heading">
-            <GraduationCap size={22} color="#FF6B2C" /> Education &amp; Credentials
+            <GraduationCap size={22} color="#FF6B2C" aria-hidden="true" /> Education &amp; Credentials
           </h3>
           <div className="timeline-border">
             {educationData.map((item) => (
               <div key={item.id} className="timeline-item-short">
-                <div className="timeline-dot"></div>
+                <div className="timeline-dot" />
                 <span className="timeline-period">{item.period}</span>
                 <h4 className="timeline-title">{item.degree}</h4>
                 <div className="timeline-org">{item.institution}</div>
@@ -45,15 +61,15 @@ export default function Timeline() {
             ))}
 
             <div className="timeline-item-short">
-              <div className="timeline-dot"></div>
+              <div className="timeline-dot" />
               <span className="timeline-period">CERTIFICATIONS &amp; LEADERSHIP</span>
               <p className="timeline-certs">
-                • IBM Full Stack Software Developer Certificate (In Progress)<br />
-                • Python Programming — SprintsUp<br />
-                • USAID Egyptian Pioneers Scholar<br />
-                • AUC English Language Program<br />
-                • EURECA Research Competition<br />
-                • ASPIRE Leadership Program
+                {CERTIFICATIONS.map((cert, i) => (
+                  <React.Fragment key={i}>
+                    • {cert}
+                    {i < CERTIFICATIONS.length - 1 && <br />}
+                  </React.Fragment>
+                ))}
               </p>
             </div>
           </div>

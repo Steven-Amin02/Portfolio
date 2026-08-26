@@ -2,11 +2,16 @@ import React from 'react';
 import { Server, Database, Layout, Cpu, Code2, CheckCircle2 } from 'lucide-react';
 import { categorizedSkillsData } from '../data/portfolioData';
 
-const iconMap = {
-  Server: Server,
-  Database: Database,
-  Layout: Layout,
-  Cpu: Cpu
+/**
+ * Skills — Categorized technology grid with icon badges and proficiency levels.
+ * Icon mapping resolves string icon names from data to actual Lucide components.
+ */
+
+const ICON_MAP = {
+  Server,
+  Database,
+  Layout,
+  Cpu
 };
 
 export default function Skills() {
@@ -19,28 +24,29 @@ export default function Skills() {
       </div>
 
       <div className="skills-grid-container">
-        {categorizedSkillsData.map((cat) => {
-          const IconComponent = iconMap[cat.icon] || Code2;
+        {categorizedSkillsData.map((category) => {
+          const IconComponent = ICON_MAP[category.icon] || Code2;
+
           return (
-            <div key={cat.id} className="skill-category-card">
+            <div key={category.id} className="skill-category-card">
               <div className="skill-cat-header">
-                <div className="skill-cat-icon">
+                <div className="skill-cat-icon" aria-hidden="true">
                   <IconComponent size={24} color="#FF6B2C" />
                 </div>
-                <h3>{cat.category}</h3>
+                <h3>{category.category}</h3>
               </div>
 
-              <div className="skill-items-list">
-                {cat.skills.map((item, idx) => (
-                  <div key={idx} className="skill-item-row">
+              <ul className="skill-items-list">
+                {category.skills.map((skill, idx) => (
+                  <li key={idx} className="skill-item-row">
                     <div className="skill-item-info">
-                      <CheckCircle2 size={16} color="#FF6B2C" className="check-icon" />
-                      <span className="skill-item-name">{item.name}</span>
+                      <CheckCircle2 size={16} color="#FF6B2C" aria-hidden="true" />
+                      <span className="skill-item-name">{skill.name}</span>
                     </div>
-                    <span className="skill-item-level">{item.level}</span>
-                  </div>
+                    <span className="skill-item-level">{skill.level}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           );
         })}
