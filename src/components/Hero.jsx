@@ -32,23 +32,23 @@ function useHeroMotion() {
         el.greeting.style.transform = `translate3d(0, ${y * 0.2 + bob}px, 0)`;
       }
       if (el.title) {
-        el.title.style.transform = `translate3d(0, ${y * 0.34}px, 0)`;
+        el.title.style.transform = `translate3d(0, ${y * 0.18}px, 0)`;
       }
       if (el.arch) {
-        const scale = 1 + y * 0.00042;
-        el.arch.style.transform = `translate3d(0, ${y * 0.1}px, 0) scale(${scale})`;
+        const scale = 1 + y * 0.00028;
+        el.arch.style.transform = `translate3d(0, ${y * 0.08}px, 0) scale(${scale})`;
       }
       if (el.portrait) {
-        el.portrait.style.transform = `translate3d(0, ${y * 0.52}px, 0)`;
+        el.portrait.style.transform = `translate3d(0, ${y * 0.26}px, 0)`;
       }
       if (el.left) {
-        el.left.style.transform = `translate3d(${-y * 0.22}px, ${y * 0.3 + spark}px, 0)`;
+        el.left.style.transform = `translate3d(${-y * 0.16}px, ${y * 0.2 + spark}px, 0)`;
       }
       if (el.right) {
-        el.right.style.transform = `translate3d(${y * 0.22}px, ${y * 0.3 - spark}px, 0)`;
+        el.right.style.transform = `translate3d(${y * 0.16}px, ${y * 0.2 - spark}px, 0)`;
       }
       if (el.cta) {
-        el.cta.style.transform = `translate3d(0, ${y * 0.24}px, 0)`;
+        el.cta.style.transform = `translateX(-50%) translate3d(0, ${y * 0.14}px, 0)`;
       }
 
       rafId = requestAnimationFrame(loop);
@@ -148,16 +148,14 @@ export default function Hero({ profile }) {
           </div>
         </div>
 
-        <div className="hero-cta-pill anim-cta">
-          <div
-            className="parallax-layer hero-cta-inner"
-            ref={(node) => { layers.current.cta = node; }}
-          >
-            <a href="#projects" className="btn-portfolio anim-btn-glow">
-              Portfolio <ArrowUpRight size={18} strokeWidth={2.5} />
-            </a>
-            <a href={`mailto:${profile.email}`} className="btn-hire">Hire me</a>
-          </div>
+        <div
+          className="hero-cta-pill anim-cta"
+          ref={(node) => { layers.current.cta = node; }}
+        >
+          <a href="#projects" className="btn-portfolio anim-btn-glow">
+            Portfolio <ArrowUpRight size={18} strokeWidth={2.5} />
+          </a>
+          <a href={`mailto:${profile.email}`} className="btn-hire">Hire me</a>
         </div>
 
       </div>
