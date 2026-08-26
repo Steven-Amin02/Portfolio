@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import About from './components/About';
+import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Timeline from './components/Timeline';
 import Testimonials from './components/Testimonials';
@@ -17,7 +18,7 @@ export default function App() {
 
   // Active section tracker
   useEffect(() => {
-    const sections = ['home', 'services', 'about', 'projects', 'resume', 'testimonials', 'contact'];
+    const sections = ['home', 'services', 'about', 'skills', 'projects', 'resume', 'testimonials', 'contact'];
     const onScroll = () => {
       const y = window.pageYOffset;
       sections.forEach((id) => {
@@ -55,6 +56,7 @@ export default function App() {
       <Hero profile={profile} />
       <div className="reveal"><Services /></div>
       <div className="reveal reveal-delay-1"><About profile={profile} /></div>
+      <div className="reveal"><Skills /></div>
       <div className="reveal"><Projects /></div>
       <div className="reveal reveal-delay-1"><Timeline /></div>
       <div className="reveal"><Testimonials /></div>

@@ -52,6 +52,14 @@ export default function Navbar({ activeSection }) {
         </a>
 
         <a 
+          href="#skills" 
+          onClick={(e) => handleNavClick(e, 'skills')} 
+          className={`nav-item ${activeSection === 'skills' ? 'active' : ''}`}
+        >
+          Skills
+        </a>
+
+        <a 
           href="#home" 
           onClick={(e) => handleNavClick(e, 'home')} 
           className="nav-logo"

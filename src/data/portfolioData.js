@@ -61,6 +61,59 @@ export const skillsData = [
   "SOLID & Clean Architecture"
 ];
 
+export const categorizedSkillsData = [
+  {
+    id: "backend",
+    category: "Backend & Architecture",
+    icon: "Server",
+    skills: [
+      { name: "C# / .NET 8", level: "Core Stack" },
+      { name: "ASP.NET Core Web API", level: "Advanced" },
+      { name: "ASP.NET Core MVC", level: "Advanced" },
+      { name: "Entity Framework Core", level: "Advanced" },
+      { name: "Clean & Layered Architecture", level: "Practicing" },
+      { name: "SOLID Principles & Design Patterns", level: "Core Principle" },
+      { name: "RESTful API & Auth (JWT)", level: "Advanced" }
+    ]
+  },
+  {
+    id: "database",
+    category: "Database & Data Systems",
+    icon: "Database",
+    skills: [
+      { name: "SQL Server (T-SQL)", level: "Advanced" },
+      { name: "PostgreSQL", level: "Intermediate" },
+      { name: "EF Core Code-First & Migrations", level: "Advanced" },
+      { name: "LINQ Querying & ORM", level: "Advanced" },
+      { name: "Database Design & Relational Models", level: "Solid" }
+    ]
+  },
+  {
+    id: "frontend",
+    category: "Frontend & Web Development",
+    icon: "Layout",
+    skills: [
+      { name: "React.js", level: "Advanced" },
+      { name: "JavaScript (ES6+)", level: "Advanced" },
+      { name: "TypeScript", level: "Intermediate" },
+      { name: "HTML5 & Vanilla CSS3", level: "Advanced" },
+      { name: "Vite & Responsive Layouts", level: "Advanced" }
+    ]
+  },
+  {
+    id: "devops",
+    category: "DevOps, RPA & Tools",
+    icon: "Cpu",
+    skills: [
+      { name: "Git & GitHub Workflows", level: "Advanced" },
+      { name: "Docker Container Basics", level: "Intermediate" },
+      { name: "IIS Hosting & Server Deployment", level: "Practical Exp (NBE)" },
+      { name: "CI/CD Pipeline Exposure", level: "Practical Exp (NBE)" },
+      { name: "UiPath RPA Automation", level: "Certified/Trained" }
+    ]
+  }
+];
+
 export const projectsData = [
   {
     id: "proj-hero",
