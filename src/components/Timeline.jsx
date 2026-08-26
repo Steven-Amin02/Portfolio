@@ -8,12 +8,13 @@ import { experienceData, educationData } from '../data/portfolioData';
  */
 
 const CERTIFICATIONS = [
-  'IBM Full Stack Software Developer Certificate (In Progress)',
-  'Python Programming — SprintsUp',
-  'USAID Egyptian Pioneers Scholar',
-  'AUC English Language Program',
-  'EURECA Research Competition',
-  'ASPIRE Leadership Program'
+  'IBM Full Stack Software Developer Certificate (Coursera - In Progress)',
+  'Programming with Python — Sprints',
+  'USAID Egyptian Pioneers Scholarship Program',
+  'DataCamp Data Science Scholarship',
+  'AUC Continuing Education — English & Communication',
+  'ASPIRE Leadership Program (Feb 2024 – Jan 2025)',
+  'EURECA Research Competition (Feb 2025)'
 ];
 
 export default function Timeline() {

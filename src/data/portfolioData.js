@@ -2,18 +2,20 @@
 
 export const initialProfileData = {
   name: "Steven Amin",
+  fullName: "Steven Amin Ramzy Nashed",
   role: "Full-Stack Software Engineer & .NET Specialist",
   location: "Cairo, Egypt",
   email: "stevenameen02@gmail.com",
+  phone: "+20 120 304 2189",
   github: "https://github.com/Steven-Amin02",
   linkedin: "https://linkedin.com/in/steven-amin02",
-  bio: "I am a dedicated Full-Stack Software Engineer specializing in building practical web applications, scalable RESTful APIs, and robust backend architectures with C#, ASP.NET Core, SQL Server, and modern frontend frameworks. With a solid Computer Science background from Ain Shams University and hands-on deployment experience at the National Bank of Egypt (NBE) alongside DEPI training, I focus on writing clean, maintainable, and efficient software.",
+  bio: "I am a Software Engineering student specializing in C#, .NET, ASP.NET Core, SQL Server, and full-stack web development, with additional experience in RPA, machine learning, and enterprise deployment. Through my internship at the National Bank of Egypt (NBE) and DEPI training, I focus on building reliable, maintainable, and user-focused software solutions.",
   snippet: "Steven's exceptional full-stack & backend systems ensure application success. Highly Recommended",
-  cgpa: "3.22",
-  featuredCount: "8+",
-  internshipsCount: "2+",
-  certifiedStatus: "NBE & DEPI",
-  educationDegree: "B.Sc. Computer Science (Ain Shams)"
+  cgpa: "3.22 / 4.0",
+  featuredCount: "6 Projects",
+  internshipsCount: "NBE & DEPI",
+  certifiedStatus: "Ain Shams & UEL",
+  educationDegree: "B.Sc. CS & Software Engineering"
 };
 
 export const servicesData = [
@@ -130,7 +132,7 @@ export const projectsData = [
     title: "Sany3y — Service Marketplace Platform",
     tag: "ASP.NET Core MVC & SQL Server",
     category: "dotnet",
-    description: "TaskRabbit-inspired service marketplace connecting clients & technicians. Built with layered architecture, EF Core Code-First, role auth, & notifications.",
+    description: "TaskRabbit-like service marketplace connecting clients with technicians. Built with layered architecture, EF Core Code-First, role auth, & notifications.",
     image: "/sany3y_banner4.png",
     link: "https://github.com/Steven-Amin02/Sany3y",
     isBuilding: false,
@@ -141,7 +143,7 @@ export const projectsData = [
     title: "SMAS — Social Media Automation System",
     tag: "UiPath Studio & Orchestrator",
     category: "rpa",
-    description: "Enterprise-style RPA solution automating multi-channel publishing. Features Dispatcher-Performer architecture & queue-based processing.",
+    description: "Enterprise RPA solution automating social media publishing. Features Dispatcher–Performer architecture & UiPath Orchestrator queue-based processing.",
     image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
     link: "https://github.com/Steven-Amin02/Social-Media-Automation-System-SMAS-",
     isBuilding: false
@@ -151,7 +153,7 @@ export const projectsData = [
     title: "AMS — Airline Management System",
     tag: "ASP.NET Core 8 MVC & Identity",
     category: "dotnet",
-    description: "Full airline booking platform with flight search, pricing, role authentication, and English + Arabic RTL localization.",
+    description: "Full airline booking platform supporting flight search, booking, pricing, role authentication, and English + Arabic RTL localization.",
     image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80",
     link: "https://github.com/Steven-Amin02/Airline-Management-System-AMS-",
     isBuilding: false
@@ -161,9 +163,9 @@ export const projectsData = [
     title: "Smart Phone Price Predictor",
     tag: "Python, Scikit-learn, Streamlit",
     category: "ai",
-    description: "Supervised machine learning web application predicting smartphone pricing with 95.55% classification accuracy.",
+    description: "AI-powered web application predicting smartphone price categories based on device specifications with 95.55% classification accuracy.",
     image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
-    link: "https://github.com/Steven-Amin02/Smart-Phone-Price-Predictor",
+    link: "https://github.com/Steven-Amin02/Smart-phones-prices",
     isBuilding: false
   },
   {
@@ -171,19 +173,19 @@ export const projectsData = [
     title: "ExoVista — NASA Space Apps Challenge",
     tag: "Interactive Web Visualization",
     category: "frontend",
-    description: "Web application creating immersive exoplanet exploration experiences and data storytelling for NASA's challenge.",
+    description: "Interactive educational web application creating immersive exoplanet exploration experiences and data storytelling for NASA Space Apps Challenge.",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
-    link: "https://github.com/Steven-Amin02",
+    link: "https://github.com/Steven-Amin02/ExoVista",
     isBuilding: false
   },
   {
     id: "proj-magnisnap",
-    title: "MagniSnap — Intelligent Scissors Desktop App",
+    title: "MagniSnap — Intelligent Scissors Tool",
     tag: "C#, WinForms, .NET Graph Algorithms",
     category: "dotnet",
-    description: "Interactive desktop image segmentation tool implementing Dijkstra graph algorithms for magnetic contour snapping.",
+    description: "Interactive desktop image-segmentation application implementing Livewire / Intelligent Scissors algorithms for magnetic boundary detection.",
     image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
-    link: "https://github.com/Steven-Amin02",
+    link: "https://github.com/Steven-Amin02/MagniSnap-Algorithm",
     isBuilding: false
   },
   {
@@ -191,7 +193,7 @@ export const projectsData = [
     title: "AI Accessibility Assistant",
     tag: "Vodafone AI Hackathon (ITIDA & ALX)",
     category: "ai",
-    description: "AI assistant helping individuals with disabilities using PDF-to-speech, image description, & conversational NLP.",
+    description: "Accessibility-focused AI assistant concept helping individuals with disabilities using PDF reading aloud, image description, & conversational NLP.",
     image: "/vodafone-egypt.webp",
     link: "#contact",
     isBuilding: false,
@@ -204,59 +206,37 @@ export const experienceData = [
     id: "exp-nbe",
     title: "Deployment Intern",
     company: "National Bank of Egypt (NBE)",
-    period: "2026",
-    description: "Gained practical experience with deployment workflows, SIT/UAT environments, CI/CD pipelines, IIS hosting, production environments, and change requests."
+    period: "July 2026",
+    description: "Learned software release processes from SIT to UAT and Production. Practical experience with deployment pipelines, artifact management, IIS hosting, Change Requests (CRs), and ticketing workflows."
   },
   {
     id: "exp-depi",
-    title: "Full-Stack .NET Trainee",
+    title: "Full Stack .NET Developer Trainee",
     company: "Digital Egypt Pioneers Initiative (DEPI)",
-    period: "2026",
-    description: "Training in C#, SQL Server, HTML, CSS, JavaScript, ASP.NET Core Web API, MVC, Git/GitHub, Docker, testing, and full-stack development."
-  },
-  {
-    id: "exp-route",
-    title: "Front-End Development Diploma",
-    company: "Route Academy",
-    period: "2026",
-    description: "Practical training in modern front-end web development, including HTML, CSS, JavaScript, and related development tools."
+    period: "June 2025 – Dec 2025",
+    description: "Developed 3+ data-driven web applications using ASP.NET Core MVC & SQL Server. Applied layered architecture & SOLID principles, integrated REST APIs, and optimized database queries by ~25%."
   },
   {
     id: "exp-sprints",
-    title: "Software Development Intern",
-    company: "SprintsUp",
-    period: "",
-    description: "Practical experience with Python and software development fundamentals."
-  },
-  {
-    id: "exp-usaid",
-    title: "Scholar",
-    company: "USAID Egyptian Pioneers Program",
-    period: "",
-    description: "Professional and technical development through the Egyptian Pioneers scholarship program."
-  },
-  {
-    id: "exp-auc",
-    title: "English Program",
-    company: "AUC Continuing Education",
-    period: "",
-    description: "Long-term English language and communication training."
+    title: "Programming with Python Trainee",
+    company: "Sprints",
+    period: "Training",
+    description: "Developed Python programming skills through practical training covering fundamentals, data structures, and algorithm implementation."
   }
 ];
-
 
 export const educationData = [
   {
     id: "edu-asu",
-    degree: "B.Sc. Computer Science",
-    institution: "Ain Shams University (CGPA: 3.22 / 4.0)",
-    period: "2023 — 2027"
+    degree: "Bachelor of Computer Science (Software Engineering Major)",
+    institution: "Ain Shams University — CGPA: 3.22 / 4.0 (General Grade: Excellent)",
+    period: "June 2023 – June 2027"
   },
   {
     id: "edu-uel",
-    degree: "B.Sc. Software Engineering",
-    institution: "University of East London (Dual Degree)",
-    period: "2024 — 2027"
+    degree: "Bachelor of Software Engineering (Dual Degree Program)",
+    institution: "University of East London",
+    period: "June 2024 – June 2027"
   }
 ];
 
