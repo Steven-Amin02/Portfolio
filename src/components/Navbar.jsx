@@ -140,7 +140,7 @@ export default function Navbar({ activeSection, theme = 'light', onToggleTheme }
 
           <span className="mobile-status-badge">
             <span className="live-status-dot" aria-hidden="true" />
-            <span>Open for Hire</span>
+            <span className="mobile-status-text">Open for Hire</span>
           </span>
 
           <button 

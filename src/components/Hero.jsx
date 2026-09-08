@@ -101,7 +101,8 @@ export default function Hero({ profile }) {
         >
           <span className="greeting-bubble">
             <Sparkles size={14} className="greeting-sparkle-icon" />
-            <span>Hello! Welcome to my engineering portfolio</span>
+            <span className="greeting-text-full">Hello! Welcome to my engineering portfolio</span>
+            <span className="greeting-text-short">Welcome to my portfolio</span>
           </span>
           <svg className="spark-doodle" viewBox="0 0 36 28" fill="none" aria-hidden="true">
             <path className="spark-path" d="M2 24 C10 16, 20 8, 34 3" stroke="#FF6B2C" strokeWidth="2.5" strokeLinecap="round"/>
