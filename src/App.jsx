@@ -51,9 +51,12 @@ export default function App() {
 
     for (let i = SECTION_IDS.length - 1; i >= 0; i--) {
       const el = document.getElementById(SECTION_IDS[i]);
-      if (el && scrollY >= el.offsetTop - SCROLL_SPY_OFFSET) {
-        setActiveSection(SECTION_IDS[i]);
-        break;
+      if (el) {
+        const top = el.getBoundingClientRect().top + scrollY;
+        if (scrollY >= top - SCROLL_SPY_OFFSET) {
+          setActiveSection(SECTION_IDS[i]);
+          break;
+        }
       }
     }
   }, []);
