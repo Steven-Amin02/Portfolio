@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -24,6 +24,26 @@ const REVEAL_THRESHOLD = 0.12;
 export default function App() {
   const [profile] = useState(initialProfileData);
   const [activeSection, setActiveSection] = useState('home');
+  
+  // Theme state: defaults to saved preference or light mode
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('portfolio-theme') || 'light';
+  });
+
+  // Sync theme with HTML data attribute, localStorage, and browser meta tag
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('portfolio-theme', theme);
+    
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (metaThemeColor) {
+      metaThemeColor.setAttribute('content', theme === 'dark' ? '#0A0D14' : '#F8F9FC');
+    }
+  }, [theme]);
+
+  const toggleTheme = useCallback(() => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  }, []);
 
   // Scroll-spy: track which section is currently in view
   const handleScroll = useCallback(() => {
@@ -65,7 +85,11 @@ export default function App() {
 
   return (
     <div className="app-main-root">
-      <Navbar activeSection={activeSection} />
+      <Navbar 
+        activeSection={activeSection} 
+        theme={theme} 
+        onToggleTheme={toggleTheme} 
+      />
       <Hero profile={profile} />
 
       <div className="reveal"><About profile={profile} /></div>

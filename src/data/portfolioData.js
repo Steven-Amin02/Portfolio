@@ -9,13 +9,52 @@ export const initialProfileData = {
   phone: "+20 120 304 2189",
   github: "https://github.com/Steven-Amin02",
   linkedin: "https://linkedin.com/in/steven-amin02",
+  availability: "Open to Full-Time & Freelance Roles",
+  status: "Available for Hire",
   bio: "I am a Software Engineering student specializing in C#, .NET, ASP.NET Core, SQL Server, and full-stack web development, with additional experience in RPA, machine learning, and enterprise deployment. Through my internship at the National Bank of Egypt (NBE) and DEPI training, I focus on building reliable, maintainable, and user-focused software solutions.",
   snippet: "Steven's exceptional full-stack & backend systems ensure application success. Highly Recommended",
   cgpa: "3.22 / 4.0",
-  featuredCount: "6 Projects",
+  featuredCount: "8 Projects",
   internshipsCount: "NBE & DEPI",
   certifiedStatus: "Ain Shams & UEL",
   educationDegree: "B.Sc. CS & Software Engineering"
+};
+
+export const heroTechBadges = [
+  { label: ".NET 8 / C#", color: "#FF6B2C" },
+  { label: "ASP.NET Core Web API", color: "#10B981" },
+  { label: "Entity Framework Core", color: "#3B82F6" },
+  { label: "SQL Server (T-SQL)", color: "#EC4899" },
+  { label: "UiPath RPA Workflows", color: "#F59E0B" },
+  { label: "Clean Architecture & SOLID", color: "#8B5CF6" },
+  { label: "React & TypeScript", color: "#06B6D4" }
+];
+
+export const bentoCardsData = {
+  bio: {
+    headline: "Engineering Scalable, Production-Ready Solutions",
+    text: "Dual-degree Software Engineering scholar with deep expertise across the Microsoft .NET ecosystem, ASP.NET Core, SQL Server, and modern frontend frameworks. Experienced in enterprise SIT/UAT/Production deployment pipelines at the National Bank of Egypt and trained in high-performance application architectures through DEPI."
+  },
+  dualDegree: {
+    title: "Dual Degree Scholar",
+    primaryUni: "Ain Shams University (B.Sc. Computer Science)",
+    dualUni: "University of East London (B.Sc. Software Engineering)",
+    cgpa: "3.22 / 4.0",
+    grade: "Excellent / First Class Honours",
+    timeline: "2023 – 2027"
+  },
+  enterprise: {
+    company: "National Bank of Egypt (NBE)",
+    role: "Deployment & Release Intern",
+    timeline: "July 2026",
+    details: "Hands-on exposure to SIT ➔ UAT ➔ Production promotion flows, IIS server hosting, Change Requests (CRs), and enterprise release management."
+  },
+  metrics: [
+    { value: "3.22", label: "Dual Degree CGPA", note: "Ain Shams & UEL" },
+    { value: "8+", label: "Architected Projects", note: "Full-Stack, RPA & AI" },
+    { value: "~25%", label: "Query Optimization", note: "SQL Server & EF Core" },
+    { value: "95.5%", label: "ML Accuracy", note: "Phone Price Predictor" }
+  ]
 };
 
 export const servicesData = [
@@ -118,34 +157,39 @@ export const categorizedSkillsData = [
 
 export const projectsData = [
   {
-    id: "proj-hero",
-    title: "AI-Powered Support & Ticketing Platform",
-    tag: "Hero Project / Full-Stack",
-    category: "dotnet",
-    description: "Modern support platform built with React, TypeScript, Vite, Tailwind, ASP.NET Core Web API, PostgreSQL, JWT authentication, and AI assistance.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-    link: "#contact",
-    isBuilding: true
-  },
-  {
     id: "proj-sany3y",
     title: "Sany3y — Service Marketplace Platform",
     tag: "ASP.NET Core MVC & SQL Server",
     category: "dotnet",
-    description: "TaskRabbit-like service marketplace connecting clients with technicians. Built with layered architecture, EF Core Code-First, role auth, & notifications.",
+    featured: true,
+    description: "TaskRabbit-like full-featured service marketplace connecting clients with skilled technicians. Built with clean layered architecture, EF Core Code-First, role-based authorization, and real-time appointment tracking.",
     image: "/sany3y_banner4.png",
     link: "https://github.com/Steven-Amin02/Sany3y",
+    techStack: ["ASP.NET Core 8", "EF Core", "SQL Server", "MVC", "Layered Architecture"],
     isBuilding: false,
     containImage: true
+  },
+  {
+    id: "proj-hero",
+    title: "AI-Powered Support & Ticketing Platform",
+    tag: "Flagship / Full-Stack & AI",
+    category: "dotnet",
+    featured: true,
+    description: "Enterprise ticketing ecosystem built with React, TypeScript, Vite, ASP.NET Core Web API, PostgreSQL, and LLM-assisted ticket triage with JWT authentication.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+    link: "#contact",
+    techStack: ["React", "TypeScript", "ASP.NET Core API", "PostgreSQL", "JWT", "AI"],
+    isBuilding: true
   },
   {
     id: "proj-smas",
     title: "SMAS — Social Media Automation System",
     tag: "UiPath Studio & Orchestrator",
     category: "rpa",
-    description: "Enterprise RPA solution automating social media publishing. Features Dispatcher–Performer architecture & UiPath Orchestrator queue-based processing.",
+    description: "Industrial-grade RPA pipeline automating cross-platform social media distribution. Features robust Dispatcher–Performer architecture and UiPath Orchestrator queue transaction management.",
     image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
     link: "https://github.com/Steven-Amin02/Social-Media-Automation-System-SMAS-",
+    techStack: ["UiPath Studio", "Orchestrator", "Queues", "Dispatcher-Performer"],
     isBuilding: false
   },
   {
@@ -153,9 +197,10 @@ export const projectsData = [
     title: "AMS — Airline Management System",
     tag: "ASP.NET Core 8 MVC & Identity",
     category: "dotnet",
-    description: "Full airline booking platform supporting flight search, booking, pricing, role authentication, and English + Arabic RTL localization.",
+    description: "Comprehensive airline operations platform featuring flight schedules, dynamic pricing, ticket booking, role-based admin controls, and English/Arabic bilingual RTL support.",
     image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80",
     link: "https://github.com/Steven-Amin02/Airline-Management-System-AMS-",
+    techStack: ["ASP.NET Core 8", "Identity", "SQL Server", "LINQ", "i18n / RTL"],
     isBuilding: false
   },
   {
@@ -163,9 +208,10 @@ export const projectsData = [
     title: "Smart Phone Price Predictor",
     tag: "Python, Scikit-learn, Streamlit",
     category: "ai",
-    description: "AI-powered web application predicting smartphone price categories based on device specifications with 95.55% classification accuracy.",
+    description: "Machine learning application classifying smartphone price tiers based on hardware specs, achieving 95.55% classification accuracy with interactive Streamlit GUI.",
     image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
     link: "https://github.com/Steven-Amin02/Smart-phones-prices",
+    techStack: ["Python", "Scikit-Learn", "Streamlit", "Pandas", "NumPy"],
     isBuilding: false
   },
   {
@@ -173,19 +219,21 @@ export const projectsData = [
     title: "ExoVista — NASA Space Apps Challenge",
     tag: "Interactive Web Visualization",
     category: "frontend",
-    description: "Interactive educational web application creating immersive exoplanet exploration experiences and data storytelling for NASA Space Apps Challenge.",
+    description: "Award-nominated interactive educational web application creating immersive exoplanet exploration experiences and space data storytelling for NASA Space Apps Challenge.",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
     link: "https://github.com/Steven-Amin02/ExoVista",
+    techStack: ["JavaScript", "HTML5 Canvas", "CSS Animations", "NASA API"],
     isBuilding: false
   },
   {
     id: "proj-magnisnap",
     title: "MagniSnap — Intelligent Scissors Tool",
-    tag: "C#, WinForms, .NET Graph Algorithms",
+    tag: "C#, WinForms, Graph Algorithms",
     category: "dotnet",
-    description: "Interactive desktop image-segmentation application implementing Livewire / Intelligent Scissors algorithms for magnetic boundary detection.",
+    description: "High-performance desktop computer vision utility implementing Dijkstra's shortest-path Livewire / Intelligent Scissors algorithm for precise magnetic contour tracing.",
     image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
     link: "https://github.com/Steven-Amin02/MagniSnap-Algorithm",
+    techStack: ["C#", ".NET", "WinForms", "Dijkstra Algorithm", "Image Processing"],
     isBuilding: false
   },
   {
@@ -193,9 +241,10 @@ export const projectsData = [
     title: "AI Accessibility Assistant",
     tag: "Vodafone AI Hackathon (ITIDA & ALX)",
     category: "ai",
-    description: "Accessibility-focused AI assistant concept helping individuals with disabilities using PDF reading aloud, image description, & conversational NLP.",
+    description: "Accessibility AI solution designed for visually and physically impaired users, featuring automated PDF narration, vision-based scene description, and conversational NLP.",
     image: "/vodafone-egypt.webp",
     link: "#contact",
+    techStack: ["Python", "NLP", "Computer Vision", "Speech Synthesis"],
     isBuilding: false,
     containImage: true
   }
