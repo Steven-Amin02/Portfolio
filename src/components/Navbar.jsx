@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Menu, X, ArrowUpRight, Sparkles, Sun, Moon } from 'lucide-react';
+import { scrollToElement } from '../utils/scrollUtils';
 
 const LEFT_NAV_ITEMS = [
   { id: 'home', label: 'Home' },
@@ -42,19 +43,7 @@ export default function Navbar({ activeSection, theme = 'light', onToggleTheme }
   const handleNavClick = useCallback((e, targetId) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      const headerOffset = 85;
-      const elementPosition = targetElement.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-
-      window.history.pushState(null, '', `#${targetId}`);
-    }
+    scrollToElement(targetId, 85, 950);
   }, []);
 
   const renderLogo = () => (

@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { Mail, Github, Linkedin, Send, CheckCircle2, Phone, MapPin, Sparkles, ArrowUp } from 'lucide-react';
+import { smoothScrollTo } from '../utils/scrollUtils';
 
 /**
  * Footer — Interactive Contact Terminal & Navigation Footer.
@@ -32,7 +33,7 @@ export default function Footer({ profile }) {
   }, [formData, profile.email]);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    smoothScrollTo(0, 950);
   };
 
   const contactItems = [

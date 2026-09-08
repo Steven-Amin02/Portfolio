@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowUpRight, Mail, Sparkles, Award, ShieldCheck, Terminal, Layers } from 'lucide-react';
 import { heroTechBadges } from '../data/portfolioData';
+import { scrollToElement } from '../utils/scrollUtils';
 
 function useHeroMotion() {
   const layers = useRef({
@@ -78,12 +79,12 @@ export default function Hero({ profile }) {
 
   const scrollToProjects = (e) => {
     e.preventDefault();
-    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+    scrollToElement('projects', 85, 950);
   };
 
   const scrollToContact = (e) => {
     e.preventDefault();
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    scrollToElement('contact', 85, 950);
   };
 
   return (

@@ -2527,7 +2527,12 @@ img, svg, video {
 .marquee-track {
   display: flex;
   white-space: nowrap;
-  animation: marqueeScroll 24s linear infinite;
+  animation: marqueeScroll 60s linear infinite;
+  will-change: transform;
+}
+
+.marquee-ticker-section:hover .marquee-track {
+  animation-play-state: paused;
 }
 
 .marquee-item {
