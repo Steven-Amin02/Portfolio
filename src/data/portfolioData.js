@@ -289,6 +289,81 @@ export const educationData = [
   }
 ];
 
+export const certificationsData = [
+  {
+    id: "cert-nti",
+    title: "MEAN-Stack Web Development",
+    issuer: "NTI & ITIDA",
+    date: "Feb 2025",
+    highlight: "120 Hours • 93% Score",
+    status: "Completed",
+    skills: ["MongoDB", "Express.js", "Angular", "Node.js", "TypeScript"]
+  },
+  {
+    id: "cert-route-devops",
+    title: "DevOps & Cloud Computing Diploma",
+    issuer: "Route Academy",
+    date: "Aug 2026",
+    highlight: "In Progress",
+    status: "In Progress",
+    skills: ["Docker", "Kubernetes", "CI/CD", "Cloud Architecture", "Linux"]
+  },
+  {
+    id: "cert-route-fullstack",
+    title: "Full-Stack Web Development Diploma",
+    issuer: "Route Academy",
+    date: "Apr 2026",
+    highlight: "Comprehensive Diploma",
+    status: "Accredited Diploma",
+    skills: ["Frontend", "Backend APIs", "Database Engineering", "Architecture"]
+  },
+  {
+    id: "cert-ielts",
+    title: "IELTS Academic Certificate",
+    issuer: "British Council",
+    date: "Jul 2024",
+    highlight: "Overall Band 6.0",
+    status: "Certified",
+    skills: ["Academic English", "Professional Communication", "Technical Writing"]
+  },
+  {
+    id: "cert-ibm",
+    title: "IBM Full Stack Software Developer Professional Certificate",
+    issuer: "Coursera & IBM",
+    date: "In Progress",
+    highlight: "Professional Specialization",
+    status: "In Progress",
+    skills: ["Cloud Computing", "DevOps", "Microservices", "React", "Python"]
+  },
+  {
+    id: "cert-sprints",
+    title: "Programming with Python",
+    issuer: "Sprints",
+    date: "Completed",
+    highlight: "Algorithms & OOP",
+    status: "Certified",
+    skills: ["Python", "Data Structures", "Problem Solving"]
+  },
+  {
+    id: "cert-usaid",
+    title: "USAID Egyptian Pioneers Scholarship",
+    issuer: "USAID & AUC",
+    date: "Selected Scholar",
+    highlight: "Leadership & Tech",
+    status: "Scholarship",
+    skills: ["Leadership", "Entrepreneurship", "Innovation"]
+  },
+  {
+    id: "cert-datacamp",
+    title: "DataCamp Data Science Scholarship",
+    issuer: "DataCamp",
+    date: "Scholarship",
+    highlight: "Data Science Track",
+    status: "Scholarship",
+    skills: ["Data Analysis", "Python", "Machine Learning"]
+  }
+];
+
 export const testimonialsData = [
   {
     id: "test-nbe",

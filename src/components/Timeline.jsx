@@ -1,21 +1,12 @@
 import React from 'react';
-import { Briefcase, GraduationCap, Award, Sparkles, CheckCircle2, ChevronRight } from 'lucide-react';
-import { experienceData, educationData } from '../data/portfolioData';
+import { Briefcase, GraduationCap, Award, Sparkles, CheckCircle2, Clock, ShieldCheck } from 'lucide-react';
+import { experienceData, educationData, certificationsData } from '../data/portfolioData';
 
 /**
- * Timeline — Interactive Experience & Education Pipeline.
- * Renders dual tracks for enterprise trainings/internships and dual-degree academic credentials.
+ * Timeline — Interactive Trajectory & Credentials Section.
+ * Renders dual tracks for enterprise experience and academic degrees,
+ * followed by a full-width showcase for accredited Certifications & Training.
  */
-
-const CERTIFICATIONS = [
-  'IBM Full Stack Software Developer Certificate (Coursera - In Progress)',
-  'USAID Egyptian Pioneers Scholarship Program',
-  'Programming with Python — Sprints',
-  'DataCamp Data Science Scholarship',
-  'ASPIRE Leadership Program (Feb 2024 – Jan 2025)',
-  'AUC Continuing Education — Professional English',
-  'EURECA Research Competition (Feb 2025)'
-];
 
 export default function Timeline() {
   return (
@@ -29,16 +20,17 @@ export default function Timeline() {
             <span>TRAJECTORY &amp; EXPERTISE</span>
           </div>
           <h2 className="section-title">
-            Experience, Trainings &amp; <span className="highlight-text">Education</span>
+            Experience, Education &amp; <span className="highlight-text">Certifications</span>
           </h2>
           <p className="section-subtitle">
-            Enterprise software deployment at the National Bank of Egypt, high-performance .NET training through DEPI, and dual-degree computer science honors.
+            Enterprise software deployment at the National Bank of Egypt, high-performance .NET training through DEPI, dual-degree honors, and specialized accredited diplomas.
           </p>
         </div>
 
+        {/* Dual-Column Layout: Experience & Education */}
         <div className="timeline-grid-layout">
           
-          {/* Column 1: Enterprise Experience & Trainings */}
+          {/* Column 1: Enterprise Experience & Internships */}
           <div className="timeline-column">
             <div className="timeline-column-header">
               <div className="timeline-col-icon-box">
@@ -68,13 +60,13 @@ export default function Timeline() {
             </div>
           </div>
 
-          {/* Column 2: Education & Certifications */}
+          {/* Column 2: Academic Degrees */}
           <div className="timeline-column">
             <div className="timeline-column-header">
               <div className="timeline-col-icon-box icon-box-blue">
                 <GraduationCap size={20} color="#3B82F6" />
               </div>
-              <h3>Education &amp; Credentials</h3>
+              <h3>Academic Education &amp; Honors</h3>
             </div>
 
             <div className="pipeline-track">
@@ -82,7 +74,7 @@ export default function Timeline() {
                 <div key={item.id} className="pipeline-node-card">
                   <div className="node-indicator">
                     <div className="node-dot dot-blue" />
-                    <div className="node-line" />
+                    {idx < educationData.length - 1 && <div className="node-line" />}
                   </div>
 
                   <div className="node-body">
@@ -92,30 +84,62 @@ export default function Timeline() {
                   </div>
                 </div>
               ))}
-
-              {/* Certifications Block */}
-              <div className="pipeline-node-card certs-card-node">
-                <div className="node-indicator">
-                  <div className="node-dot dot-amber" />
-                </div>
-
-                <div className="node-body">
-                  <span className="node-period-badge badge-amber">
-                    <Award size={12} /> CERTIFICATIONS &amp; SCHOLARSHIPS
-                  </span>
-                  <div className="certs-chips-list">
-                    {CERTIFICATIONS.map((cert, i) => (
-                      <div key={i} className="cert-chip-item">
-                        <CheckCircle2 size={13} color="#FF6B2C" />
-                        <span>{cert}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
+        </div>
+
+        {/* Dedicated Full-Width Certifications & Training Showcase */}
+        <div id="certifications" className="certifications-showcase-wrap">
+          <div className="cert-showcase-header">
+            <div className="section-badge">
+              <Award size={13} className="badge-icon" />
+              <span>ACCREDITED CREDENTIALS</span>
+            </div>
+            <h3 className="cert-showcase-title">
+              Certifications &amp; <span className="highlight-text">Specialized Training</span>
+            </h3>
+            <p className="cert-showcase-subtitle">
+              Industry-accredited diplomas, professional engineering certifications, and international qualifications.
+            </p>
+          </div>
+
+          <div className="certifications-cards-grid">
+            {certificationsData.map((cert) => (
+              <div 
+                key={cert.id} 
+                className={`cert-card-item ${cert.status === 'In Progress' ? 'is-in-progress' : ''}`}
+              >
+                <div className="cert-card-top">
+                  <div className="cert-issuer-tag">
+                    <Award size={14} className="cert-issuer-icon" />
+                    <span>{cert.issuer}</span>
+                  </div>
+                  <span className={`cert-badge-pill ${cert.status === 'In Progress' ? 'pill-progress' : 'pill-done'}`}>
+                    {cert.status === 'In Progress' && <Clock size={11} className="spin-slow" />}
+                    <span>{cert.date}</span>
+                  </span>
+                </div>
+
+                <h4 className="cert-card-name">{cert.title}</h4>
+                
+                {cert.highlight && (
+                  <div className="cert-card-metric">
+                    <CheckCircle2 size={13} color="#FF6B2C" />
+                    <span>{cert.highlight}</span>
+                  </div>
+                )}
+
+                {cert.skills && cert.skills.length > 0 && (
+                  <div className="cert-card-chips">
+                    {cert.skills.map((skill, sIdx) => (
+                      <span key={sIdx} className="cert-skill-chip">{skill}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
 
       </div>
