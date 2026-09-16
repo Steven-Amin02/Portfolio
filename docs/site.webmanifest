@@ -1,0 +1,22 @@
+{
+  "name": "Steven Amin — Software Engineer & Full-Stack .NET Developer",
+  "short_name": "Steven Amin",
+  "description": "Portfolio of Steven Amin — Full-Stack .NET Developer, Software Engineer, and Dual Degree Scholar.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0D14",
+  "theme_color": "#FF6B2C",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/Steven-Amin-Portrait_nobg.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

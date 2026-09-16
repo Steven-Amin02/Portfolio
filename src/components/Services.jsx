@@ -44,8 +44,11 @@ export default function Services() {
               <div className="service-preview-box">
                 <img
                   src={service.image}
-                  alt={service.title}
+                  alt={`${service.title} — Software engineering service by Steven Amin`}
                   loading="lazy"
+                  decoding="async"
+                  width="400"
+                  height="260"
                 />
                 <div className="floating-circle-arrow" aria-hidden="true">
                   <ArrowUpRight size={20} />

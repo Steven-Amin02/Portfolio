@@ -1,75 +1,304 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#F8F9FC">
-  
-  <title>Steven Amin — Software Engineer &amp; Full-Stack .NET Developer</title>
-  <meta name="description" content="Portfolio of Steven Amin — Full-Stack .NET Developer, Software Engineer, RPA Specialist &amp; Dual Degree Scholar (Ain Shams &amp; UEL).">
-  <meta name="keywords" content="Steven Amin, Full-Stack Developer, .NET Developer, C#, ASP.NET Core, SQL Server, Software Engineer, UiPath, RPA, Portfolio, Cairo Egypt, Ain Shams University, University of East London">
-  <meta name="author" content="Steven Amin">
-  <meta name="robots" content="index, follow">
 
-  <!-- Favicon -->
+  <!-- Primary Meta Tags -->
+  <title>Steven Amin — Software Engineer &amp; Full-Stack .NET Developer | Cairo, Egypt</title>
+  <meta name="title" content="Steven Amin — Software Engineer &amp; Full-Stack .NET Developer | Cairo, Egypt">
+  <meta name="description" content="Portfolio of Steven Amin — Dual Degree Software Engineering Scholar (Ain Shams &amp; UEL) specializing in .NET 8, ASP.NET Core, SQL Server, Clean Architecture, and enterprise systems.">
+  <meta name="keywords" content="Steven Amin, Steven Amin Ramzy Nashed, Full-Stack Developer, .NET Developer, Software Engineer, C#, ASP.NET Core, Entity Framework Core, SQL Server, Clean Architecture, SOLID Principles, UiPath, RPA, Cairo Egypt, Ain Shams University, University of East London, Portfolio">
+  <meta name="author" content="Steven Amin">
+  <meta name="publisher" content="Steven Amin">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://stevenamin.me/">
+
+  <!-- Geotargeting for Local & Regional Search Engines -->
+  <meta name="geo.region" content="EG-C">
+  <meta name="geo.placename" content="Cairo">
+  <meta name="geo.position" content="30.0444;31.2357">
+  <meta name="ICBM" content="30.0444, 31.2357">
+
+  <!-- Favicon & Mobile Icons -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="/Steven-Amin-Portrait_nobg.png">
+  <link rel="manifest" href="/site.webmanifest">
 
   <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="profile">
   <meta property="og:title" content="Steven Amin — Software Engineer &amp; Full-Stack .NET Developer">
   <meta property="og:description" content="Dual Degree Software Engineering Scholar specializing in .NET 8, ASP.NET Core, Clean Architecture, SQL Server, and enterprise systems.">
-  <meta property="og:image" content="/Steven-Amin-Portrait_nobg.png">
+  <meta property="og:url" content="https://stevenamin.me/">
   <meta property="og:site_name" content="Steven Amin Portfolio">
   <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://stevenamin.me/Steven-Amin-Portrait_nobg.png">
+  <meta property="og:image:secure_url" content="https://stevenamin.me/Steven-Amin-Portrait_nobg.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Steven Amin — Full-Stack .NET Developer &amp; Software Engineer">
+  <meta property="profile:first_name" content="Steven">
+  <meta property="profile:last_name" content="Amin">
+  <meta property="profile:username" content="Steven-Amin02">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Steven Amin — Software Engineer &amp; Full-Stack .NET Developer">
   <meta name="twitter:description" content="Dual Degree Software Engineering Scholar specializing in .NET 8, ASP.NET Core, Clean Architecture, SQL Server, and enterprise systems.">
-  <meta name="twitter:image" content="/Steven-Amin-Portrait_nobg.png">
+  <meta name="twitter:image" content="https://stevenamin.me/Steven-Amin-Portrait_nobg.png">
+  <meta name="twitter:image:alt" content="Steven Amin — Full-Stack .NET Developer &amp; Software Engineer">
 
-  <!-- Google Fonts: Plus Jakarta Sans, Outfit & JetBrains Mono -->
+  <!-- Performance Preconnect & Resource Hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 
-  <!-- Schema.org JSON-LD Structured Data -->
+  <!-- Schema.org Multi-Entity JSON-LD Knowledge Graph -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Steven Amin",
-    "alternateName": "Steven Amin Ramzy Nashed",
-    "jobTitle": "Full-Stack Software Engineer & .NET Specialist",
-    "url": "https://steven-amin.dev",
-    "email": "mailto:stevenameen02@gmail.com",
-    "telephone": "+201203042189",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Cairo",
-      "addressCountry": "Egypt"
-    },
-    "sameAs": [
-      "https://github.com/Steven-Amin02",
-      "https://linkedin.com/in/steven-amin02"
-    ],
-    "alumniOf": [
+    "@graph": [
       {
-        "@type": "EducationalOrganization",
-        "name": "Ain Shams University"
+        "@type": "Person",
+        "@id": "https://stevenamin.me/#person",
+        "name": "Steven Amin",
+        "alternateName": [
+          "Steven Amin Ramzy Nashed",
+          "Steven Amin Ramzy",
+          "ستيفن أمين"
+        ],
+        "jobTitle": "Full-Stack Software Engineer & .NET Specialist",
+        "description": "Dual Degree Software Engineering Scholar specializing in .NET 8, ASP.NET Core, Clean Architecture, SQL Server, and enterprise deployment.",
+        "url": "https://stevenamin.me/",
+        "image": "https://stevenamin.me/Steven-Amin-Portrait_nobg.png",
+        "email": "mailto:stevenameen02@gmail.com",
+        "telephone": "+201203042189",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Cairo",
+          "addressCountry": "Egypt"
+        },
+        "sameAs": [
+          "https://github.com/Steven-Amin02",
+          "https://linkedin.com/in/steven-amin02"
+        ],
+        "alumniOf": [
+          {
+            "@type": "EducationalOrganization",
+            "name": "Ain Shams University",
+            "url": "https://www.asu.edu.eg"
+          },
+          {
+            "@type": "EducationalOrganization",
+            "name": "University of East London",
+            "url": "https://www.uel.ac.uk"
+          }
+        ],
+        "knowsAbout": [
+          "C#",
+          ".NET 8",
+          "ASP.NET Core Web API",
+          "ASP.NET Core MVC",
+          "Entity Framework Core",
+          "SQL Server",
+          "T-SQL",
+          "Clean Architecture",
+          "SOLID Principles",
+          "React.js",
+          "JavaScript",
+          "TypeScript",
+          "UiPath RPA",
+          "RESTful APIs",
+          "Docker",
+          "IIS Hosting",
+          "CI/CD"
+        ]
       },
       {
-        "@type": "EducationalOrganization",
-        "name": "University of East London"
+        "@type": "WebSite",
+        "@id": "https://stevenamin.me/#website",
+        "url": "https://stevenamin.me/",
+        "name": "Steven Amin Portfolio",
+        "description": "Official software engineering and full-stack .NET developer portfolio of Steven Amin.",
+        "publisher": {
+          "@id": "https://stevenamin.me/#person"
+        },
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://stevenamin.me/#profilepage",
+        "url": "https://stevenamin.me/",
+        "name": "Steven Amin — Software Engineer & Full-Stack .NET Developer",
+        "isPartOf": {
+          "@id": "https://stevenamin.me/#website"
+        },
+        "about": {
+          "@id": "https://stevenamin.me/#person"
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://stevenamin.me/Steven-Amin-Portrait_nobg.png"
+        },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://stevenamin.me/"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://stevenamin.me/#projects",
+        "name": "Featured Software Engineering Projects by Steven Amin",
+        "itemListElement": [
+          {
+            "@type": "SoftwareSourceCode",
+            "position": 1,
+            "name": "Sany3y — Service Marketplace Platform",
+            "description": "Full-featured service marketplace connecting clients with skilled technicians. Built with ASP.NET Core MVC, EF Core, SQL Server, and layered architecture.",
+            "programmingLanguage": "C#",
+            "codeRepository": "https://github.com/Steven-Amin02/Sany3y"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "position": 2,
+            "name": "AI-Powered Support & Ticketing Platform",
+            "description": "Enterprise ticketing ecosystem built with React, TypeScript, ASP.NET Core Web API, PostgreSQL, and LLM-assisted ticket triage.",
+            "applicationCategory": "BusinessApplication"
+          },
+          {
+            "@type": "SoftwareSourceCode",
+            "position": 3,
+            "name": "SMAS — Social Media Automation System",
+            "description": "Industrial-grade RPA pipeline automating cross-platform social media distribution using UiPath Studio, Orchestrator, and Dispatcher-Performer architecture.",
+            "programmingLanguage": "UiPath / VB.NET",
+            "codeRepository": "https://github.com/Steven-Amin02/Social-Media-Automation-System-SMAS-"
+          },
+          {
+            "@type": "SoftwareSourceCode",
+            "position": 4,
+            "name": "AMS — Airline Management System",
+            "description": "Airline operations platform featuring flight schedules, dynamic pricing, ticket booking, role-based admin controls, and English/Arabic bilingual RTL support.",
+            "programmingLanguage": "C#",
+            "codeRepository": "https://github.com/Steven-Amin02/Airline-Management-System-AMS-"
+          },
+          {
+            "@type": "SoftwareSourceCode",
+            "position": 5,
+            "name": "Smart Phone Price Predictor",
+            "description": "Machine learning classification application predicting smartphone price tiers based on hardware specs, achieving 95.55% classification accuracy.",
+            "programmingLanguage": "Python",
+            "codeRepository": "https://github.com/Steven-Amin02/Smart-phones-prices"
+          },
+          {
+            "@type": "SoftwareSourceCode",
+            "position": 6,
+            "name": "ExoVista — NASA Space Apps Challenge",
+            "description": "Award-nominated interactive educational web application creating immersive exoplanet exploration experiences for NASA Space Apps Challenge.",
+            "programmingLanguage": "JavaScript",
+            "codeRepository": "https://github.com/Steven-Amin02/ExoVista"
+          },
+          {
+            "@type": "SoftwareSourceCode",
+            "position": 7,
+            "name": "MagniSnap — Intelligent Scissors Tool",
+            "description": "High-performance desktop computer vision utility implementing Dijkstra's shortest-path Livewire / Intelligent Scissors algorithm.",
+            "programmingLanguage": "C#",
+            "codeRepository": "https://github.com/Steven-Amin02/MagniSnap-Algorithm"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://stevenamin.me/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Who is Steven Amin?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Steven Amin (Steven Amin Ramzy Nashed) is a Full-Stack Software Engineer and .NET Specialist based in Cairo, Egypt. He is a Dual Degree Scholar at Ain Shams University (B.Sc. Computer Science) and the University of East London (B.Sc. Software Engineering)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What technologies and frameworks does Steven Amin specialize in?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Steven specializes in Microsoft .NET technologies including C#, .NET 8, ASP.NET Core Web API, ASP.NET Core MVC, Entity Framework Core, and SQL Server (T-SQL). On the frontend, he builds with React.js, JavaScript (ES6+), TypeScript, HTML5, and CSS3. He also develops automated workflow architectures using UiPath RPA."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What enterprise software experience does Steven Amin have?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Steven completed a Deployment and Release internship at the National Bank of Egypt (NBE), gaining hands-on experience with SIT to UAT and Production release promotion flows, IIS server hosting, Change Requests (CRs), and enterprise artifact management. He also trained extensively in full-stack .NET development through DEPI."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What degree does Steven Amin hold?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Steven is pursuing a dual degree: Bachelor of Science in Computer Science from Ain Shams University and Bachelor of Science in Software Engineering from the University of East London, maintaining a 3.22 / 4.0 CGPA (General Grade: Excellent)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Steven Amin available for hire or freelance software engineering roles?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Steven is open to full-time engineering roles, software engineering internships, and freelance projects for on-site, hybrid (in Cairo, Egypt), or remote positions worldwide. He can be contacted directly at stevenameen02@gmail.com."
+            }
+          }
+        ]
       }
     ]
   }
   </script>
-  <script type="module" crossorigin src="/assets/index-BM2InZWr.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-ZX5erRmK.css">
+  <script type="module" crossorigin src="/assets/index-BMi9AX5X.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DHfjVWTz.css">
 </head>
 <body>
+  <!-- Fallback Semantic HTML for Web Crawlers & Search Engines -->
+  <noscript>
+    <div style="padding: 2rem; font-family: sans-serif; max-width: 800px; margin: 0 auto; line-height: 1.6;">
+      <h1>Steven Amin — Software Engineer &amp; Full-Stack .NET Developer</h1>
+      <p>Dual Degree Software Engineering Scholar (Ain Shams University &amp; University of East London) specializing in .NET 8, ASP.NET Core, SQL Server, Clean Architecture, and enterprise systems.</p>
+      <h2>Core Engineering Expertise</h2>
+      <ul>
+        <li>Backend: C#, .NET 8, ASP.NET Core Web API &amp; MVC, Entity Framework Core, Clean Architecture, SOLID Principles</li>
+        <li>Databases: Microsoft SQL Server (T-SQL), PostgreSQL, LINQ, Database Optimization</li>
+        <li>Frontend: React.js, TypeScript, JavaScript (ES6+), Modern HTML5/CSS3</li>
+        <li>DevOps &amp; Automation: UiPath RPA, Docker, IIS Web Server, CI/CD, Git/GitHub</li>
+      </ul>
+      <h2>Featured Projects</h2>
+      <ul>
+        <li><strong>Sany3y:</strong> TaskRabbit-style service marketplace built with ASP.NET Core MVC &amp; SQL Server.</li>
+        <li><strong>AI-Powered Ticketing:</strong> Enterprise ticketing system with React, TypeScript, ASP.NET Core API, and LLM triage.</li>
+        <li><strong>SMAS:</strong> Social Media Automation System with UiPath Orchestrator &amp; Dispatcher-Performer pattern.</li>
+        <li><strong>AMS Airline Management:</strong> Operations platform with bilingual English/Arabic RTL support.</li>
+      </ul>
+      <h2>Contact &amp; Profiles</h2>
+      <p>Email: <a href="mailto:stevenameen02@gmail.com">stevenameen02@gmail.com</a> | Location: Cairo, Egypt</p>
+      <p><a href="https://github.com/Steven-Amin02">GitHub Profile</a> | <a href="https://linkedin.com/in/steven-amin02">LinkedIn Profile</a></p>
+    </div>
+  </noscript>
+
   <div id="root"></div>
 </body>
 </html>

@@ -414,3 +414,31 @@ export const blogPostsData = [
     image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80"
   }
 ];
+
+export const faqData = [
+  {
+    id: "faq-1",
+    question: "Who is Steven Amin?",
+    answer: "Steven Amin (Steven Amin Ramzy Nashed) is a Full-Stack Software Engineer and .NET Specialist based in Cairo, Egypt. He is a Dual Degree Scholar studying Computer Science at Ain Shams University and Software Engineering at the University of East London (UEL), with enterprise training at the National Bank of Egypt (NBE) and DEPI."
+  },
+  {
+    id: "faq-2",
+    question: "What technologies and frameworks does Steven Amin specialize in?",
+    answer: "Steven's core backend stack centers on C#, .NET 8, ASP.NET Core Web API, ASP.NET Core MVC, Entity Framework Core, and SQL Server (T-SQL). On the frontend, he builds reactive user interfaces with React.js, TypeScript, JavaScript (ES6+), HTML5, and CSS3. He also architects automated business workflows using UiPath Studio & Orchestrator."
+  },
+  {
+    id: "faq-3",
+    question: "What enterprise software and industry experience does Steven Amin have?",
+    answer: "Steven completed an enterprise Deployment & Release internship at the National Bank of Egypt (NBE), where he worked with SIT to UAT and Production release promotion flows, IIS server hosting, Change Requests (CRs), and enterprise artifact pipelines. He also underwent intensive full-stack .NET training through the Digital Egypt Pioneers Initiative (DEPI)."
+  },
+  {
+    id: "faq-4",
+    question: "What degree and academic honors does Steven Amin hold?",
+    answer: "Steven is pursuing a prestigious dual degree: B.Sc. in Computer Science from Ain Shams University and B.Sc. in Software Engineering from the University of East London (2023–2027), holding a cumulative GPA of 3.22 / 4.0 with an academic grade of Excellent / First Class Honours."
+  },
+  {
+    id: "faq-5",
+    question: "Is Steven Amin available for hire, internships, or freelance work?",
+    answer: "Yes! Steven is actively open to full-time Software Engineer positions, backend .NET developer roles, internships, and freelance projects. He is available for on-site, hybrid (Cairo, Egypt), and remote positions globally. You can contact him directly at stevenameen02@gmail.com."
+  }
+];

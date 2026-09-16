@@ -7,13 +7,14 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Timeline from './components/Timeline';
 import Testimonials from './components/Testimonials';
+import FAQ from './components/FAQ';
 import DiscussionCTA from './components/DiscussionCTA';
 import MarqueeTicker from './components/MarqueeTicker';
 import Footer from './components/Footer';
 import { initialProfileData } from './data/portfolioData';
 
 /** Ordered section IDs matching DOM layout sequence */
-const SECTION_IDS = ['home', 'about', 'skills', 'projects', 'services', 'resume', 'testimonials', 'contact'];
+const SECTION_IDS = ['home', 'about', 'skills', 'projects', 'services', 'resume', 'testimonials', 'faq', 'contact'];
 
 /** Header offset for scroll-spy calculation (px) */
 const SCROLL_SPY_OFFSET = 150;
@@ -101,7 +102,8 @@ export default function App() {
       <div className="reveal reveal-delay-1"><Services /></div>
       <div className="reveal"><Timeline /></div>
       <div className="reveal reveal-delay-1"><Testimonials /></div>
-      <div className="reveal"><DiscussionCTA /></div>
+      <div className="reveal"><FAQ /></div>
+      <div className="reveal reveal-delay-1"><DiscussionCTA /></div>
 
       <MarqueeTicker />
 

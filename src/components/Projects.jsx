@@ -83,8 +83,11 @@ export default function Projects() {
               <div className={`project-img-holder ${project.containImage ? 'contain-img' : ''}`}>
                 <img
                   src={project.image}
-                  alt={project.title}
+                  alt={`${project.title} — Software project by Steven Amin`}
                   loading="lazy"
+                  decoding="async"
+                  width="600"
+                  height="340"
                 />
                 <div className="project-img-overlay" />
                 

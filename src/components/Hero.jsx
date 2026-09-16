@@ -186,9 +186,12 @@ export default function Hero({ profile }) {
           >
             <img
               src="/Steven-Amin-Portrait_nobg.png"
-              alt={`${profile.name} — Full-Stack .NET Developer`}
+              alt={`${profile.name} — Full-Stack .NET Developer & Software Engineer in Cairo, Egypt`}
               className="hero-portrait"
               loading="eager"
+              fetchPriority="high"
+              width="450"
+              height="550"
             />
             <div className="portrait-bottom-fade" />
           </div>
