@@ -21,6 +21,11 @@
       <image:title>AI Accessibility Assistant Project</image:title>
       <image:caption>Vodafone AI Hackathon project by Steven Amin</image:caption>
     </image:image>
+    <image:image>
+      <image:loc>https://stevenamin.me/logo.png</image:loc>
+      <image:title>Steven Amin Brand Logo</image:title>
+      <image:caption>Official Brand Logo of Steven Amin</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://stevenamin.me/#about</loc>
