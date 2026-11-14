@@ -17,6 +17,11 @@
       <image:caption>Portrait of Steven Amin, Software Engineering Scholar &amp; Full-Stack .NET Developer</image:caption>
     </image:image>
     <image:image>
+      <image:loc>https://stevenamin.me/deloitte-movemint.webp</image:loc>
+      <image:title>MoveMint — Deloitte-Sponsored Graduation Project by Steven Amin</image:title>
+      <image:caption>Deloitte-sponsored Sustainable Mobility &amp; AI Transit Platform graduation project</image:caption>
+    </image:image>
+    <image:image>
       <image:loc>https://stevenamin.me/sany3y_banner4.webp</image:loc>
       <image:title>Sany3y Service Marketplace Platform by Steven Amin</image:title>
       <image:caption>ASP.NET Core MVC &amp; SQL Server layered architecture project</image:caption>

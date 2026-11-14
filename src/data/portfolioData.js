@@ -175,10 +175,11 @@ export const projectsData = [
     category: "ai",
     featured: true,
     description: "Ongoing graduation project exploring emissions-aware trip planning, public-transit verification, and rewards for Cairo.",
-    image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=800&q=80",
+    image: "/deloitte-movemint.webp",
     link: "",
     techStack: ["Flutter", "Routing", "PostgreSQL / PostGIS (Planned)", "Backend APIs (Planned)", "On-device ML (Planned)"],
     isBuilding: true,
+    containImage: true,
     architecture: "Proposed system with mobile trip planning, routing and emissions services, transit verification, and rewards.",
     impact: "Goal: help users discover lower-emission travel options and verify public-transit journeys in Cairo.",
     highlights: [

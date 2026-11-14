@@ -1811,6 +1811,7 @@ html.js-enabled .reveal.visible {
   align-items: center;
   justify-content: center;
   padding: 16px;
+  background: #FFFFFF;
 }
 
 .project-img-holder.contain-img img {
