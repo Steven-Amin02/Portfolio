@@ -5,6 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#F8F9FC">
 
+  <!-- Prevent Theme Flash (FOUC) before First Paint -->
+  <script>
+    (function () {
+      document.documentElement.classList.add('js-enabled');
+      try {
+        var saved = localStorage.getItem('portfolio-theme');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = saved || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', theme === 'dark' ? '#0A0D14' : '#F8F9FC');
+      } catch (e) {}
+    })();
+  </script>
+
   <!-- Primary Meta Tags -->
   <title>Steven Amin — Software Engineer &amp; Full-Stack .NET Developer | Cairo, Egypt</title>
   <meta name="title" content="Steven Amin — Software Engineer &amp; Full-Stack .NET Developer | Cairo, Egypt">
@@ -25,7 +40,7 @@
   <meta name="geo.position" content="30.0444;31.2357">
   <meta name="ICBM" content="30.0444, 31.2357">
 
-  <!-- Google Search Snippet Logo & Favicons (Google explicitly requires multiples of 48px square) -->
+  <!-- Google Search Snippet Logo & Favicons (Multiples of 48px square) -->
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
@@ -34,16 +49,16 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+  <!-- Open Graph / Facebook / LinkedIn / WhatsApp (1200x630 Landscape Social Card) -->
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Steven Amin — Software Engineer &amp; Full-Stack .NET Developer">
   <meta property="og:description" content="Dual Degree Software Engineering Scholar specializing in .NET 8, ASP.NET Core, Clean Architecture, SQL Server, and enterprise systems.">
   <meta property="og:url" content="https://stevenamin.me/">
   <meta property="og:site_name" content="Steven Amin Portfolio">
   <meta property="og:locale" content="en_US">
-  <meta property="og:image" content="https://stevenamin.me/Steven-Amin-Portrait_nobg.png">
-  <meta property="og:image:secure_url" content="https://stevenamin.me/Steven-Amin-Portrait_nobg.png">
-  <meta property="og:image:type" content="image/png">
+  <meta property="og:image" content="https://stevenamin.me/og-card.jpg">
+  <meta property="og:image:secure_url" content="https://stevenamin.me/og-card.jpg">
+  <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Steven Amin — Full-Stack .NET Developer &amp; Software Engineer">
@@ -55,14 +70,26 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Steven Amin — Software Engineer &amp; Full-Stack .NET Developer">
   <meta name="twitter:description" content="Dual Degree Software Engineering Scholar specializing in .NET 8, ASP.NET Core, Clean Architecture, SQL Server, and enterprise systems.">
-  <meta name="twitter:image" content="https://stevenamin.me/Steven-Amin-Portrait_nobg.png">
+  <meta name="twitter:image" content="https://stevenamin.me/og-card.jpg">
   <meta name="twitter:image:alt" content="Steven Amin — Full-Stack .NET Developer &amp; Software Engineer">
 
-  <!-- Performance Preconnect & Resource Hints -->
+  <!-- Core Web Vitals: Preload LCP Hero Portrait & Preconnect Fonts -->
+  <link rel="preload" as="image" href="/Steven-Amin-Portrait_nobg.webp" type="image/webp" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://images.unsplash.com">
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;700&family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    media="print"
+    onload="this.media='all'"
+  >
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;700&family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    >
+  </noscript>
 
   <!-- Schema.org Multi-Entity JSON-LD Knowledge Graph -->
   <script type="application/ld+json">
@@ -81,8 +108,12 @@
         "jobTitle": "Full-Stack Software Engineer & .NET Specialist",
         "description": "Dual Degree Software Engineering Scholar specializing in .NET 8, ASP.NET Core, Clean Architecture, SQL Server, and enterprise deployment.",
         "url": "https://stevenamin.me/",
-        "image": "https://stevenamin.me/Steven-Amin-Portrait_nobg.png",
-        "logo": "https://stevenamin.me/logo.png",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://stevenamin.me/Steven-Amin-Portrait_nobg.webp",
+          "width": 826,
+          "height": 1100
+        },
         "email": "mailto:stevenameen02@gmail.com",
         "telephone": "+201203042189",
         "address": {
@@ -135,7 +166,7 @@
         "publisher": {
           "@id": "https://stevenamin.me/#person"
         },
-        "image": "https://stevenamin.me/logo.png",
+        "image": "https://stevenamin.me/og-card.jpg",
         "inLanguage": "en-US"
       },
       {
@@ -146,12 +177,17 @@
         "isPartOf": {
           "@id": "https://stevenamin.me/#website"
         },
+        "mainEntity": {
+          "@id": "https://stevenamin.me/#person"
+        },
         "about": {
           "@id": "https://stevenamin.me/#person"
         },
         "primaryImageOfPage": {
           "@type": "ImageObject",
-          "url": "https://stevenamin.me/Steven-Amin-Portrait_nobg.png"
+          "url": "https://stevenamin.me/og-card.jpg",
+          "width": 1200,
+          "height": 630
         },
         "breadcrumb": {
           "@type": "BreadcrumbList",
@@ -169,61 +205,101 @@
         "@type": "ItemList",
         "@id": "https://stevenamin.me/#projects",
         "name": "Featured Software Engineering Projects by Steven Amin",
+        "numberOfItems": 8,
         "itemListElement": [
           {
-            "@type": "SoftwareSourceCode",
+            "@type": "ListItem",
             "position": 1,
-            "name": "Sany3y — Service Marketplace Platform",
-            "description": "Full-featured service marketplace connecting clients with skilled technicians. Built with ASP.NET Core MVC, EF Core, SQL Server, and layered architecture.",
-            "programmingLanguage": "C#",
-            "codeRepository": "https://github.com/Steven-Amin02/Sany3y"
+            "item": {
+              "@type": "SoftwareSourceCode",
+              "name": "Sany3y — Service Marketplace Platform",
+              "description": "Full-featured service marketplace connecting clients with skilled technicians. Built with ASP.NET Core MVC, EF Core, SQL Server, and layered architecture.",
+              "programmingLanguage": "C#",
+              "codeRepository": "https://github.com/Steven-Amin02/Sany3y",
+              "author": { "@id": "https://stevenamin.me/#person" }
+            }
           },
           {
-            "@type": "SoftwareApplication",
+            "@type": "ListItem",
             "position": 2,
-            "name": "AI-Powered Support & Ticketing Platform",
-            "description": "Enterprise ticketing ecosystem built with React, TypeScript, ASP.NET Core Web API, PostgreSQL, and LLM-assisted ticket triage.",
-            "applicationCategory": "BusinessApplication"
+            "item": {
+              "@type": "SoftwareSourceCode",
+              "name": "AI-Powered Support & Ticketing Platform",
+              "description": "Enterprise ticketing ecosystem built with React, TypeScript, ASP.NET Core Web API, PostgreSQL, and LLM-assisted ticket triage.",
+              "programmingLanguage": ["C#", "TypeScript"],
+              "author": { "@id": "https://stevenamin.me/#person" }
+            }
           },
           {
-            "@type": "SoftwareSourceCode",
+            "@type": "ListItem",
             "position": 3,
-            "name": "SMAS — Social Media Automation System",
-            "description": "Industrial-grade RPA pipeline automating cross-platform social media distribution using UiPath Studio, Orchestrator, and Dispatcher-Performer architecture.",
-            "programmingLanguage": "UiPath / VB.NET",
-            "codeRepository": "https://github.com/Steven-Amin02/Social-Media-Automation-System-SMAS-"
+            "item": {
+              "@type": "SoftwareSourceCode",
+              "name": "SMAS — Social Media Automation System",
+              "description": "Industrial-grade RPA pipeline automating cross-platform social media distribution using UiPath Studio, Orchestrator, and Dispatcher-Performer architecture.",
+              "programmingLanguage": "UiPath / VB.NET",
+              "codeRepository": "https://github.com/Steven-Amin02/Social-Media-Automation-System-SMAS-",
+              "author": { "@id": "https://stevenamin.me/#person" }
+            }
           },
           {
-            "@type": "SoftwareSourceCode",
+            "@type": "ListItem",
             "position": 4,
-            "name": "AMS — Airline Management System",
-            "description": "Airline operations platform featuring flight schedules, dynamic pricing, ticket booking, role-based admin controls, and English/Arabic bilingual RTL support.",
-            "programmingLanguage": "C#",
-            "codeRepository": "https://github.com/Steven-Amin02/Airline-Management-System-AMS-"
+            "item": {
+              "@type": "SoftwareSourceCode",
+              "name": "AMS — Airline Management System",
+              "description": "Airline operations platform featuring flight schedules, dynamic pricing, ticket booking, role-based admin controls, and English/Arabic bilingual RTL support.",
+              "programmingLanguage": "C#",
+              "codeRepository": "https://github.com/Steven-Amin02/Airline-Management-System-AMS-",
+              "author": { "@id": "https://stevenamin.me/#person" }
+            }
           },
           {
-            "@type": "SoftwareSourceCode",
+            "@type": "ListItem",
             "position": 5,
-            "name": "Smart Phone Price Predictor",
-            "description": "Machine learning classification application predicting smartphone price tiers based on hardware specs, achieving 95.55% classification accuracy.",
-            "programmingLanguage": "Python",
-            "codeRepository": "https://github.com/Steven-Amin02/Smart-phones-prices"
+            "item": {
+              "@type": "SoftwareSourceCode",
+              "name": "Smart Phone Price Predictor",
+              "description": "Machine learning classification application predicting smartphone price tiers based on hardware specs, achieving 95.55% classification accuracy.",
+              "programmingLanguage": "Python",
+              "codeRepository": "https://github.com/Steven-Amin02/Smart-phones-prices",
+              "author": { "@id": "https://stevenamin.me/#person" }
+            }
           },
           {
-            "@type": "SoftwareSourceCode",
+            "@type": "ListItem",
             "position": 6,
-            "name": "ExoVista — NASA Space Apps Challenge",
-            "description": "Award-nominated interactive educational web application creating immersive exoplanet exploration experiences for NASA Space Apps Challenge.",
-            "programmingLanguage": "JavaScript",
-            "codeRepository": "https://github.com/Steven-Amin02/ExoVista"
+            "item": {
+              "@type": "SoftwareSourceCode",
+              "name": "ExoVista — NASA Space Apps Challenge",
+              "description": "Award-nominated interactive educational web application creating immersive exoplanet exploration experiences for NASA Space Apps Challenge.",
+              "programmingLanguage": "JavaScript",
+              "codeRepository": "https://github.com/Steven-Amin02/ExoVista",
+              "author": { "@id": "https://stevenamin.me/#person" }
+            }
           },
           {
-            "@type": "SoftwareSourceCode",
+            "@type": "ListItem",
             "position": 7,
-            "name": "MagniSnap — Intelligent Scissors Tool",
-            "description": "High-performance desktop computer vision utility implementing Dijkstra's shortest-path Livewire / Intelligent Scissors algorithm.",
-            "programmingLanguage": "C#",
-            "codeRepository": "https://github.com/Steven-Amin02/MagniSnap-Algorithm"
+            "item": {
+              "@type": "SoftwareSourceCode",
+              "name": "MagniSnap — Intelligent Scissors Tool",
+              "description": "High-performance desktop computer vision utility implementing Dijkstra's shortest-path Livewire / Intelligent Scissors algorithm.",
+              "programmingLanguage": "C#",
+              "codeRepository": "https://github.com/Steven-Amin02/MagniSnap-Algorithm",
+              "author": { "@id": "https://stevenamin.me/#person" }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "item": {
+              "@type": "SoftwareSourceCode",
+              "name": "AI Accessibility Assistant — Vodafone AI Hackathon",
+              "description": "Accessibility AI solution designed for visually and physically impaired users, featuring automated PDF narration, vision-based scene description, and conversational NLP.",
+              "programmingLanguage": "Python",
+              "author": { "@id": "https://stevenamin.me/#person" }
+            }
           }
         ]
       },
@@ -278,7 +354,7 @@
   </script>
 </head>
 <body>
-  <!-- Fallback Semantic HTML for Web Crawlers & Search Engines -->
+  <!-- Fallback Semantic HTML for Web Crawlers & Non-JS Agents -->
   <noscript>
     <div style="padding: 2rem; font-family: sans-serif; max-width: 800px; margin: 0 auto; line-height: 1.6;">
       <h1>Steven Amin — Software Engineer &amp; Full-Stack .NET Developer</h1>
@@ -296,6 +372,10 @@
         <li><strong>AI-Powered Ticketing:</strong> Enterprise ticketing system with React, TypeScript, ASP.NET Core API, and LLM triage.</li>
         <li><strong>SMAS:</strong> Social Media Automation System with UiPath Orchestrator &amp; Dispatcher-Performer pattern.</li>
         <li><strong>AMS Airline Management:</strong> Operations platform with bilingual English/Arabic RTL support.</li>
+        <li><strong>Smart Phone Price Predictor:</strong> Random Forest ML model achieving 95.55% accuracy with Streamlit UI.</li>
+        <li><strong>ExoVista:</strong> Interactive NASA Space Apps Challenge exoplanet visualization platform.</li>
+        <li><strong>MagniSnap:</strong> C# WinForms Intelligent Scissors / Livewire graph segmentation tool.</li>
+        <li><strong>AI Accessibility Assistant:</strong> Vodafone AI Hackathon assistive vision and NLP narration system.</li>
       </ul>
       <h2>Contact &amp; Profiles</h2>
       <p>Email: <a href="mailto:stevenameen02@gmail.com">stevenameen02@gmail.com</a> | Location: Cairo, Egypt</p>

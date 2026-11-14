@@ -1,8 +1,13 @@
 import React, { useEffect, useRef } from 'react';
-import { ArrowUpRight, Mail, Sparkles, Award, ShieldCheck, Terminal, Layers } from 'lucide-react';
+import { ArrowUpRight, Mail, Sparkles, Award, ShieldCheck, FileText } from 'lucide-react';
 import { heroTechBadges } from '../data/portfolioData';
 import { scrollToElement } from '../utils/scrollUtils';
 
+/**
+ * Event-driven scroll parallax hook.
+ * Only computes transforms when the user actually scrolls and the Hero is in view,
+ * eliminating continuous 60fps CPU/GPU wakeups when idle or scrolled past.
+ */
 function useHeroMotion() {
   const layers = useRef({
     greeting: null,
@@ -19,7 +24,7 @@ function useHeroMotion() {
     const mobileMq = window.matchMedia('(max-width: 900px)');
     const { current: el } = layers;
     let rafId = 0;
-    let active = false;
+    let ticking = false;
 
     const clear = () => {
       Object.values(el).forEach((node) => {
@@ -27,45 +32,54 @@ function useHeroMotion() {
       });
     };
 
-    const loop = (now) => {
-      if (!active) return;
-      const y = Math.min(Math.max(window.scrollY, 0), window.innerHeight * 1.35);
-      const bob = Math.sin(now / 700) * 6;
-      const spark = Math.sin(now / 450) * 3;
+    const applyParallax = () => {
+      ticking = false;
+      if (reduceMq.matches || mobileMq.matches) return;
 
-      if (el.greeting) el.greeting.style.transform = `translate3d(0, ${y * 0.16 + bob}px, 0)`;
-      if (el.title) el.title.style.transform = `translate3d(0, ${y * 0.14}px, 0)`;
+      const maxScroll = window.innerHeight * 1.25;
+      const rawY = window.scrollY;
+      if (rawY > maxScroll) return;
+
+      const y = Math.max(rawY, 0);
+
+      if (el.greeting) el.greeting.style.transform = `translate3d(0, ${y * 0.14}px, 0)`;
+      if (el.title) el.title.style.transform = `translate3d(0, ${y * 0.12}px, 0)`;
       if (el.arch) {
-        const scale = 1 + y * 0.0002;
-        el.arch.style.transform = `translate3d(0, ${y * 0.06}px, 0) scale(${scale})`;
+        const scale = 1 + y * 0.00018;
+        el.arch.style.transform = `translate3d(0, ${y * 0.05}px, 0) scale(${scale})`;
       }
-      if (el.portrait) el.portrait.style.transform = `translate3d(0, ${y * 0.22}px, 0)`;
-      if (el.left) el.left.style.transform = `translate3d(${-y * 0.12}px, ${y * 0.16 + spark}px, 0)`;
-      if (el.right) el.right.style.transform = `translate3d(${y * 0.12}px, ${y * 0.16 - spark}px, 0)`;
-      if (el.cta) el.cta.style.transform = `translateX(-50%) translate3d(0, ${y * 0.1}px, 0)`;
+      if (el.portrait) el.portrait.style.transform = `translate3d(0, ${y * 0.18}px, 0)`;
+      if (el.left) el.left.style.transform = `translate3d(${-y * 0.1}px, ${y * 0.14}px, 0)`;
+      if (el.right) el.right.style.transform = `translate3d(${y * 0.1}px, ${y * 0.14}px, 0)`;
+      if (el.cta) el.cta.style.transform = `translateX(-50%) translate3d(0, ${y * 0.08}px, 0)`;
+    };
 
-      rafId = requestAnimationFrame(loop);
+    const onScroll = () => {
+      if (!ticking && !reduceMq.matches && !mobileMq.matches) {
+        ticking = true;
+        rafId = requestAnimationFrame(applyParallax);
+      }
     };
 
     const sync = () => {
-      const shouldRun = !reduceMq.matches && !mobileMq.matches;
-      if (shouldRun && !active) {
-        active = true;
-        rafId = requestAnimationFrame(loop);
-      } else if (!shouldRun && active) {
-        active = false;
-        cancelAnimationFrame(rafId);
+      if (reduceMq.matches || mobileMq.matches) {
+        if (rafId) cancelAnimationFrame(rafId);
+        ticking = false;
         clear();
+      } else {
+        applyParallax();
       }
     };
 
     sync();
+    window.addEventListener('scroll', onScroll, { passive: true });
     reduceMq.addEventListener('change', sync);
     mobileMq.addEventListener('change', sync);
+
     return () => {
-      active = false;
-      cancelAnimationFrame(rafId);
+      if (rafId) cancelAnimationFrame(rafId);
       clear();
+      window.removeEventListener('scroll', onScroll);
       reduceMq.removeEventListener('change', sync);
       mobileMq.removeEventListener('change', sync);
     };
@@ -79,12 +93,17 @@ export default function Hero({ profile }) {
 
   const scrollToProjects = (e) => {
     e.preventDefault();
-    scrollToElement('projects', 85, 950);
+    scrollToElement('projects', 85, 850);
+  };
+
+  const scrollToResume = (e) => {
+    e.preventDefault();
+    scrollToElement('resume', 85, 850);
   };
 
   const scrollToContact = (e) => {
     e.preventDefault();
-    scrollToElement('contact', 85, 950);
+    scrollToElement('contact', 85, 850);
   };
 
   return (
@@ -96,11 +115,11 @@ export default function Hero({ profile }) {
       {/* Greeting pill */}
       <div className="hero-greeting anim-badge">
         <div
-          className="parallax-layer"
+          className="parallax-layer hero-greeting-float"
           ref={(node) => { layers.current.greeting = node; }}
         >
           <span className="greeting-bubble">
-            <Sparkles size={14} className="greeting-sparkle-icon" />
+            <Sparkles size={14} className="greeting-sparkle-icon" aria-hidden="true" />
             <span className="greeting-text-full">Hello! Welcome to my engineering portfolio</span>
             <span className="greeting-text-short">Welcome to my portfolio</span>
           </span>
@@ -138,7 +157,7 @@ export default function Hero({ profile }) {
       {/* Hero Visual Stage */}
       <div className="hero-stage">
 
-        {/* Floating tech badges floating around the portrait */}
+        {/* Floating tech badges around the portrait (Desktop Widescreen) */}
         <div className="hero-tech-orbit" aria-hidden="true">
           {heroTechBadges.slice(0, 4).map((badge, idx) => (
             <div key={idx} className={`hero-orbit-pill orbit-pill-${idx + 1}`}>
@@ -155,20 +174,20 @@ export default function Hero({ profile }) {
             ref={(node) => { layers.current.left = node; }}
           >
             <div className="widget-card-header">
-              <ShieldCheck size={18} color="#FF6B2C" />
+              <ShieldCheck size={18} color="#FF6B2C" aria-hidden="true" />
               <span>Enterprise Verified</span>
             </div>
-            <div className="big-double-quotes">❝❝</div>
+            <div className="big-double-quotes" aria-hidden="true">❝❝</div>
             <p className="widget-quote">{profile.snippet}</p>
             <div className="widget-author-tag">
-              <Award size={14} color="#10B981" />
+              <Award size={14} color="#10B981" aria-hidden="true" />
               <span>NBE &amp; DEPI Trained</span>
             </div>
           </div>
         </div>
 
         {/* Central Arch Portal */}
-        <div className="hero-arch-wrap anim-arch">
+        <div className="hero-arch-wrap anim-arch" aria-hidden="true">
           <div
             className="hero-arch-bg"
             ref={(node) => { layers.current.arch = node; }}
@@ -178,22 +197,26 @@ export default function Hero({ profile }) {
           </div>
         </div>
 
-        {/* Hero Portrait Cutout */}
+        {/* Hero Portrait Cutout with WebP + PNG Fallback */}
         <div className="hero-portrait-container anim-portrait">
           <div
             className="parallax-layer portrait-wrap"
             ref={(node) => { layers.current.portrait = node; }}
           >
-            <img
-              src="/Steven-Amin-Portrait_nobg.png"
-              alt={`${profile.name} — Full-Stack .NET Developer & Software Engineer in Cairo, Egypt`}
-              className="hero-portrait"
-              loading="eager"
-              fetchPriority="high"
-              width="450"
-              height="550"
-            />
-            <div className="portrait-bottom-fade" />
+            <picture>
+              <source srcSet="/Steven-Amin-Portrait_nobg.webp" type="image/webp" />
+              <img
+                src="/Steven-Amin-Portrait_nobg.png"
+                alt={`${profile.name} — Full-Stack .NET Developer & Software Engineer in Cairo, Egypt`}
+                className="hero-portrait"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+                width="413"
+                height="550"
+              />
+            </picture>
+            <div className="portrait-bottom-fade" aria-hidden="true" />
           </div>
         </div>
 
@@ -223,10 +246,14 @@ export default function Hero({ profile }) {
         >
           <a href="#projects" className="btn-portfolio anim-btn-glow" onClick={scrollToProjects}>
             <span>Explore Projects</span>
-            <ArrowUpRight size={18} strokeWidth={2.5} />
+            <ArrowUpRight size={18} strokeWidth={2.5} aria-hidden="true" />
+          </a>
+          <a href="#resume" className="btn-hire btn-resume-pill" onClick={scrollToResume}>
+            <FileText size={16} aria-hidden="true" />
+            <span>Credentials</span>
           </a>
           <a href="#contact" className="btn-hire" onClick={scrollToContact}>
-            <Mail size={16} />
+            <Mail size={16} aria-hidden="true" />
             <span>Contact Me</span>
           </a>
         </div>

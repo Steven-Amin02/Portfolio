@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Menu, X, ArrowUpRight, Sparkles, Sun, Moon } from 'lucide-react';
 import { scrollToElement } from '../utils/scrollUtils';
 
@@ -20,9 +20,11 @@ const ALL_NAV_ITEMS = [...LEFT_NAV_ITEMS, ...RIGHT_NAV_ITEMS];
 export default function Navbar({ activeSection, theme = 'light', onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const toggleBtnRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -31,19 +33,31 @@ export default function Navbar({ activeSection, theme = 'light', onToggleTheme }
     const onResize = () => {
       if (window.innerWidth > 900) setMobileMenuOpen(false);
     };
-    window.addEventListener('resize', onResize);
+    window.addEventListener('resize', onResize, { passive: true });
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
   useEffect(() => {
     document.body.classList.toggle('nav-locked', mobileMenuOpen);
-    return () => document.body.classList.remove('nav-locked');
+    if (!mobileMenuOpen) return undefined;
+
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setMobileMenuOpen(false);
+        toggleBtnRef.current?.focus();
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.classList.remove('nav-locked');
+      window.removeEventListener('keydown', onKeyDown);
+    };
   }, [mobileMenuOpen]);
 
   const handleNavClick = useCallback((e, targetId) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    scrollToElement(targetId, 85, 950);
+    scrollToElement(targetId, 85, 850);
   }, []);
 
   const renderLogo = () => (
@@ -53,7 +67,7 @@ export default function Navbar({ activeSection, theme = 'light', onToggleTheme }
       className="nav-logo"
       aria-label="Steven Amin Portfolio Home"
     >
-      <div className="logo-badge">
+      <div className="logo-badge" aria-hidden="true">
         <span>S</span>
       </div>
       <div className="logo-text-wrap">
@@ -73,6 +87,7 @@ export default function Navbar({ activeSection, theme = 'light', onToggleTheme }
               href={`#${item.id}`}
               onClick={(e) => handleNavClick(e, item.id)}
               className={`nav-item ${activeSection === item.id ? 'active' : ''}`}
+              aria-current={activeSection === item.id ? 'page' : undefined}
             >
               {item.label}
             </a>
@@ -88,6 +103,7 @@ export default function Navbar({ activeSection, theme = 'light', onToggleTheme }
               href={`#${item.id}`}
               onClick={(e) => handleNavClick(e, item.id)}
               className={`nav-item ${activeSection === item.id ? 'active' : ''}`}
+              aria-current={activeSection === item.id ? 'page' : undefined}
             >
               {item.label}
             </a>
@@ -138,16 +154,23 @@ export default function Navbar({ activeSection, theme = 'light', onToggleTheme }
             )}
           </button>
 
-          <span className="mobile-status-badge">
+          <a
+            href="#contact"
+            onClick={(e) => handleNavClick(e, 'contact')}
+            className="mobile-status-badge"
+          >
             <span className="live-status-dot" aria-hidden="true" />
             <span className="mobile-status-text">Open for Hire</span>
-          </span>
+          </a>
 
           <button 
+            ref={toggleBtnRef}
+            type="button"
             className="mobile-toggle-btn"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
-            aria-label="Toggle navigation menu"
+            aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation-drawer"
           >
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -163,25 +186,27 @@ export default function Navbar({ activeSection, theme = 'light', onToggleTheme }
             aria-label="Close navigation menu"
             onClick={() => setMobileMenuOpen(false)}
           />
-          <div className="mobile-menu-overlay" role="menu">
+          <nav
+            id="mobile-navigation-drawer"
+            className="mobile-menu-overlay"
+            aria-label="Mobile Navigation"
+          >
             {ALL_NAV_ITEMS.map((item) => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={(e) => handleNavClick(e, item.id)}
                 className={`mobile-nav-link ${activeSection === item.id ? 'active' : ''}`}
-                role="menuitem"
+                aria-current={activeSection === item.id ? 'page' : undefined}
               >
                 <span>{item.label}</span>
-                <ArrowUpRight size={16} opacity={0.6} />
+                <ArrowUpRight size={16} opacity={0.6} aria-hidden="true" />
               </a>
             ))}
 
             <button
               type="button"
-              onClick={() => {
-                onToggleTheme();
-              }}
+              onClick={onToggleTheme}
               className="mobile-theme-row"
             >
               <span>Switch to {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
@@ -189,12 +214,13 @@ export default function Navbar({ activeSection, theme = 'light', onToggleTheme }
             </button>
 
             <a 
-              href="mailto:stevenameen02@gmail.com" 
+              href="#contact"
+              onClick={(e) => handleNavClick(e, 'contact')}
               className="mobile-contact-action"
             >
-              <Sparkles size={16} /> Get In Touch
+              <Sparkles size={16} aria-hidden="true" /> Get In Touch
             </a>
-          </div>
+          </nav>
         </>
       )}
     </header>

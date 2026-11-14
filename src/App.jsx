@@ -14,28 +14,60 @@ import Footer from './components/Footer';
 import { initialProfileData } from './data/portfolioData';
 
 /** Ordered section IDs matching DOM layout sequence */
-const SECTION_IDS = ['home', 'about', 'skills', 'projects', 'services', 'resume', 'testimonials', 'faq', 'contact'];
+const SECTION_IDS = [
+  'home',
+  'about',
+  'skills',
+  'projects',
+  'services',
+  'resume',
+  'testimonials',
+  'faq',
+  'contact'
+];
+
+/** Map sub-sections without dedicated navbar links to their logical parent nav item */
+const NAV_SECTION_MAP = {
+  testimonials: 'resume',
+  faq: 'contact'
+};
 
 /** Header offset for scroll-spy calculation (px) */
-const SCROLL_SPY_OFFSET = 150;
+const SCROLL_SPY_OFFSET = 160;
 
 /** IntersectionObserver threshold for scroll-reveal animations */
-const REVEAL_THRESHOLD = 0.12;
+const REVEAL_THRESHOLD = 0.1;
+
+function getInitialTheme() {
+  if (typeof window === 'undefined') return 'light';
+  try {
+    const saved = localStorage.getItem('portfolio-theme');
+    if (saved === 'dark' || saved === 'light') return saved;
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+  } catch {
+    // Ignore storage access errors in strict privacy modes
+  }
+  return 'light';
+}
 
 export default function App() {
   const [profile] = useState(initialProfileData);
   const [activeSection, setActiveSection] = useState('home');
-  
-  // Theme state: defaults to saved preference or light mode
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('portfolio-theme') || 'light';
-  });
+  const [projectCategory, setProjectCategory] = useState('all');
+  const [inquiryTopic, setInquiryTopic] = useState('');
+  const [theme, setTheme] = useState(getInitialTheme);
 
   // Sync theme with HTML data attribute, localStorage, and browser meta tag
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('portfolio-theme', theme);
-    
+    try {
+      localStorage.setItem('portfolio-theme', theme);
+    } catch {
+      // Ignore storage write errors
+    }
+
     const metaThemeColor = document.querySelector('meta[name="theme-color"]');
     if (metaThemeColor) {
       metaThemeColor.setAttribute('content', theme === 'dark' ? '#0A0D14' : '#F8F9FC');
@@ -46,29 +78,52 @@ export default function App() {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   }, []);
 
-  // Scroll-spy: track which section is currently in view
-  const handleScroll = useCallback(() => {
-    const scrollY = window.pageYOffset;
+  // rAF-throttled Scroll-Spy: track which section is currently in view without layout thrashing
+  useEffect(() => {
+    let ticking = false;
 
-    for (let i = SECTION_IDS.length - 1; i >= 0; i--) {
-      const el = document.getElementById(SECTION_IDS[i]);
-      if (el) {
-        const top = el.getBoundingClientRect().top + scrollY;
-        if (scrollY >= top - SCROLL_SPY_OFFSET) {
-          setActiveSection(SECTION_IDS[i]);
-          break;
+    const updateActiveSection = () => {
+      ticking = false;
+      const scrollY = window.scrollY;
+
+      for (let i = SECTION_IDS.length - 1; i >= 0; i--) {
+        const id = SECTION_IDS[i];
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.getBoundingClientRect().top + scrollY;
+          if (scrollY >= top - SCROLL_SPY_OFFSET) {
+            const mappedNavId = NAV_SECTION_MAP[id] || id;
+            setActiveSection((prev) => (prev === mappedNavId ? prev : mappedNavId));
+            break;
+          }
         }
       }
-    }
-  }, []);
+    };
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [handleScroll]);
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateActiveSection);
+      }
+    };
+
+    updateActiveSection();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   // IntersectionObserver: one-shot scroll-reveal for `.reveal` elements
   useEffect(() => {
+    const revealElements = document.querySelectorAll('.reveal');
+    const prefersReducedMotion =
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion || typeof IntersectionObserver === 'undefined') {
+      revealElements.forEach((el) => el.classList.add('visible'));
+      return undefined;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -81,33 +136,48 @@ export default function App() {
       { threshold: REVEAL_THRESHOLD }
     );
 
-    const revealElements = document.querySelectorAll('.reveal');
     revealElements.forEach((el) => observer.observe(el));
-
     return () => observer.disconnect();
   }, []);
 
   return (
     <div className="app-main-root">
+      <a href="#main-content" className="skip-to-content">
+        Skip to main content
+      </a>
+
       <Navbar 
         activeSection={activeSection} 
         theme={theme} 
         onToggleTheme={toggleTheme} 
       />
-      <Hero profile={profile} />
 
-      <div className="reveal"><About profile={profile} /></div>
-      <div className="reveal reveal-delay-1"><Skills /></div>
-      <div className="reveal"><Projects /></div>
-      <div className="reveal reveal-delay-1"><Services /></div>
-      <div className="reveal"><Timeline /></div>
-      <div className="reveal reveal-delay-1"><Testimonials /></div>
-      <div className="reveal"><FAQ /></div>
-      <div className="reveal reveal-delay-1"><DiscussionCTA /></div>
+      <main id="main-content">
+        <Hero profile={profile} />
 
-      <MarqueeTicker />
+        <div className="reveal"><About profile={profile} /></div>
+        <div className="reveal reveal-delay-1"><Skills /></div>
+        <div className="reveal">
+          <Projects
+            activeCategory={projectCategory}
+            onCategoryChange={setProjectCategory}
+            onSelectProjectInquiry={setInquiryTopic}
+          />
+        </div>
+        <div className="reveal reveal-delay-1">
+          <Services onSelectServiceCategory={setProjectCategory} />
+        </div>
+        <div className="reveal"><Timeline /></div>
+        <div className="reveal reveal-delay-1"><Testimonials /></div>
+        <div className="reveal"><FAQ /></div>
+        <div className="reveal reveal-delay-1"><DiscussionCTA /></div>
 
-      <div className="reveal"><Footer profile={profile} /></div>
+        <MarqueeTicker />
+      </main>
+
+      <div className="reveal">
+        <Footer profile={profile} inquiryTopic={inquiryTopic} />
+      </div>
     </div>
   );
 }

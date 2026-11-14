@@ -1,10 +1,22 @@
-import React, { useState, useMemo, useCallback } from 'react';
-import { ArrowRight, Clock, Github, ExternalLink, Sparkles, Code2, CheckCircle2 } from 'lucide-react';
+import React, { useState, useMemo, useCallback, useEffect } from 'react';
+import {
+  ArrowRight,
+  Clock,
+  Github,
+  Sparkles,
+  Layers,
+  CheckCircle2,
+  X,
+  Zap,
+  MessageSquare,
+  ExternalLink
+} from 'lucide-react';
 import { projectsData } from '../data/portfolioData';
+import { scrollToElement } from '../utils/scrollUtils';
 
 /**
- * Projects — Interactive Filterable Project Grid with Flagship Highlights.
- * Features tech stack badge chips, github/external links, and category counters.
+ * Projects — Interactive Filterable Project Grid + Senior Engineering Case Study Modal.
+ * Features tech stack badge chips, architecture case study modal, and GitHub links.
  */
 
 const FILTERS = [
@@ -15,8 +27,19 @@ const FILTERS = [
   { key: 'frontend', label: 'Frontend / UI' }
 ];
 
-export default function Projects() {
-  const [filter, setFilter] = useState('all');
+export default function Projects({ activeCategory, onCategoryChange, onSelectProjectInquiry }) {
+  const [internalFilter, setInternalFilter] = useState('all');
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  const filter = activeCategory !== undefined ? activeCategory : internalFilter;
+
+  const setFilter = useCallback((nextKey) => {
+    if (onCategoryChange) {
+      onCategoryChange(nextKey);
+    } else {
+      setInternalFilter(nextKey);
+    }
+  }, [onCategoryChange]);
 
   const filteredProjects = useMemo(() => {
     if (filter === 'all') return projectsData;
@@ -34,9 +57,30 @@ export default function Projects() {
     return counts;
   }, []);
 
-  const handleFilterClick = useCallback((key) => {
-    setFilter(key);
-  }, []);
+  // Lock body scroll & listen for Escape when Case Study Modal is open
+  useEffect(() => {
+    if (!selectedProject) return undefined;
+    document.body.classList.add('nav-locked');
+
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setSelectedProject(null);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.classList.remove('nav-locked');
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [selectedProject]);
+
+  const handleInquireClick = useCallback((project) => {
+    setSelectedProject(null);
+    if (onSelectProjectInquiry) {
+      onSelectProjectInquiry(project.title);
+    }
+    scrollToElement('contact', 85, 850);
+  }, [onSelectProjectInquiry]);
 
   return (
     <section id="projects" className="projects-section">
@@ -45,7 +89,7 @@ export default function Projects() {
         {/* Section Header */}
         <div className="section-header-centered">
           <div className="section-badge">
-            <Sparkles size={13} className="badge-icon" />
+            <Sparkles size={13} className="badge-icon" aria-hidden="true" />
             <span>FEATURED PORTFOLIO</span>
           </div>
           <h2 className="section-title">
@@ -55,15 +99,15 @@ export default function Projects() {
             A selection of full-stack applications, automation projects, ML work, and an ongoing graduation project.
           </p>
 
-          {/* Filter Tabs */}
-          <div className="filter-container" role="tablist" aria-label="Project category filters">
+          {/* Filter Buttons (WAI-ARIA Toggle Group) */}
+          <div className="filter-container" role="group" aria-label="Filter projects by technology domain">
             {FILTERS.map((f) => (
               <button
                 key={f.key}
-                role="tab"
-                aria-selected={filter === f.key}
+                type="button"
+                aria-pressed={filter === f.key}
                 className={`filter-btn ${filter === f.key ? 'active' : ''}`}
-                onClick={() => handleFilterClick(f.key)}
+                onClick={() => setFilter(f.key)}
               >
                 <span>{f.label}</span>
                 <span className="filter-count">{filterCounts[f.key]}</span>
@@ -74,75 +118,234 @@ export default function Projects() {
 
         {/* Projects Grid */}
         <div className="projects-grid">
-          {filteredProjects.map((project) => (
-            <article
-              key={project.id}
-              className={`project-card ${project.isBuilding ? 'is-building' : ''} ${project.featured ? 'is-featured' : ''}`}
-            >
-              {/* Card Image Holder */}
-              <div className={`project-img-holder ${project.containImage ? 'contain-img' : ''}`}>
-                <img
-                  src={project.image}
-                  alt={`${project.title} — Software project by Steven Amin`}
-                  loading="lazy"
-                  decoding="async"
-                  width="600"
-                  height="340"
-                />
-                <div className="project-img-overlay" />
-                
-                {project.isBuilding ? (
-                  <span className="status-pill status-building">
-                    <Clock size={12} className="spin-slow" /> Currently Building
-                  </span>
-                ) : project.featured ? (
-                  <span className="status-pill status-featured">
-                    <Sparkles size={12} /> Flagship System
-                  </span>
-                ) : null}
-              </div>
+          {filteredProjects.map((project) => {
+            const hasExternalRepo = project.link && project.link.startsWith('http');
 
-              {/* Card Content */}
-              <div className="project-content">
-                <div className="project-tag-row">
-                  <span className="project-category-tag">{project.tag}</span>
-                </div>
-
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-desc">{project.description}</p>
-
-                {/* Tech Stack Pills */}
-                {project.techStack && (
-                  <div className="project-tech-tags">
-                    {project.techStack.map((tech, idx) => (
-                      <span key={idx} className="project-tech-pill">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
-                {/* Action Link */}
-                <div className="project-footer-action">
-                  {project.link ? (
-                    <a href={project.link} target={project.link.startsWith('http') ? '_blank' : '_self'} rel="noreferrer" className="project-link-btn">
-                      <Github size={15} />
-                      <span>View Repository</span>
-                      <ArrowRight size={15} className="link-arrow" />
-                    </a>
+            return (
+              <article
+                key={project.id}
+                className={`project-card ${project.isBuilding ? 'is-building' : ''} ${project.featured ? 'is-featured' : ''}`}
+              >
+                {/* Card Image Holder */}
+                <div
+                  className={`project-img-holder ${project.containImage ? 'contain-img' : ''}`}
+                  onClick={() => setSelectedProject(project)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Open architecture case study for ${project.title}`}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setSelectedProject(project);
+                    }
+                  }}
+                >
+                  {project.fallbackImage ? (
+                    <picture>
+                      <source srcSet={project.image} type="image/webp" />
+                      <img
+                        src={project.fallbackImage}
+                        alt={`${project.title} — Software project by Steven Amin`}
+                        loading="lazy"
+                        decoding="async"
+                        width="600"
+                        height="340"
+                      />
+                    </picture>
                   ) : (
-                    <span className="project-link-btn" aria-label="Project details coming soon">
-                      <Clock size={15} />
-                      <span>Details coming soon</span>
-                    </span>
+                    <img
+                      src={project.image}
+                      alt={`${project.title} — Software project by Steven Amin`}
+                      loading="lazy"
+                      decoding="async"
+                      width="600"
+                      height="340"
+                    />
                   )}
+                  <div className="project-img-overlay" />
+                  
+                  {project.isBuilding ? (
+                    <span className="status-pill status-building">
+                      <Clock size={12} className="spin-slow" aria-hidden="true" /> Currently Building
+                    </span>
+                  ) : project.featured ? (
+                    <span className="status-pill status-featured">
+                      <Sparkles size={12} aria-hidden="true" /> Flagship System
+                    </span>
+                  ) : null}
                 </div>
-              </div>
-            </article>
-          ))}
+
+                {/* Card Content */}
+                <div className="project-content">
+                  <div className="project-tag-row">
+                    <span className="project-category-tag">{project.tag}</span>
+                  </div>
+
+                  <h3 className="project-title">
+                    <button
+                      type="button"
+                      className="project-title-btn"
+                      onClick={() => setSelectedProject(project)}
+                    >
+                      {project.title}
+                    </button>
+                  </h3>
+                  <p className="project-desc">{project.description}</p>
+
+                  {/* Tech Stack Pills */}
+                  {project.techStack && (
+                    <div className="project-tech-tags">
+                      {project.techStack.map((tech, idx) => (
+                        <span key={idx} className="project-tech-pill">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Action Links: Case Study Modal + Repository / Inquiry */}
+                  <div className="project-footer-action">
+                    <button
+                      type="button"
+                      className="project-case-study-btn"
+                      onClick={() => setSelectedProject(project)}
+                    >
+                      <Layers size={15} aria-hidden="true" />
+                      <span>{project.isBuilding ? 'Preview Specs' : 'Case Study'}</span>
+                    </button>
+
+                    {hasExternalRepo ? (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-link-btn"
+                        aria-label={`View GitHub repository for ${project.title}`}
+                      >
+                        <Github size={15} aria-hidden="true" />
+                        <span>GitHub Repo</span>
+                        <ArrowRight size={15} className="link-arrow" aria-hidden="true" />
+                      </a>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => handleInquireClick(project)}
+                        className="project-link-btn"
+                      >
+                        <MessageSquare size={15} aria-hidden="true" />
+                        <span>Request Demo</span>
+                        <ArrowRight size={15} className="link-arrow" aria-hidden="true" />
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </article>
+            );
+          })}
         </div>
 
       </div>
+
+      {/* Senior Engineering Architecture & Case Study Modal */}
+      {selectedProject && (
+        <div
+          className="case-modal-backdrop"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="case-modal-title"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setSelectedProject(null);
+          }}
+        >
+          <div className="case-modal-card">
+            <div className="case-modal-top">
+              <div>
+                <span className="project-category-tag">{selectedProject.tag}</span>
+                <h3 id="case-modal-title" className="case-modal-title">
+                  {selectedProject.title}
+                </h3>
+              </div>
+              <button
+                type="button"
+                className="case-modal-close"
+                aria-label="Close case study modal"
+                onClick={() => setSelectedProject(null)}
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            <div className="case-modal-body">
+              <p className="case-modal-summary">{selectedProject.description}</p>
+
+              {selectedProject.architecture && (
+                <div className="case-arch-box">
+                  <div className="case-arch-label">
+                    <Layers size={15} color="#FF6B2C" aria-hidden="true" />
+                    <span>System Architecture &amp; Pipeline</span>
+                  </div>
+                  <div className="case-arch-value">{selectedProject.architecture}</div>
+                </div>
+              )}
+
+              {selectedProject.impact && (
+                <div className="case-impact-box">
+                  <Zap size={16} color="#10B981" aria-hidden="true" />
+                  <span>{selectedProject.impact}</span>
+                </div>
+              )}
+
+              {selectedProject.highlights && selectedProject.highlights.length > 0 && (
+                <div className="case-highlights-section">
+                  <h4 className="case-sub-heading">Key Engineering Decisions &amp; Implementation</h4>
+                  <ul className="case-highlights-list">
+                    {selectedProject.highlights.map((pt, idx) => (
+                      <li key={idx} className="case-highlight-item">
+                        <CheckCircle2 size={16} color="#FF6B2C" aria-hidden="true" />
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {selectedProject.techStack && (
+                <div className="case-tech-section">
+                  <h4 className="case-sub-heading">Technology Stack</h4>
+                  <div className="project-tech-tags">
+                    {selectedProject.techStack.map((tech, idx) => (
+                      <span key={idx} className="project-tech-pill">{tech}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="case-modal-footer">
+              {selectedProject.link && selectedProject.link.startsWith('http') && (
+                <a
+                  href={selectedProject.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-portfolio"
+                >
+                  <Github size={17} aria-hidden="true" />
+                  <span>View Source on GitHub</span>
+                  <ExternalLink size={15} aria-hidden="true" />
+                </a>
+              )}
+              <button
+                type="button"
+                className="btn-hire"
+                onClick={() => handleInquireClick(selectedProject)}
+              >
+                <MessageSquare size={16} aria-hidden="true" />
+                <span>Discuss This Architecture</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
