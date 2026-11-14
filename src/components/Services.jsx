@@ -20,7 +20,7 @@ export default function Services({ onSelectServiceCategory }) {
   return (
     <section id="services" className="services-section">
       <div className="section-container">
-
+        
         <div className="services-header">
           <div className="services-header-left">
             <div className="section-badge">

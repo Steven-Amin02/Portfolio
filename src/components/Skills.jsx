@@ -48,7 +48,7 @@ export default function Skills() {
   return (
     <section id="skills" className="skills-section">
       <div className="section-container">
-
+        
         {/* Header */}
         <div className="section-header-centered">
           <div className="section-badge">
@@ -93,8 +93,8 @@ export default function Skills() {
             const accent = CATEGORY_ACCENTS[category.id] || CATEGORY_ACCENTS.backend;
 
             return (
-              <div
-                key={category.id}
+              <div 
+                key={category.id} 
                 className="skill-category-card"
                 style={{ '--cat-accent': accent.text, '--cat-border': accent.border }}
               >
