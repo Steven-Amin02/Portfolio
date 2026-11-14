@@ -93,10 +93,10 @@ export default function Projects({ activeCategory, onCategoryChange, onSelectPro
             <span>FEATURED PORTFOLIO</span>
           </div>
           <h2 className="section-title">
-            Engineered Systems &amp; <span className="highlight-text">Production Projects</span>
+            Engineering Work &amp; <span className="highlight-text">Selected Projects</span>
           </h2>
           <p className="section-subtitle">
-            A showcase of distributed backend services, full-stack web applications, RPA automation workflows, and machine learning models.
+            A selection of full-stack applications, automation projects, ML work, and an ongoing graduation project.
           </p>
 
           {/* Filter Buttons (WAI-ARIA Toggle Group) */}

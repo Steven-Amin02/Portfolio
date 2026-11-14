@@ -3,19 +3,19 @@
 export const initialProfileData = {
   name: "Steven Amin",
   fullName: "Steven Amin Ramzy Nashed",
-  role: "Full-Stack Software Engineer & .NET Specialist",
+  role: "Software Engineer | Backend & Full-Stack .NET Developer",
   location: "Cairo, Egypt",
   email: "stevenameen02@gmail.com",
   phone: "+20 120 304 2189",
   github: "https://github.com/Steven-Amin02",
   linkedin: "https://linkedin.com/in/steven-amin02",
-  availability: "Open to Full-Time & Freelance Roles",
-  status: "Available for Hire",
-  bio: "I am a Software Engineering student specializing in C#, .NET, ASP.NET Core, SQL Server, and full-stack web development, with additional experience in RPA, machine learning, and enterprise deployment. Through my internship at the National Bank of Egypt (NBE) and DEPI training, I focus on building reliable, maintainable, and user-focused software solutions.",
-  snippet: "Steven's exceptional full-stack & backend systems ensure application success. Highly Recommended",
+  availability: "Open to 2027 Graduate Roles, Internships & Freelance Projects",
+  status: "Open to Opportunities",
+  bio: "Final-year Software Engineering student at Ain Shams University in a dual-degree program with the University of East London (expected 2027). I develop backend and full-stack applications using C#, ASP.NET Core, React, and SQL Server. My NBE internship gave me exposure to enterprise SIT, UAT, and production release workflows.",
+  snippet: "Backend engineering, full-stack development, and practical deployment experience.",
   cgpa: "3.22 / 4.0",
-  featuredCount: "8 Projects",
-  internshipsCount: "NBE & DEPI",
+  featuredCount: "9 Projects",
+  internshipsCount: "NBE Internship",
   certifiedStatus: "Ain Shams & UEL",
   educationDegree: "B.Sc. CS & Software Engineering"
 };
@@ -32,28 +32,28 @@ export const heroTechBadges = [
 
 export const bentoCardsData = {
   bio: {
-    headline: "Engineering Scalable, Production-Ready Solutions",
-    text: "Dual-degree Software Engineering scholar with deep expertise across the Microsoft .NET ecosystem, ASP.NET Core, SQL Server, and modern frontend frameworks. Experienced in enterprise SIT/UAT/Production deployment pipelines at the National Bank of Egypt and trained in high-performance application architectures through DEPI."
+    headline: "Building Reliable Software for Real-World Problems",
+    text: "Software Engineering student focused on ASP.NET Core, REST APIs, databases, and full-stack development. My NBE internship introduced me to enterprise deployment workflows, alongside practical training through DEPI."
   },
   dualDegree: {
     title: "Dual Degree Scholar",
     primaryUni: "Ain Shams University (B.Sc. Computer Science)",
     dualUni: "University of East London (B.Sc. Software Engineering)",
     cgpa: "3.22 / 4.0",
-    grade: "Excellent / First Class Honours",
+    grade: "Degree in progress — Expected 2027",
     timeline: "2023 – 2027"
   },
   enterprise: {
     company: "National Bank of Egypt (NBE)",
-    role: "Deployment & Release Intern",
-    timeline: "Enterprise Internship",
-    details: "Hands-on exposure to SIT ➔ UAT ➔ Production promotion flows, IIS server hosting, Change Requests (CRs), and enterprise release management."
+    role: "Deployment Intern",
+    timeline: "July 2026",
+    details: "Exposure to enterprise SIT, UAT, and production release workflows, deployment coordination, and change management."
   },
   metrics: [
     { value: "3.22", label: "Dual Degree CGPA", note: "Ain Shams & UEL" },
-    { value: "8+", label: "Architected Projects", note: "Full-Stack, RPA & AI" },
-    { value: "~25%", label: "Query Optimization", note: "SQL Server & EF Core" },
-    { value: "95.5%", label: "ML Accuracy", note: "Phone Price Predictor" }
+    { value: "9", label: "Portfolio Projects", note: "Full-Stack, RPA & AI" },
+    { value: "2026", label: "NBE Internship", note: "SQL Server & EF Core" },
+    { value: "2027", label: "Expected Graduation", note: "Phone Price Predictor" }
   ]
 };
 
@@ -91,7 +91,7 @@ export const servicesData = [
   {
     id: "service-4",
     title: "Enterprise Deployment",
-    description: "Hands-on exposure to SIT/UAT releases, IIS web server hosting, CI/CD pipelines, and Change Requests.",
+    description: "Exposure to enterprise release stages, change requests, and deployment tooling during an NBE internship.",
     image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?auto=format&fit=crop&w=600&q=80",
     tags: ["IIS", "CI/CD", "DevOps"],
     targetSection: "resume",
@@ -121,12 +121,12 @@ export const categorizedSkillsData = [
     icon: "Server",
     skills: [
       { name: "C# / .NET 8", level: "Core Stack" },
-      { name: "ASP.NET Core Web API", level: "Advanced" },
-      { name: "ASP.NET Core MVC", level: "Advanced" },
-      { name: "Entity Framework Core", level: "Advanced" },
+      { name: "ASP.NET Core Web API", level: "Project experience" },
+      { name: "ASP.NET Core MVC", level: "Project experience" },
+      { name: "Entity Framework Core", level: "Project experience" },
       { name: "Clean & Layered Architecture", level: "Practicing" },
       { name: "SOLID Principles & Design Patterns", level: "Core Principle" },
-      { name: "RESTful API & Auth (JWT)", level: "Advanced" }
+      { name: "RESTful API & Auth (JWT)", level: "Project experience" }
     ]
   },
   {
@@ -134,10 +134,10 @@ export const categorizedSkillsData = [
     category: "Database & Data Systems",
     icon: "Database",
     skills: [
-      { name: "SQL Server (T-SQL)", level: "Advanced" },
+      { name: "SQL Server (T-SQL)", level: "Project experience" },
       { name: "PostgreSQL", level: "Intermediate" },
-      { name: "EF Core Code-First & Migrations", level: "Advanced" },
-      { name: "LINQ Querying & ORM", level: "Advanced" },
+      { name: "EF Core Code-First & Migrations", level: "Project experience" },
+      { name: "LINQ Querying & ORM", level: "Project experience" },
       { name: "Database Design & Relational Models", level: "Solid" }
     ]
   },
@@ -146,11 +146,11 @@ export const categorizedSkillsData = [
     category: "Frontend & Web Development",
     icon: "Layout",
     skills: [
-      { name: "React.js", level: "Advanced" },
-      { name: "JavaScript (ES6+)", level: "Advanced" },
+      { name: "React.js", level: "Project experience" },
+      { name: "JavaScript (ES6+)", level: "Project experience" },
       { name: "TypeScript", level: "Intermediate" },
-      { name: "HTML5 & Vanilla CSS3", level: "Advanced" },
-      { name: "Vite & Responsive Layouts", level: "Advanced" }
+      { name: "HTML5 & Vanilla CSS3", level: "Project experience" },
+      { name: "Vite & Responsive Layouts", level: "Project experience" }
     ]
   },
   {
@@ -158,16 +158,36 @@ export const categorizedSkillsData = [
     category: "DevOps, RPA & Tools",
     icon: "Cpu",
     skills: [
-      { name: "Git & GitHub Workflows", level: "Advanced" },
+      { name: "Git & GitHub Workflows", level: "Project experience" },
       { name: "Docker Container Basics", level: "Intermediate" },
-      { name: "IIS Hosting & Server Deployment", level: "Practical Exp (NBE)" },
-      { name: "CI/CD Pipeline Exposure", level: "Practical Exp (NBE)" },
+      { name: "IIS Hosting & Server Deployment", level: "Internship exposure" },
+      { name: "CI/CD Pipeline Exposure", level: "Internship exposure" },
       { name: "UiPath RPA Automation", level: "Certified/Trained" }
     ]
   }
 ];
 
 export const projectsData = [
+  {
+    id: "proj-movemint",
+    title: "MoveMint — Sustainable Mobility Platform",
+    tag: "Graduation Project • Deloitte-Sponsored",
+    category: "ai",
+    featured: true,
+    description: "Ongoing graduation project exploring emissions-aware trip planning, public-transit verification, and rewards for Cairo.",
+    image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=800&q=80",
+    link: "",
+    techStack: ["Flutter", "Routing", "PostgreSQL / PostGIS (Planned)", "Backend APIs (Planned)", "On-device ML (Planned)"],
+    isBuilding: true,
+    architecture: "Proposed system with mobile trip planning, routing and emissions services, transit verification, and rewards.",
+    impact: "Goal: help users discover lower-emission travel options and verify public-transit journeys in Cairo.",
+    highlights: [
+      "Designing emissions-aware routes and sustainable mobility analytics.",
+      "Exploring GPS and transit-route checks alongside activity recognition.",
+      "Planning backend services and geospatial data integration.",
+      "Deloitte-sponsored graduation project; implementation ongoing."
+    ]
+  },
   {
     id: "proj-sany3y",
     title: "Sany3y — Service Marketplace Platform",
@@ -196,9 +216,9 @@ export const projectsData = [
     tag: "Flagship / Full-Stack & AI",
     category: "dotnet",
     featured: true,
-    description: "Enterprise ticketing ecosystem built with React, TypeScript, Vite, ASP.NET Core Web API, PostgreSQL, and LLM-assisted ticket triage with JWT authentication.",
+    description: "In-development support ticketing project exploring React, TypeScript, ASP.NET Core Web API, PostgreSQL, and AI-assisted triage.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-    link: "#contact",
+    link: "",
     techStack: ["React", "TypeScript", "ASP.NET Core API", "PostgreSQL", "JWT", "AI"],
     isBuilding: true,
     architecture: "Clean Architecture Web API + React TypeScript SPA + LLM Classification Worker + PostgreSQL",
@@ -215,7 +235,7 @@ export const projectsData = [
     title: "SMAS — Social Media Automation System",
     tag: "UiPath Studio & Orchestrator",
     category: "rpa",
-    description: "Industrial-grade RPA pipeline automating cross-platform social media distribution. Features robust Dispatcher–Performer architecture and UiPath Orchestrator queue transaction management.",
+    description: "RPA pipeline automating cross-platform social media distribution. Features robust Dispatcher–Performer architecture and UiPath Orchestrator queue transaction management.",
     image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
     link: "https://github.com/Steven-Amin02/Social-Media-Automation-System-SMAS-",
     techStack: ["UiPath Studio", "Orchestrator", "Queues", "Dispatcher-Performer"],
@@ -272,7 +292,7 @@ export const projectsData = [
     title: "ExoVista — NASA Space Apps Challenge",
     tag: "Interactive Web Visualization",
     category: "frontend",
-    description: "Award-nominated interactive educational web application creating immersive exoplanet exploration experiences and space data storytelling for NASA Space Apps Challenge.",
+    description: "Interactive educational web application creating immersive exoplanet exploration experiences and space data storytelling for NASA Space Apps Challenge.",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
     link: "https://github.com/Steven-Amin02/ExoVista",
     techStack: ["JavaScript", "HTML5 Canvas", "CSS Animations", "NASA API"],
@@ -310,7 +330,7 @@ export const projectsData = [
     category: "ai",
     description: "Accessibility AI solution designed for visually and physically impaired users, featuring automated PDF narration, vision-based scene description, and conversational NLP.",
     image: "/vodafone-egypt.webp",
-    link: "#contact",
+    link: "",
     techStack: ["Python", "NLP", "Computer Vision", "Speech Synthesis"],
     isBuilding: false,
     containImage: true,
@@ -329,15 +349,15 @@ export const experienceData = [
     id: "exp-nbe",
     title: "Deployment Intern",
     company: "National Bank of Egypt (NBE)",
-    period: "Enterprise Internship",
-    description: "Learned software release processes from SIT to UAT and Production. Practical experience with deployment pipelines, artifact management, IIS hosting, Change Requests (CRs), and ticketing workflows."
+    period: "July 2026",
+    description: "Learned about enterprise release processes in SIT, UAT, and production environments, including deployment coordination and change requests."
   },
   {
     id: "exp-depi",
     title: "Full Stack .NET Developer Trainee",
     company: "Digital Egypt Pioneers Initiative (DEPI)",
     period: "June 2025 – Dec 2025",
-    description: "Developed 3+ data-driven web applications using ASP.NET Core MVC & SQL Server. Applied layered architecture & SOLID principles, integrated REST APIs, and optimized database queries by ~25%."
+    description: "Completed training in ASP.NET Core, SQL Server, REST APIs, and layered architecture through hands-on projects."
   },
   {
     id: "exp-sprints",
@@ -352,7 +372,7 @@ export const educationData = [
   {
     id: "edu-asu",
     degree: "Bachelor of Computer Science (Software Engineering Major)",
-    institution: "Ain Shams University — CGPA: 3.22 / 4.0 (General Grade: Excellent)",
+    institution: "Ain Shams University — Current CGPA: 3.22 / 4.0",
     period: "June 2023 – June 2027"
   },
   {
@@ -364,6 +384,13 @@ export const educationData = [
 ];
 
 export const certificationsData = [
+  {"id":"cert-nbe","title":"NBE Internship Programme 2026","issuer":"National Bank of Egypt","date":"July 2026","highlight":"Deployment internship","status":"Completed","skills":["Release Processes"]},
+  {"id":"cert-depi","title":"Full-Stack .NET Training","issuer":"DEPI","date":"2025","highlight":"ASP.NET Core training","status":"Completed","skills":["C#","SQL Server"]},
+  {"id":"cert-innov","title":"InnovEgypt","issuer":"ITIDA / TIEC","date":"Completed","highlight":"45-hour training","status":"Completed","skills":["Innovation"]},
+  {"id":"cert-nasa","title":"NASA Space Apps Challenge","issuer":"NASA Space Apps","date":"Participation","highlight":"ExoVista","status":"Participated","skills":["Web Development"]},
+  {"id":"cert-vodafone","title":"Vodafone AI Hackathon","issuer":"Vodafone","date":"Participation","highlight":"Accessibility AI","status":"Participated","skills":["AI"]},
+  {"id":"cert-orange","title":"Orange Digital Center Bootcamp","issuer":"Orange Digital Center","date":"Participation","highlight":"Bootcamp","status":"Participated","skills":["Development"]},
+  {"id":"cert-eureca","title":"Eureca Program","issuer":"Eureca","date":"Completed","highlight":"Program participation","status":"Completed","skills":["Innovation"]},
   {
     id: "cert-nti",
     title: "MEAN-Stack Web Development",
@@ -438,32 +465,8 @@ export const certificationsData = [
   }
 ];
 
-export const testimonialsData = [
-  {
-    id: "test-nbe",
-    author: "Deployment Department",
-    role: "National Bank of Egypt (NBE)",
-    icon: "Building2",
-    rating: 5.0,
-    quote: "Steven demonstrated professionalism, reliability, and a strong commitment to learning during his internship. He gained practical exposure to CI/CD pipelines, artifact management, Change Requests (CRs), Red Hat OpenShift, and WebSphere. His curiosity and commitment make him a valuable addition to any software engineering & DevOps team."
-  },
-  {
-    id: "test-depi",
-    author: "DEPI Program Supervisors",
-    role: "Digital Egypt Pioneers Initiative",
-    icon: "Code",
-    rating: 5.0,
-    quote: "Steven consistently demonstrated technical rigor and a strong grasp of layered architecture and SOLID principles. He engineered robust ASP.NET Core MVC systems and worked seamlessly across team Agile sprints."
-  },
-  {
-    id: "test-academic",
-    author: "Academic Faculty",
-    role: "Ain Shams & UEL Dual Degree",
-    icon: "GraduationCap",
-    rating: 5.0,
-    quote: "Steven excels in combining core computer science concepts with modern full-stack development. His analytical problem-solving, ML model design, and algorithmic thinking stand out across both coursework and project deliverables."
-  }
-];
+// Testimonials appear only after exact quotes are verified and permission is obtained.
+export const testimonialsData = [];
 
 export const faqData = [
   {
@@ -484,11 +487,11 @@ export const faqData = [
   {
     id: "faq-4",
     question: "What degree and academic honors does Steven Amin hold?",
-    answer: "Steven is pursuing a prestigious dual degree: B.Sc. in Computer Science from Ain Shams University and B.Sc. in Software Engineering from the University of East London (2023–2027), holding a cumulative GPA of 3.22 / 4.0 with an academic grade of Excellent / First Class Honours."
+    answer: "Steven is pursuing a prestigious dual degree: B.Sc. in Computer Science from Ain Shams University and B.Sc. in Software Engineering from the University of East London (2023–2027), holding a cumulative GPA of 3.22 / 4.0 with an academic grade of Degree in progress — Expected 2027."
   },
   {
     id: "faq-5",
     question: "Is Steven Amin available for hire, internships, or freelance work?",
-    answer: "Yes! Steven is actively open to full-time Software Engineer positions, backend .NET developer roles, internships, and freelance projects. He is available for on-site, hybrid (Cairo, Egypt), and remote positions globally. You can contact him directly at stevenameen02@gmail.com."
+    answer: "Yes! Steven is interested in 2027 graduate software engineering roles, internships, and freelance projects. He is available for on-site, hybrid (Cairo, Egypt), and remote positions globally. You can contact him directly at stevenameen02@gmail.com."
   }
 ];

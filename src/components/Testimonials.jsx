@@ -3,8 +3,8 @@ import { Quote, Building2, Code, GraduationCap, Star, ShieldCheck, Sparkles } fr
 import { testimonialsData } from '../data/portfolioData';
 
 /**
- * Testimonials — Verified Enterprise & Academic Endorsements.
- * Highlights official recommendations from NBE, DEPI, and academic faculty.
+ * Testimonials — Recommendations shared with permission.
+ * Displays authentic recommendations when available.
  */
 
 const ICON_MAP = {
@@ -14,6 +14,7 @@ const ICON_MAP = {
 };
 
 export default function Testimonials() {
+  if (!testimonialsData.length) return null;
   return (
     <section id="testimonials" className="testimonials-section">
       <div className="section-container">
@@ -53,18 +54,6 @@ export default function Testimonials() {
                   <div className="quote-badge" aria-hidden="true">
                     <Quote size={24} />
                   </div>
-                </div>
-
-                <div className="testimonial-rating-row">
-                  <div className="stars-glow" aria-hidden="true">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={15} fill="#FF9E0D" color="#FF9E0D" />
-                    ))}
-                  </div>
-                  <span className="rating-score">{item.rating.toFixed(1)} / 5.0</span>
-                  <span className="verified-stamp">
-                    <ShieldCheck size={13} color="#10B981" /> Verified
-                  </span>
                 </div>
 
                 <blockquote className="testimonial-quote">
