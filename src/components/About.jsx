@@ -5,8 +5,6 @@ import {
   Building2, 
   Cpu, 
   CheckCircle2, 
-  ArrowUpRight, 
-  Award, 
   Sparkles,
   Zap
 } from 'lucide-react';
@@ -14,11 +12,11 @@ import { skillsData, bentoCardsData } from '../data/portfolioData';
 
 /**
  * About — High-Impact Bento Grid Layout.
- * Combines core engineering philosophy, dual degree credentials,
- * enterprise NBE internship experience, and key measurable metrics.
+ * Combines expanded engineering bio, dual-degree program status,
+ * NBE deployment internship exposure, and factual portfolio summary cards.
  */
 
-export default function About({ profile }) {
+export default function About() {
   const { bio, dualDegree, enterprise, metrics } = bentoCardsData;
 
   return (
@@ -28,28 +26,28 @@ export default function About({ profile }) {
         {/* Section Header */}
         <div className="section-header-centered">
           <div className="section-badge">
-            <Sparkles size={13} className="badge-icon" />
-            <span>ENGINEERING PROFILE &amp; IDENTITY</span>
+            <Sparkles size={13} className="badge-icon" aria-hidden="true" />
+            <span>ABOUT ME &amp; ENGINEERING FOCUS</span>
           </div>
           <h2 className="section-title">
-            Architecting Robust Systems <span className="highlight-text">From Kernel to Cloud</span>
+            Backend Engineering &amp; <span className="highlight-text">Full-Stack Development</span>
           </h2>
           <p className="section-subtitle">
-            Bridging rigorous computer science fundamentals with modern .NET ecosystem engineering, enterprise deployment workflows, and intelligent automation.
+            Developing maintainable backend services, full-stack web applications, and relational databases while building practical exposure to enterprise software delivery.
           </p>
         </div>
 
         {/* Bento Grid */}
         <div className="bento-grid">
           
-          {/* Card 1: Core Bio & Architectural Philosophy (Spans 2 columns on desktop) */}
+          {/* Card 1: Expanded About Me (Spans 2 columns on desktop) */}
           <div className="bento-card bento-card-main">
-            <div className="bento-card-glow" />
+            <div className="bento-card-glow" aria-hidden="true" />
             <div className="bento-header">
-              <div className="bento-icon-box">
+              <div className="bento-icon-box" aria-hidden="true">
                 <Terminal size={22} color="#FF6B2C" />
               </div>
-              <span className="bento-tag">Full-Stack &amp; Systems Specialization</span>
+              <span className="bento-tag">Backend &amp; Full-Stack .NET Developer</span>
             </div>
 
             <h3 className="bento-card-title">{bio.headline}</h3>
@@ -58,43 +56,43 @@ export default function About({ profile }) {
             <div className="bento-tech-pills">
               {skillsData.map((skill, i) => (
                 <span key={i} className="bento-pill">
-                  <CheckCircle2 size={13} color="#FF6B2C" />
+                  <CheckCircle2 size={13} color="#FF6B2C" aria-hidden="true" />
                   <span>{skill}</span>
                 </span>
               ))}
             </div>
 
             <div className="bento-footer-note">
-              <Zap size={15} color="#10B981" />
-              <span>Practicing SOLID Principles, Layered Architecture &amp; Clean Code</span>
+              <Zap size={15} color="#10B981" aria-hidden="true" />
+              <span>Interested in 2027 graduate software engineering roles, internships, and suitable freelance projects</span>
             </div>
           </div>
 
-          {/* Card 2: Dual Degree Academic Credentials */}
+          {/* Card 2: Dual-Degree Academic Status */}
           <div className="bento-card bento-card-academic">
-            <div className="bento-card-glow" />
+            <div className="bento-card-glow" aria-hidden="true" />
             <div className="bento-header">
-              <div className="bento-icon-box">
+              <div className="bento-icon-box" aria-hidden="true">
                 <GraduationCap size={22} color="#3B82F6" />
               </div>
-              <span className="bento-tag tag-blue">Academic Excellence</span>
+              <span className="bento-tag tag-blue">Dual-Degree Program (In Progress)</span>
             </div>
 
             <h3 className="bento-card-title">{dualDegree.title}</h3>
             
             <div className="academic-institutions">
               <div className="inst-item">
-                <div className="inst-dot" />
+                <div className="inst-dot" aria-hidden="true" />
                 <div>
                   <strong>{dualDegree.primaryUni}</strong>
-                  <span className="inst-meta">Cairo, Egypt • {dualDegree.timeline}</span>
+                  <span className="inst-meta">Cairo, Egypt • 2023–2027 (expected)</span>
                 </div>
               </div>
               <div className="inst-item">
-                <div className="inst-dot dot-cyan" />
+                <div className="inst-dot dot-cyan" aria-hidden="true" />
                 <div>
                   <strong>{dualDegree.dualUni}</strong>
-                  <span className="inst-meta">London, UK • Dual Degree Partner</span>
+                  <span className="inst-meta">Dual-Degree Partner • 2024–2027 (expected)</span>
                 </div>
               </div>
             </div>
@@ -103,19 +101,19 @@ export default function About({ profile }) {
               <div className="gpa-score">{dualDegree.cgpa}</div>
               <div className="gpa-details">
                 <span className="gpa-grade">{dualDegree.grade}</span>
-                <span className="gpa-major">Software Engineering Honors</span>
+                <span className="gpa-major">Current CGPA • Ain Shams University</span>
               </div>
             </div>
           </div>
 
-          {/* Card 3: Enterprise Deployment & NBE Internship */}
+          {/* Card 3: NBE Deployment Internship Exposure */}
           <div className="bento-card bento-card-enterprise">
-            <div className="bento-card-glow" />
+            <div className="bento-card-glow" aria-hidden="true" />
             <div className="bento-header">
-              <div className="bento-icon-box">
+              <div className="bento-icon-box" aria-hidden="true">
                 <Building2 size={22} color="#10B981" />
               </div>
-              <span className="bento-tag tag-emerald">Enterprise Deployment</span>
+              <span className="bento-tag tag-emerald">Internship Exposure</span>
             </div>
 
             <h3 className="bento-card-title">{enterprise.company}</h3>
@@ -126,23 +124,23 @@ export default function About({ profile }) {
 
             <p className="bento-card-text">{enterprise.details}</p>
 
-            <div className="pipeline-flow-mini">
+            <div className="pipeline-flow-mini" aria-label="Release environment sequence: SIT to UAT to Production">
               <span className="flow-node">SIT</span>
-              <span className="flow-arrow">➔</span>
+              <span className="flow-arrow" aria-hidden="true">➔</span>
               <span className="flow-node">UAT</span>
-              <span className="flow-arrow">➔</span>
+              <span className="flow-arrow" aria-hidden="true">➔</span>
               <span className="flow-node node-prod">PROD</span>
             </div>
           </div>
 
-          {/* Card 4: Quantitative Impact Metrics */}
+          {/* Card 4: Portfolio Overview */}
           <div className="bento-card bento-card-metrics">
-            <div className="bento-card-glow" />
+            <div className="bento-card-glow" aria-hidden="true" />
             <div className="bento-header">
-              <div className="bento-icon-box">
+              <div className="bento-icon-box" aria-hidden="true">
                 <Cpu size={22} color="#F59E0B" />
               </div>
-              <span className="bento-tag tag-amber">Performance Metrics</span>
+              <span className="bento-tag tag-amber">Portfolio Summary</span>
             </div>
 
             <div className="metrics-bento-grid">

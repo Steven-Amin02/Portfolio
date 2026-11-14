@@ -33,7 +33,7 @@ export default function Footer({ profile, inquiryTopic }) {
         ...prev,
         message: prev.message
           ? prev.message
-          : `Hi Steven, I'd like to discuss the architecture and details of "${inquiryTopic}".`
+          : `Hi Steven, I'd like to discuss "${inquiryTopic}".`
       }));
     }
   }, [inquiryTopic]);
@@ -100,7 +100,7 @@ export default function Footer({ profile, inquiryTopic }) {
     },
     {
       icon: Linkedin,
-      label: 'LinkedIn Professional Profile',
+      label: 'LinkedIn Profile',
       value: 'linkedin.com/in/steven-amin02',
       href: profile.linkedin,
       isExternal: true
@@ -124,15 +124,15 @@ export default function Footer({ profile, inquiryTopic }) {
           <div className="contact-info-col">
             <div className="section-badge">
               <Sparkles size={13} className="badge-icon" aria-hidden="true" />
-              <span>LET&apos;S CONNECT</span>
+              <span>CONTACT</span>
             </div>
             
             <h2 className="contact-heading">
-              Let&apos;s Build Something <span className="highlight-text">Exceptional</span>
+              Let&apos;s Discuss Your <span className="highlight-text">Role or Project</span>
             </h2>
             
             <p className="contact-desc">
-              Whether you are looking for a dedicated Full-Stack .NET Developer, systems engineer, or automation specialist, I&apos;m eager to discuss how I can contribute to your team.
+              {profile.availability}
             </p>
 
             <div className="contact-channel-list">
@@ -159,7 +159,7 @@ export default function Footer({ profile, inquiryTopic }) {
 
               <div className="contact-location-pill">
                 <MapPin size={16} color="#FF6B2C" aria-hidden="true" />
-                <span>Cairo, Egypt • Available for On-Site, Hybrid &amp; Remote Work</span>
+                <span>Cairo, Egypt • Open to 2027 Graduate Roles, Internships &amp; Freelance</span>
               </div>
             </div>
           </div>
@@ -168,7 +168,7 @@ export default function Footer({ profile, inquiryTopic }) {
           <div className="contact-form-col">
             <div className="contact-form-card">
               <h3 className="form-card-title">Send a Direct Message</h3>
-              <p className="form-card-sub">Fill out the fields below to initiate a project or hiring inquiry.</p>
+              <p className="form-card-sub">Fill out the fields below to initiate a hiring, internship, or project inquiry.</p>
 
               <form onSubmit={handleContactSubmit}>
                 <div className="form-input-group">
@@ -200,11 +200,11 @@ export default function Footer({ profile, inquiryTopic }) {
                 </div>
 
                 <div className="form-input-group">
-                  <label htmlFor="contact-message">Project Scope or Message</label>
+                  <label htmlFor="contact-message">Role, Internship, or Project Details</label>
                   <textarea
                     id="contact-message"
                     name="message"
-                    placeholder="Tell me about your technical requirements, team needs, or project goals..."
+                    placeholder="Tell me about the role, internship, or project requirements..."
                     value={formData.message}
                     onChange={handleChange}
                     className="custom-form-input custom-textarea"
@@ -263,11 +263,11 @@ export default function Footer({ profile, inquiryTopic }) {
         <div className="footer-bottom-bar">
           <div className="footer-brand-wrap">
             <span className="footer-brand-name">Steven<span className="logo-dot">.</span></span>
-            <span className="footer-tagline">Software Engineering &amp; Systems Development</span>
+            <span className="footer-tagline">Software Engineer | Backend &amp; Full-Stack .NET Developer</span>
           </div>
 
           <div className="footer-meta-wrap">
-            <span>© {new Date().getFullYear()} Steven Amin. Dual Degree Ain Shams &amp; UEL Scholar.</span>
+            <span>© {new Date().getFullYear()} Steven Amin. Ain Shams University &amp; UEL Dual-Degree Student (Expected 2027).</span>
           </div>
 
           <button 

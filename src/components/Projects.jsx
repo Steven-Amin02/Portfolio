@@ -15,16 +15,16 @@ import { projectsData } from '../data/portfolioData';
 import { scrollToElement } from '../utils/scrollUtils';
 
 /**
- * Projects — Interactive Filterable Project Grid + Senior Engineering Case Study Modal.
- * Features tech stack badge chips, architecture case study modal, and GitHub links.
+ * Projects — Interactive Filterable Project Grid + Architecture Overview Modal.
+ *Clearly distinguishes completed projects, hackathon prototypes, and ongoing/planned projects.
  */
 
 const FILTERS = [
   { key: 'all',      label: 'All Projects' },
-  { key: 'dotnet',   label: '.NET & Full-Stack' },
+  { key: 'dotnet',   label: '.NET & Backend' },
   { key: 'rpa',      label: 'UiPath RPA' },
-  { key: 'ai',       label: 'AI & Machine Learning' },
-  { key: 'frontend', label: 'Frontend / UI' }
+  { key: 'ai',       label: 'AI, ML & Mobility' },
+  { key: 'frontend', label: 'Frontend & Web' }
 ];
 
 export default function Projects({ activeCategory, onCategoryChange, onSelectProjectInquiry }) {
@@ -46,7 +46,6 @@ export default function Projects({ activeCategory, onCategoryChange, onSelectPro
     return projectsData.filter((p) => p.category === filter);
   }, [filter]);
 
-  // Compute item counts for each filter
   const filterCounts = useMemo(() => {
     const counts = { all: projectsData.length };
     FILTERS.forEach((f) => {
@@ -57,7 +56,6 @@ export default function Projects({ activeCategory, onCategoryChange, onSelectPro
     return counts;
   }, []);
 
-  // Lock body scroll & listen for Escape when Case Study Modal is open
   useEffect(() => {
     if (!selectedProject) return undefined;
     document.body.classList.add('nav-locked');
@@ -90,13 +88,13 @@ export default function Projects({ activeCategory, onCategoryChange, onSelectPro
         <div className="section-header-centered">
           <div className="section-badge">
             <Sparkles size={13} className="badge-icon" aria-hidden="true" />
-            <span>FEATURED PORTFOLIO</span>
+            <span>SELECTED PROJECTS</span>
           </div>
           <h2 className="section-title">
-            Engineering Work &amp; <span className="highlight-text">Selected Projects</span>
+            Featured Work &amp; <span className="highlight-text">Engineering Projects</span>
           </h2>
           <p className="section-subtitle">
-            A selection of full-stack applications, automation projects, ML work, and an ongoing graduation project.
+            Completed backend, full-stack, RPA, and machine-learning projects alongside ongoing graduation and development work.
           </p>
 
           {/* Filter Buttons (WAI-ARIA Toggle Group) */}
@@ -132,7 +130,7 @@ export default function Projects({ activeCategory, onCategoryChange, onSelectPro
                   onClick={() => setSelectedProject(project)}
                   role="button"
                   tabIndex={0}
-                  aria-label={`Open architecture case study for ${project.title}`}
+                  aria-label={`Open project overview for ${project.title}`}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault();
@@ -166,11 +164,15 @@ export default function Projects({ activeCategory, onCategoryChange, onSelectPro
                   
                   {project.isBuilding ? (
                     <span className="status-pill status-building">
-                      <Clock size={12} className="spin-slow" aria-hidden="true" /> Currently Building
+                      <Clock size={12} className="spin-slow" aria-hidden="true" /> {project.statusLabel || 'In Progress'}
+                    </span>
+                  ) : project.statusLabel === 'Hackathon Prototype' ? (
+                    <span className="status-pill status-featured">
+                      <Sparkles size={12} aria-hidden="true" /> Hackathon Prototype
                     </span>
                   ) : project.featured ? (
                     <span className="status-pill status-featured">
-                      <Sparkles size={12} aria-hidden="true" /> Flagship System
+                      <Sparkles size={12} aria-hidden="true" /> Featured Project
                     </span>
                   ) : null}
                 </div>
@@ -203,7 +205,7 @@ export default function Projects({ activeCategory, onCategoryChange, onSelectPro
                     </div>
                   )}
 
-                  {/* Action Links: Case Study Modal + Repository / Inquiry */}
+                  {/* Action Links: Overview Modal + Repository / Inquiry */}
                   <div className="project-footer-action">
                     <button
                       type="button"
@@ -211,7 +213,7 @@ export default function Projects({ activeCategory, onCategoryChange, onSelectPro
                       onClick={() => setSelectedProject(project)}
                     >
                       <Layers size={15} aria-hidden="true" />
-                      <span>{project.isBuilding ? 'Preview Specs' : 'Case Study'}</span>
+                      <span>{project.isBuilding ? 'Planned Scope' : 'Project Details'}</span>
                     </button>
 
                     {hasExternalRepo ? (
@@ -233,7 +235,7 @@ export default function Projects({ activeCategory, onCategoryChange, onSelectPro
                         className="project-link-btn"
                       >
                         <MessageSquare size={15} aria-hidden="true" />
-                        <span>Request Demo</span>
+                        <span>Ask About Project</span>
                         <ArrowRight size={15} className="link-arrow" aria-hidden="true" />
                       </button>
                     )}
@@ -246,7 +248,7 @@ export default function Projects({ activeCategory, onCategoryChange, onSelectPro
 
       </div>
 
-      {/* Senior Engineering Architecture & Case Study Modal */}
+      {/* Project Architecture & Scope Modal */}
       {selectedProject && (
         <div
           className="case-modal-backdrop"
@@ -260,7 +262,9 @@ export default function Projects({ activeCategory, onCategoryChange, onSelectPro
           <div className="case-modal-card">
             <div className="case-modal-top">
               <div>
-                <span className="project-category-tag">{selectedProject.tag}</span>
+                <span className="project-category-tag">
+                  {selectedProject.tag} {selectedProject.statusLabel ? `• ${selectedProject.statusLabel}` : ''}
+                </span>
                 <h3 id="case-modal-title" className="case-modal-title">
                   {selectedProject.title}
                 </h3>
@@ -268,7 +272,7 @@ export default function Projects({ activeCategory, onCategoryChange, onSelectPro
               <button
                 type="button"
                 className="case-modal-close"
-                aria-label="Close case study modal"
+                aria-label="Close project details modal"
                 onClick={() => setSelectedProject(null)}
               >
                 <X size={20} />
@@ -282,7 +286,7 @@ export default function Projects({ activeCategory, onCategoryChange, onSelectPro
                 <div className="case-arch-box">
                   <div className="case-arch-label">
                     <Layers size={15} color="#FF6B2C" aria-hidden="true" />
-                    <span>System Architecture &amp; Pipeline</span>
+                    <span>{selectedProject.isBuilding ? 'Planned & Explored Architecture' : 'Architecture Overview'}</span>
                   </div>
                   <div className="case-arch-value">{selectedProject.architecture}</div>
                 </div>
@@ -297,7 +301,9 @@ export default function Projects({ activeCategory, onCategoryChange, onSelectPro
 
               {selectedProject.highlights && selectedProject.highlights.length > 0 && (
                 <div className="case-highlights-section">
-                  <h4 className="case-sub-heading">Key Engineering Decisions &amp; Implementation</h4>
+                  <h4 className="case-sub-heading">
+                    {selectedProject.isBuilding ? 'Main Concepts & Planned Modules' : 'Engineering Focus & Implementation'}
+                  </h4>
                   <ul className="case-highlights-list">
                     {selectedProject.highlights.map((pt, idx) => (
                       <li key={idx} className="case-highlight-item">
@@ -311,7 +317,9 @@ export default function Projects({ activeCategory, onCategoryChange, onSelectPro
 
               {selectedProject.techStack && (
                 <div className="case-tech-section">
-                  <h4 className="case-sub-heading">Technology Stack</h4>
+                  <h4 className="case-sub-heading">
+                    {selectedProject.isBuilding ? 'Design & Planned Technology' : 'Technology Stack'}
+                  </h4>
                   <div className="project-tech-tags">
                     {selectedProject.techStack.map((tech, idx) => (
                       <span key={idx} className="project-tech-pill">{tech}</span>
@@ -340,7 +348,7 @@ export default function Projects({ activeCategory, onCategoryChange, onSelectPro
                 onClick={() => handleInquireClick(selectedProject)}
               >
                 <MessageSquare size={16} aria-hidden="true" />
-                <span>Discuss This Architecture</span>
+                <span>Discuss This Project</span>
               </button>
             </div>
           </div>

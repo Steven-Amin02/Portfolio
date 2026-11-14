@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F19"/>
+      <stop offset="55%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect width="800" height="450" fill="url(#grid)"/>
+  <circle cx="680" cy="80" r="180" fill="#06B6D4" opacity="0.09"/>
+  <circle cx="120" cy="380" r="160" fill="#8B5CF6" opacity="0.08"/>
+
+  <!-- Top Header -->
+  <rect x="44" y="32" width="712" height="88" rx="14" fill="rgba(17,24,39,0.88)" stroke="rgba(255,255,255,0.1)"/>
+  <rect x="64" y="48" width="309" height="24" rx="12" fill="rgba(255,255,255,0.06)" stroke="#06B6D4" stroke-width="1"/>
+  <text x="78" y="64" font-family="monospace" font-size="10.5" font-weight="700" fill="#06B6D4" letter-spacing="0.8">REACT 19 • TYPESCRIPT • TAILWIND CSS</text>
+  <text x="64" y="99" font-family="sans-serif" font-size="20" font-weight="800" fill="#F9FAFB">Route Posts — Social Media Web App</text>
+  <text x="736" y="64" text-anchor="end" font-family="monospace" font-size="11" fill="#9CA3AF">Modular SPA Architecture</text>
+
+  <!-- Architecture Nodes -->
+  
+    <g transform="translate(44, 144)">
+      <rect width="224" height="200" rx="14" fill="rgba(30,41,59,0.75)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+      <rect x="0" y="0" width="224" height="5" rx="2.5" fill="#8B5CF6" opacity="0.9"/>
+      <text x="20" y="34" font-family="monospace" font-size="10.5" font-weight="700" fill="#94A3B8">01 // ROUTING LAYER</text>
+      <text x="20" y="62" font-family="sans-serif" font-size="15.5" font-weight="700" fill="#F8FAFC">React Router v8</text>
+      
+        <rect x="18" y="80" width="188" height="26" rx="6" fill="rgba(15,23,42,0.8)" stroke="rgba(255,255,255,0.07)"/>
+        <circle cx="30" cy="93" r="3.5" fill="#8B5CF6"/>
+        <text x="42" y="97" font-family="monospace" font-size="11" fill="#E2E8F0">AuthLayout (Login/Reg)</text>
+      
+        <rect x="18" y="114" width="188" height="26" rx="6" fill="rgba(15,23,42,0.8)" stroke="rgba(255,255,255,0.07)"/>
+        <circle cx="30" cy="127" r="3.5" fill="#8B5CF6"/>
+        <text x="42" y="131" font-family="monospace" font-size="11" fill="#E2E8F0">MainLayout (Feed/UI)</text>
+      
+        <rect x="18" y="148" width="188" height="26" rx="6" fill="rgba(15,23,42,0.8)" stroke="rgba(255,255,255,0.07)"/>
+        <circle cx="30" cy="161" r="3.5" fill="#8B5CF6"/>
+        <text x="42" y="165" font-family="monospace" font-size="11" fill="#E2E8F0">Protected Routes</text>
+      
+    </g>
+    
+      <g transform="translate(270, 238)">
+        <line x1="0" y1="8" x2="15" y2="8" stroke="#06B6D4" stroke-width="2" stroke-dasharray="3,2"/>
+        <polygon points="12,3 19,8 12,13" fill="#06B6D4"/>
+      </g>
+    
+    <g transform="translate(288, 144)">
+      <rect width="224" height="200" rx="14" fill="rgba(30,41,59,0.75)" stroke="#06B6D4" stroke-width="1.6"/>
+      <rect x="0" y="0" width="224" height="5" rx="2.5" fill="#06B6D4" opacity="0.9"/>
+      <text x="20" y="34" font-family="monospace" font-size="10.5" font-weight="700" fill="#06B6D4">02 // UI COMPONENTS</text>
+      <text x="20" y="62" font-family="sans-serif" font-size="15.5" font-weight="700" fill="#F8FAFC">React 19 &amp; HeroUI</text>
+      
+        <rect x="18" y="80" width="188" height="26" rx="6" fill="rgba(15,23,42,0.8)" stroke="rgba(255,255,255,0.07)"/>
+        <circle cx="30" cy="93" r="3.5" fill="#06B6D4"/>
+        <text x="42" y="97" font-family="monospace" font-size="11" fill="#E2E8F0">Interactive Newsfeed</text>
+      
+        <rect x="18" y="114" width="188" height="26" rx="6" fill="rgba(15,23,42,0.8)" stroke="rgba(255,255,255,0.07)"/>
+        <circle cx="30" cy="127" r="3.5" fill="#06B6D4"/>
+        <text x="42" y="131" font-family="monospace" font-size="11" fill="#E2E8F0">User Profile Views</text>
+      
+        <rect x="18" y="148" width="188" height="26" rx="6" fill="rgba(15,23,42,0.8)" stroke="rgba(255,255,255,0.07)"/>
+        <circle cx="30" cy="161" r="3.5" fill="#06B6D4"/>
+        <text x="42" y="165" font-family="monospace" font-size="11" fill="#E2E8F0">Notification Stream</text>
+      
+    </g>
+    
+      <g transform="translate(514, 238)">
+        <line x1="0" y1="8" x2="15" y2="8" stroke="#06B6D4" stroke-width="2" stroke-dasharray="3,2"/>
+        <polygon points="12,3 19,8 12,13" fill="#06B6D4"/>
+      </g>
+    
+    <g transform="translate(532, 144)">
+      <rect width="224" height="200" rx="14" fill="rgba(30,41,59,0.75)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+      <rect x="0" y="0" width="224" height="5" rx="2.5" fill="#8B5CF6" opacity="0.9"/>
+      <text x="20" y="34" font-family="monospace" font-size="10.5" font-weight="700" fill="#94A3B8">03 // SERVICE LAYER</text>
+      <text x="20" y="62" font-family="sans-serif" font-size="15.5" font-weight="700" fill="#F8FAFC">Axios &amp; TypeScript</text>
+      
+        <rect x="18" y="80" width="188" height="26" rx="6" fill="rgba(15,23,42,0.8)" stroke="rgba(255,255,255,0.07)"/>
+        <circle cx="30" cy="93" r="3.5" fill="#8B5CF6"/>
+        <text x="42" y="97" font-family="monospace" font-size="11" fill="#E2E8F0">auth.service.ts</text>
+      
+        <rect x="18" y="114" width="188" height="26" rx="6" fill="rgba(15,23,42,0.8)" stroke="rgba(255,255,255,0.07)"/>
+        <circle cx="30" cy="127" r="3.5" fill="#8B5CF6"/>
+        <text x="42" y="131" font-family="monospace" font-size="11" fill="#E2E8F0">profile.service.ts</text>
+      
+        <rect x="18" y="148" width="188" height="26" rx="6" fill="rgba(15,23,42,0.8)" stroke="rgba(255,255,255,0.07)"/>
+        <circle cx="30" cy="161" r="3.5" fill="#8B5CF6"/>
+        <text x="42" y="165" font-family="monospace" font-size="11" fill="#E2E8F0">Typed API Contracts</text>
+      
+    </g>
+    
+
+  <!-- Bottom Status Bar -->
+  <rect x="44" y="368" width="712" height="46" rx="10" fill="rgba(15,23,42,0.88)" stroke="rgba(255,255,255,0.09)"/>
+  <circle cx="68" cy="391" r="5" fill="#06B6D4"/>
+  <text x="84" y="395" font-family="monospace" font-size="11.5" font-weight="600" fill="#D1D5DB">REPO: github.com/Steven-Amin02/Route-posts-Assignment2/tree/main/Route-posts</text>
+</svg>

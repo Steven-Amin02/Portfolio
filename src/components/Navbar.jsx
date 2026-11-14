@@ -3,15 +3,14 @@ import { Menu, X, ArrowUpRight, Sparkles, Sun, Moon } from 'lucide-react';
 import { scrollToElement } from '../utils/scrollUtils';
 
 const LEFT_NAV_ITEMS = [
-  { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
-  { id: 'skills', label: 'Skills' }
+  { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' }
 ];
 
 const RIGHT_NAV_ITEMS = [
-  { id: 'projects', label: 'Projects' },
-  { id: 'services', label: 'Services' },
-  { id: 'resume', label: 'Experience' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'education', label: 'Education' },
   { id: 'contact', label: 'Contact' }
 ];
 
@@ -115,7 +114,7 @@ export default function Navbar({ activeSection, theme = 'light', onToggleTheme }
             className="nav-cta-pill"
           >
             <span className="live-status-dot" aria-hidden="true" />
-            <span>Available</span>
+            <span>Open to Roles</span>
           </a>
 
           {/* Desktop Theme Toggle Button */}
@@ -160,7 +159,7 @@ export default function Navbar({ activeSection, theme = 'light', onToggleTheme }
             className="mobile-status-badge"
           >
             <span className="live-status-dot" aria-hidden="true" />
-            <span className="mobile-status-text">Open for Hire</span>
+            <span className="mobile-status-text">Open to Roles</span>
           </a>
 
           <button 

@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from 'react';
-import { ArrowUpRight, Mail, Sparkles, Award, ShieldCheck, FileText } from 'lucide-react';
+import { ArrowUpRight, Mail, Sparkles, Briefcase, Code2, GraduationCap, FileText } from 'lucide-react';
 import { heroTechBadges } from '../data/portfolioData';
 import { scrollToElement } from '../utils/scrollUtils';
 
 /**
  * Event-driven scroll parallax hook.
  * Only computes transforms when the user actually scrolls and the Hero is in view,
- * eliminating continuous 60fps CPU/GPU wakeups when idle or scrolled past.
+ * eliminating continuous CPU/GPU wakeups when idle or scrolled past.
  */
 function useHeroMotion() {
   const layers = useRef({
@@ -96,9 +96,9 @@ export default function Hero({ profile }) {
     scrollToElement('projects', 85, 850);
   };
 
-  const scrollToResume = (e) => {
+  const scrollToExperience = (e) => {
     e.preventDefault();
-    scrollToElement('resume', 85, 850);
+    scrollToElement('experience', 85, 850);
   };
 
   const scrollToContact = (e) => {
@@ -112,7 +112,7 @@ export default function Hero({ profile }) {
       <div className="hero-ambient-glow" aria-hidden="true" />
       <div className="hero-mesh-grid" aria-hidden="true" />
 
-      {/* Greeting pill */}
+      {/* Greeting & Professional Title Pill */}
       <div className="hero-greeting anim-badge">
         <div
           className="parallax-layer hero-greeting-float"
@@ -120,8 +120,8 @@ export default function Hero({ profile }) {
         >
           <span className="greeting-bubble">
             <Sparkles size={14} className="greeting-sparkle-icon" aria-hidden="true" />
-            <span className="greeting-text-full">Hello! Welcome to my engineering portfolio</span>
-            <span className="greeting-text-short">Welcome to my portfolio</span>
+            <span className="greeting-text-full">{profile.role}</span>
+            <span className="greeting-text-short">Backend &amp; Full-Stack .NET Developer</span>
           </span>
           <svg className="spark-doodle" viewBox="0 0 36 28" fill="none" aria-hidden="true">
             <path className="spark-path" d="M2 24 C10 16, 20 8, 34 3" stroke="#FF6B2C" strokeWidth="2.5" strokeLinecap="round"/>
@@ -137,21 +137,21 @@ export default function Hero({ profile }) {
           ref={(node) => { layers.current.title = node; }}
         >
           <span className="anim-title-1 hero-lead-line">
-            I&apos;m <span className="hero-highlight-name">Steven Amin</span>,
+            I&apos;m <span className="hero-highlight-name">{profile.name}</span> —
           </span>
           <span className="hero-subtitle-line anim-title-2">
             <svg className="hero-doodle-underline" viewBox="0 0 80 36" fill="none" aria-hidden="true">
               <path className="spark-path" style={{ animationDelay: '0.52s' }} d="M4 28 C20 14, 40 6, 76 4" stroke="#FF6B2C" strokeWidth="2.5" strokeLinecap="round"/>
               <path className="spark-path" style={{ animationDelay: '0.58s' }} d="M4 34 C22 20, 44 12, 76 10" stroke="#FFA500" strokeWidth="2.5" strokeLinecap="round"/>
             </svg>
-            Full-Stack .NET &amp; Systems Engineer
+            {profile.heroHeadline || 'Building Reliable Software for Real-World Problems'}
           </span>
         </div>
       </h1>
 
-      {/* Subtitle statement */}
+      {/* Short Introduction Statement */}
       <p className="hero-subtext anim-title-2">
-        Building high-availability web applications, enterprise .NET backends, automation workflows, and intelligent software.
+        {profile.bio}
       </p>
 
       {/* Hero Visual Stage */}
@@ -167,21 +167,20 @@ export default function Hero({ profile }) {
           ))}
         </div>
 
-        {/* Left widget: Endorsement & Architecture */}
+        {/* Left widget: Engineering Focus & Practical Training */}
         <div className="widget-left anim-widget-l">
           <div
             className="parallax-layer hero-widget-card"
             ref={(node) => { layers.current.left = node; }}
           >
             <div className="widget-card-header">
-              <ShieldCheck size={18} color="#FF6B2C" aria-hidden="true" />
-              <span>Enterprise Verified</span>
+              <Code2 size={18} color="#FF6B2C" aria-hidden="true" />
+              <span>Core Focus &amp; Stack</span>
             </div>
-            <div className="big-double-quotes" aria-hidden="true">❝❝</div>
             <p className="widget-quote">{profile.snippet}</p>
             <div className="widget-author-tag">
-              <Award size={14} color="#10B981" aria-hidden="true" />
-              <span>NBE &amp; DEPI Trained</span>
+              <Briefcase size={14} color="#10B981" aria-hidden="true" />
+              <span>NBE Intern (July 2026) &amp; DEPI Trainee</span>
             </div>
           </div>
         </div>
@@ -207,7 +206,7 @@ export default function Hero({ profile }) {
               <source srcSet="/Steven-Amin-Portrait_nobg.webp" type="image/webp" />
               <img
                 src="/Steven-Amin-Portrait_nobg.png"
-                alt={`${profile.name} — Full-Stack .NET Developer & Software Engineer in Cairo, Egypt`}
+                alt={`${profile.name} — Software Engineer | Backend & Full-Stack .NET Developer in Cairo, Egypt`}
                 className="hero-portrait"
                 loading="eager"
                 fetchpriority="high"
@@ -220,21 +219,21 @@ export default function Hero({ profile }) {
           </div>
         </div>
 
-        {/* Right widget: Scholar & Metrics */}
+        {/* Right widget: Dual-Degree Program (In Progress) */}
         <div className="widget-right anim-widget-r">
           <div
             className="parallax-layer hero-widget-card"
             ref={(node) => { layers.current.right = node; }}
           >
             <div className="widget-card-header">
-              <span className="stars-rating" aria-label="5 star rating">★★★★★</span>
-              <span className="rating-pill">Top 5%</span>
+              <GraduationCap size={18} color="#3B82F6" aria-hidden="true" />
+              <span className="rating-pill">Expected 2027</span>
             </div>
-            <div className="experience-number">Dual Degree</div>
-            <div className="experience-label">Ain Shams &amp; UEL Scholar</div>
+            <div className="experience-number">Dual-Degree</div>
+            <div className="experience-label">Ain Shams University &amp; UEL</div>
             <div className="widget-submetrics">
-              <span className="metric-chip">CGPA: 3.22</span>
-              <span className="metric-chip">Excellence</span>
+              <span className="metric-chip">CGPA: 3.22 / 4.0</span>
+              <span className="metric-chip">In Progress</span>
             </div>
           </div>
         </div>
@@ -248,9 +247,9 @@ export default function Hero({ profile }) {
             <span>Explore Projects</span>
             <ArrowUpRight size={18} strokeWidth={2.5} aria-hidden="true" />
           </a>
-          <a href="#resume" className="btn-hire btn-resume-pill" onClick={scrollToResume}>
+          <a href="#experience" className="btn-hire btn-resume-pill" onClick={scrollToExperience}>
             <FileText size={16} aria-hidden="true" />
-            <span>Credentials</span>
+            <span>Experience</span>
           </a>
           <a href="#contact" className="btn-hire" onClick={scrollToContact}>
             <Mail size={16} aria-hidden="true" />

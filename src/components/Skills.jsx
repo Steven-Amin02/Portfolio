@@ -5,14 +5,15 @@ import { categorizedSkillsData } from '../data/portfolioData';
 /**
  * Skills — Interactive Technical Matrix.
  * Displays categorized proficiencies with glassmorphism cards,
- * WCAG AA theme-adaptive level indicator tags, and glowing category accents.
+ * project-backed proficiency labels, and glowing category accents.
  */
 
 const ICON_MAP = {
   Server,
   Database,
   Layout,
-  Cpu
+  Cpu,
+  Code2
 };
 
 const CATEGORY_ACCENTS = {
@@ -35,6 +36,11 @@ const CATEGORY_ACCENTS = {
     border: 'rgba(16, 185, 129, 0.38)',
     text: 'var(--accent-emerald)',
     bg: 'rgba(16, 185, 129, 0.1)'
+  },
+  interests: {
+    border: 'rgba(139, 92, 246, 0.38)',
+    text: '#8B5CF6',
+    bg: 'rgba(139, 92, 246, 0.1)'
   }
 };
 
@@ -53,13 +59,13 @@ export default function Skills() {
         <div className="section-header-centered">
           <div className="section-badge">
             <Sparkles size={13} className="badge-icon" aria-hidden="true" />
-            <span>TECHNICAL PROFICIENCY</span>
+            <span>TECHNICAL SKILLS</span>
           </div>
           <h2 className="section-title">
-            Engineering Stack &amp; <span className="highlight-text">Core Technologies</span>
+            Engineering Stack &amp; <span className="highlight-text">Technical Skills</span>
           </h2>
           <p className="section-subtitle">
-            A comprehensive overview of my software engineering stack, backend frameworks, database design, and modern web development tools.
+            Primary backend technologies, relational databases, frontend tools, automation workflows, and additional technical interests. Labels reflect completed projects and practical exposure.
           </p>
 
           {/* Filter Pills */}
@@ -80,7 +86,7 @@ export default function Skills() {
                 className={`filter-pill-btn ${activeFilter === cat.id ? 'active' : ''}`}
                 onClick={() => setActiveFilter(cat.id)}
               >
-                {cat.category.split('&')[0].trim()}
+                {cat.category}
               </button>
             ))}
           </div>
@@ -104,7 +110,7 @@ export default function Skills() {
                   </div>
                   <div>
                     <h3 className="skill-cat-title">{category.category}</h3>
-                    <span className="skill-cat-sub">{category.skills.length} core competencies</span>
+                    <span className="skill-cat-sub">{category.skills.length} areas</span>
                   </div>
                 </div>
 

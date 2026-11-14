@@ -5,30 +5,42 @@ import Services from './components/Services';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
-import Timeline from './components/Timeline';
+import { ExperienceSection, EducationAndCertifications } from './components/Timeline';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import DiscussionCTA from './components/DiscussionCTA';
 import MarqueeTicker from './components/MarqueeTicker';
 import Footer from './components/Footer';
-import { initialProfileData } from './data/portfolioData';
+import { initialProfileData, testimonialsData } from './data/portfolioData';
 
-/** Ordered section IDs matching DOM layout sequence */
+/**
+ * Ordered section IDs matching Section 7 (Recommended Website Section Order):
+ * 1. Hero / Introduction (#home)
+ * 2. About Me (#about)
+ * 3. Experience (#experience)
+ * 4. Featured Projects (#projects)
+ * 5. Technical Skills (#skills & #services)
+ * 6. Education & Scholarships (#education)
+ * 7. Achievements & Certifications (#certifications)
+ * 8. Contact (#faq & #contact)
+ */
 const SECTION_IDS = [
   'home',
   'about',
-  'skills',
+  'experience',
   'projects',
+  'skills',
   'services',
-  'resume',
-  'testimonials',
+  'education',
+  'certifications',
   'faq',
   'contact'
 ];
 
 /** Map sub-sections without dedicated navbar links to their logical parent nav item */
 const NAV_SECTION_MAP = {
-  testimonials: 'resume',
+  services: 'skills',
+  certifications: 'education',
   faq: 'contact'
 };
 
@@ -153,10 +165,16 @@ export default function App() {
       />
 
       <main id="main-content">
+        {/* 1. Hero / Introduction */}
         <Hero profile={profile} />
 
+        {/* 2. About Me */}
         <div className="reveal"><About profile={profile} /></div>
-        <div className="reveal reveal-delay-1"><Skills /></div>
+
+        {/* 3. Experience (NBE, DEPI, relevant training) */}
+        <div className="reveal reveal-delay-1"><ExperienceSection /></div>
+
+        {/* 4. Featured Projects */}
         <div className="reveal">
           <Projects
             activeCategory={projectCategory}
@@ -164,17 +182,29 @@ export default function App() {
             onSelectProjectInquiry={setInquiryTopic}
           />
         </div>
-        <div className="reveal reveal-delay-1">
+
+        {/* 5. Technical Skills & Engineering Focus */}
+        <div className="reveal reveal-delay-1"><Skills /></div>
+        <div className="reveal">
           <Services onSelectServiceCategory={setProjectCategory} />
         </div>
-        <div className="reveal"><Timeline /></div>
-        <div className="reveal reveal-delay-1"><Testimonials /></div>
+
+        {/* 6. Education & Scholarships + 7. Achievements & Certifications */}
+        <div className="reveal reveal-delay-1"><EducationAndCertifications /></div>
+
+        {/* Optional Verified Testimonials (hidden when empty) */}
+        {testimonialsData.length > 0 && (
+          <div className="reveal"><Testimonials /></div>
+        )}
+
+        {/* Knowledge Base FAQ & Discussion CTA */}
         <div className="reveal"><FAQ /></div>
         <div className="reveal reveal-delay-1"><DiscussionCTA /></div>
 
         <MarqueeTicker />
       </main>
 
+      {/* 8. Contact */}
       <div className="reveal">
         <Footer profile={profile} inquiryTopic={inquiryTopic} />
       </div>

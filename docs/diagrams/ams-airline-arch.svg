@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F19"/>
+      <stop offset="55%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect width="800" height="450" fill="url(#grid)"/>
+  <circle cx="680" cy="80" r="180" fill="#3B82F6" opacity="0.09"/>
+  <circle cx="120" cy="380" r="160" fill="#06B6D4" opacity="0.08"/>
+
+  <!-- Top Header -->
+  <rect x="44" y="32" width="712" height="88" rx="14" fill="rgba(17,24,39,0.88)" stroke="rgba(255,255,255,0.1)"/>
+  <rect x="64" y="48" width="270" height="24" rx="12" fill="rgba(255,255,255,0.06)" stroke="#3B82F6" stroke-width="1"/>
+  <text x="78" y="64" font-family="monospace" font-size="10.5" font-weight="700" fill="#3B82F6" letter-spacing="0.8">ASP.NET CORE 8 MVC • SQL SERVER</text>
+  <text x="64" y="99" font-family="sans-serif" font-size="20" font-weight="800" fill="#F9FAFB">AMS — Airline Management System</text>
+  <text x="736" y="64" text-anchor="end" font-family="monospace" font-size="11" fill="#9CA3AF">Bilingual AR / EN</text>
+
+  <!-- Architecture Nodes -->
+  
+    <g transform="translate(44, 144)">
+      <rect width="224" height="200" rx="14" fill="rgba(30,41,59,0.75)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+      <rect x="0" y="0" width="224" height="5" rx="2.5" fill="#06B6D4" opacity="0.9"/>
+      <text x="20" y="34" font-family="monospace" font-size="10.5" font-weight="700" fill="#94A3B8">01 // PRESENTATION</text>
+      <text x="20" y="62" font-family="sans-serif" font-size="15.5" font-weight="700" fill="#F8FAFC">MVC &amp; Localization</text>
+      
+        <rect x="18" y="80" width="188" height="26" rx="6" fill="rgba(15,23,42,0.8)" stroke="rgba(255,255,255,0.07)"/>
+        <circle cx="30" cy="93" r="3.5" fill="#06B6D4"/>
+        <text x="42" y="97" font-family="monospace" font-size="11" fill="#E2E8F0">Arabic RTL / English LTR</text>
+      
+        <rect x="18" y="114" width="188" height="26" rx="6" fill="rgba(15,23,42,0.8)" stroke="rgba(255,255,255,0.07)"/>
+        <circle cx="30" cy="127" r="3.5" fill="#06B6D4"/>
+        <text x="42" y="131" font-family="monospace" font-size="11" fill="#E2E8F0">Flight Search Views</text>
+      
+        <rect x="18" y="148" width="188" height="26" rx="6" fill="rgba(15,23,42,0.8)" stroke="rgba(255,255,255,0.07)"/>
+        <circle cx="30" cy="161" r="3.5" fill="#06B6D4"/>
+        <text x="42" y="165" font-family="monospace" font-size="11" fill="#E2E8F0">Admin Dashboards</text>
+      
+    </g>
+    
+      <g transform="translate(270, 238)">
+        <line x1="0" y1="8" x2="15" y2="8" stroke="#3B82F6" stroke-width="2" stroke-dasharray="3,2"/>
+        <polygon points="12,3 19,8 12,13" fill="#3B82F6"/>
+      </g>
+    
+    <g transform="translate(288, 144)">
+      <rect width="224" height="200" rx="14" fill="rgba(30,41,59,0.75)" stroke="#3B82F6" stroke-width="1.6"/>
+      <rect x="0" y="0" width="224" height="5" rx="2.5" fill="#3B82F6" opacity="0.9"/>
+      <text x="20" y="34" font-family="monospace" font-size="10.5" font-weight="700" fill="#3B82F6">02 // IDENTITY &amp; LOGIC</text>
+      <text x="20" y="62" font-family="sans-serif" font-size="15.5" font-weight="700" fill="#F8FAFC">ASP.NET Identity</text>
+      
+        <rect x="18" y="80" width="188" height="26" rx="6" fill="rgba(15,23,42,0.8)" stroke="rgba(255,255,255,0.07)"/>
+        <circle cx="30" cy="93" r="3.5" fill="#3B82F6"/>
+        <text x="42" y="97" font-family="monospace" font-size="11" fill="#E2E8F0">Role-Based Access</text>
+      
+        <rect x="18" y="114" width="188" height="26" rx="6" fill="rgba(15,23,42,0.8)" stroke="rgba(255,255,255,0.07)"/>
+        <circle cx="30" cy="127" r="3.5" fill="#3B82F6"/>
+        <text x="42" y="131" font-family="monospace" font-size="11" fill="#E2E8F0">Booking Workflows</text>
+      
+        <rect x="18" y="148" width="188" height="26" rx="6" fill="rgba(15,23,42,0.8)" stroke="rgba(255,255,255,0.07)"/>
+        <circle cx="30" cy="161" r="3.5" fill="#3B82F6"/>
+        <text x="42" y="165" font-family="monospace" font-size="11" fill="#E2E8F0">Schedule Management</text>
+      
+    </g>
+    
+      <g transform="translate(514, 238)">
+        <line x1="0" y1="8" x2="15" y2="8" stroke="#3B82F6" stroke-width="2" stroke-dasharray="3,2"/>
+        <polygon points="12,3 19,8 12,13" fill="#3B82F6"/>
+      </g>
+    
+    <g transform="translate(532, 144)">
+      <rect width="224" height="200" rx="14" fill="rgba(30,41,59,0.75)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+      <rect x="0" y="0" width="224" height="5" rx="2.5" fill="#06B6D4" opacity="0.9"/>
+      <text x="20" y="34" font-family="monospace" font-size="10.5" font-weight="700" fill="#94A3B8">03 // PERSISTENCE</text>
+      <text x="20" y="62" font-family="sans-serif" font-size="15.5" font-weight="700" fill="#F8FAFC">SQL Server &amp; EF Core</text>
+      
+        <rect x="18" y="80" width="188" height="26" rx="6" fill="rgba(15,23,42,0.8)" stroke="rgba(255,255,255,0.07)"/>
+        <circle cx="30" cy="93" r="3.5" fill="#06B6D4"/>
+        <text x="42" y="97" font-family="monospace" font-size="11" fill="#E2E8F0">Relational Flight Schema</text>
+      
+        <rect x="18" y="114" width="188" height="26" rx="6" fill="rgba(15,23,42,0.8)" stroke="rgba(255,255,255,0.07)"/>
+        <circle cx="30" cy="127" r="3.5" fill="#06B6D4"/>
+        <text x="42" y="131" font-family="monospace" font-size="11" fill="#E2E8F0">Seat &amp; Ticket Records</text>
+      
+        <rect x="18" y="148" width="188" height="26" rx="6" fill="rgba(15,23,42,0.8)" stroke="rgba(255,255,255,0.07)"/>
+        <circle cx="30" cy="161" r="3.5" fill="#06B6D4"/>
+        <text x="42" y="165" font-family="monospace" font-size="11" fill="#E2E8F0">LINQ Queries</text>
+      
+    </g>
+    
+
+  <!-- Bottom Status Bar -->
+  <rect x="44" y="368" width="712" height="46" rx="10" fill="rgba(15,23,42,0.88)" stroke="rgba(255,255,255,0.09)"/>
+  <circle cx="68" cy="391" r="5" fill="#3B82F6"/>
+  <text x="84" y="395" font-family="monospace" font-size="11.5" font-weight="600" fill="#D1D5DB">FOCUS: Relational reservation data, ASP.NET Identity access control, and Arabic/English UI</text>
+</svg>

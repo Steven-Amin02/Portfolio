@@ -1,16 +1,16 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { Mail, Star, Award, ShieldCheck, CheckCircle2, ArrowRight, Sparkles, Copy, Check } from 'lucide-react';
+import { Mail, GraduationCap, Briefcase, Code2, CheckCircle2, ArrowRight, Sparkles, Copy, Check } from 'lucide-react';
 import { initialProfileData } from '../data/portfolioData';
 
 /**
- * DiscussionCTA — High-Conversion Project Inquiries Callout.
- * Features quick email input, 1-click email copy with safe fallback, and enterprise trust badges.
+ * DiscussionCTA — Project & Opportunity Inquiry Callout.
+ * Features quick email input, 1-click email copy, and factual background highlights.
  */
 
 const TRUST_BADGES = [
-  { icon: Star, color: '#FF9E0D', fill: '#FF9E0D', text: '5.0 Star Academic & Internship Endorsements' },
-  { icon: Award, color: '#FF6B2C', fill: 'none', text: 'NBE & DEPI Certified Engineering' },
-  { icon: ShieldCheck, color: '#10B981', fill: 'none', text: 'Production-Ready Clean Architecture' }
+  { icon: GraduationCap, color: '#3B82F6', fill: 'none', text: 'Dual-Degree CS & Software Engineering (Expected 2027)' },
+  { icon: Briefcase, color: '#FF6B2C', fill: 'none', text: 'NBE Deployment Intern (July 2026) & DEPI Trainee' },
+  { icon: Code2, color: '#10B981', fill: 'none', text: 'Open to 2027 Graduate Roles, Internships & Freelance' }
 ];
 
 export default function DiscussionCTA() {
@@ -32,9 +32,9 @@ export default function DiscussionCTA() {
     const trimmed = email.trim();
     if (!trimmed) return;
 
-    const subject = encodeURIComponent('Project inquiry / Full-Stack opportunity');
+    const subject = encodeURIComponent('Software Engineering Role / Project Inquiry');
     const body = encodeURIComponent(
-      `Hi Steven,\n\nI would like to discuss a software project or opportunity. Please reach back to me at ${trimmed}.\n\nBest regards,`
+      `Hi Steven,\n\nI would like to discuss a software engineering role, internship, or project opportunity. Please reach back to me at ${trimmed}.\n\nBest regards,`
     );
     window.location.href = `mailto:${initialProfileData.email}?subject=${subject}&body=${body}`;
     setSubmitted(true);
@@ -71,11 +71,11 @@ export default function DiscussionCTA() {
           </div>
 
           <h2 className="discussion-title">
-            Have an Ambitious Project <br />
-            or Role in Mind? <span className="highlight-text">Let’s Build It.</span>
+            Looking for a 2027 Graduate Engineer, <br />
+            Intern, or Developer? <span className="highlight-text">Let’s Connect.</span>
           </h2>
           <p className="discussion-subtitle">
-            Whether you need an enterprise .NET backend, full-stack web application, or automated RPA pipeline, I&apos;m ready to bring your requirements into reality.
+            Interested in 2027 graduate software engineering roles, internships, and suitable freelance projects involving C#, ASP.NET Core, React, and SQL Server.
           </p>
 
           <div className="discussion-action-row">
@@ -91,7 +91,7 @@ export default function DiscussionCTA() {
                   className="discussion-input"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  aria-label="Email address for project inquiry"
+                  aria-label="Email address for project or hiring inquiry"
                   required
                 />
               </div>
