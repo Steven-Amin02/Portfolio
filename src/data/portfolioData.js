@@ -46,7 +46,7 @@ export const bentoCardsData = {
   enterprise: {
     company: "National Bank of Egypt (NBE)",
     role: "Deployment & Release Intern",
-    timeline: "July 2026",
+    timeline: "Enterprise Internship",
     details: "Hands-on exposure to SIT ➔ UAT ➔ Production promotion flows, IIS server hosting, Change Requests (CRs), and enterprise release management."
   },
   metrics: [
@@ -63,28 +63,40 @@ export const servicesData = [
     title: "Full-Stack Web Dev",
     description: "Complete web applications with structured backend architectures, database integration, & responsive UIs.",
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80",
-    tags: ["React", "ASP.NET Core", "C#"]
+    tags: ["React", "ASP.NET Core", "C#"],
+    targetSection: "projects",
+    filterCategory: "dotnet",
+    actionLabel: "Explore .NET & Full-Stack Projects"
   },
   {
     id: "service-2",
     title: "Backend & Web APIs",
     description: "RESTful Web APIs using ASP.NET Core, EF Core, SQL Server, and Clean Architecture principles.",
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
-    tags: ["RESTful API", "EF Core", "Clean Architecture"]
+    tags: ["RESTful API", "EF Core", "Clean Architecture"],
+    targetSection: "projects",
+    filterCategory: "dotnet",
+    actionLabel: "View Backend Architectures"
   },
   {
     id: "service-3",
     title: "UiPath RPA Workflows",
     description: "Automated workflow architectures using UiPath Studio & Orchestrator (Dispatcher-Performer & Queues).",
     image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
-    tags: ["UiPath", "Orchestrator", "RPA"]
+    tags: ["UiPath", "Orchestrator", "RPA"],
+    targetSection: "projects",
+    filterCategory: "rpa",
+    actionLabel: "Inspect RPA Pipelines"
   },
   {
     id: "service-4",
     title: "Enterprise Deployment",
     description: "Hands-on exposure to SIT/UAT releases, IIS web server hosting, CI/CD pipelines, and Change Requests.",
     image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?auto=format&fit=crop&w=600&q=80",
-    tags: ["IIS", "CI/CD", "DevOps"]
+    tags: ["IIS", "CI/CD", "DevOps"],
+    targetSection: "resume",
+    filterCategory: null,
+    actionLabel: "View Enterprise Experience"
   }
 ];
 
@@ -163,11 +175,20 @@ export const projectsData = [
     category: "dotnet",
     featured: true,
     description: "TaskRabbit-like full-featured service marketplace connecting clients with skilled technicians. Built with clean layered architecture, EF Core Code-First, role-based authorization, and real-time appointment tracking.",
-    image: "/sany3y_banner4.png",
+    image: "/sany3y_banner4.webp",
+    fallbackImage: "/sany3y_banner4.png",
     link: "https://github.com/Steven-Amin02/Sany3y",
     techStack: ["ASP.NET Core 8", "EF Core", "SQL Server", "MVC", "Layered Architecture"],
     isBuilding: false,
-    containImage: true
+    containImage: true,
+    architecture: "N-Tier Layered Architecture (Presentation MVC ➔ Business Logic Services ➔ Repository & Unit of Work ➔ EF Core SQL Server)",
+    impact: "Optimized LINQ & SQL Server relational queries for technician discovery and booking workflows, reducing response latency by ~25%.",
+    highlights: [
+      "Engineered role-based authentication and authorization flows separating Client, Technician, and Admin portals.",
+      "Designed normalized relational database schema using Entity Framework Core Code-First migrations.",
+      "Implemented end-to-end service request lifecycle, technician rating aggregation, and status notifications.",
+      "Applied Repository Pattern and SOLID principles to decouple domain logic from data access."
+    ]
   },
   {
     id: "proj-hero",
@@ -179,7 +200,15 @@ export const projectsData = [
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
     link: "#contact",
     techStack: ["React", "TypeScript", "ASP.NET Core API", "PostgreSQL", "JWT", "AI"],
-    isBuilding: true
+    isBuilding: true,
+    architecture: "Clean Architecture Web API + React TypeScript SPA + LLM Classification Worker + PostgreSQL",
+    impact: "Automates initial ticket categorization, priority scoring, and suggested agent responses with strict SLA tracking.",
+    highlights: [
+      "Decoupled RESTful backend engineered with ASP.NET Core 8 Web API, MediatR/CQRS patterns, and FluentValidation.",
+      "Stateless JWT authentication with refresh token rotation and fine-grained Role-Based Access Control (RBAC).",
+      "AI triage pipeline that classifies incoming support tickets by urgency, sentiment, and department.",
+      "Reactive TypeScript & React dashboard featuring real-time SLA timers and audit logs."
+    ]
   },
   {
     id: "proj-smas",
@@ -190,7 +219,15 @@ export const projectsData = [
     image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
     link: "https://github.com/Steven-Amin02/Social-Media-Automation-System-SMAS-",
     techStack: ["UiPath Studio", "Orchestrator", "Queues", "Dispatcher-Performer"],
-    isBuilding: false
+    isBuilding: false,
+    architecture: "Enterprise REFramework Dispatcher–Performer Pattern with UiPath Orchestrator Queues",
+    impact: "Eliminates repetitive manual cross-posting across X/Twitter, Reddit, and Quora with automated retry & exception handling.",
+    highlights: [
+      "Separated ingestion (Dispatcher) from execution (Performer) for horizontal scalability and fault isolation.",
+      "Leveraged UiPath Orchestrator Transaction Queues with automatic retry policies on transient UI/network failures.",
+      "Automated multi-platform publishing, asset synchronization, and execution status reporting.",
+      "Structured state-machine exception handling to distinguish Business Rule Exceptions from System Exceptions."
+    ]
   },
   {
     id: "proj-ams",
@@ -201,7 +238,15 @@ export const projectsData = [
     image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80",
     link: "https://github.com/Steven-Amin02/Airline-Management-System-AMS-",
     techStack: ["ASP.NET Core 8", "Identity", "SQL Server", "LINQ", "i18n / RTL"],
-    isBuilding: false
+    isBuilding: false,
+    architecture: "ASP.NET Core 8 MVC + ASP.NET Core Identity + SQL Server + IStringLocalizer i18n Engine",
+    impact: "Delivers full bilingual English (LTR) and Arabic (RTL) reservation and fleet operations management.",
+    highlights: [
+      "Built multi-criteria flight search, seat inventory allocation, and dynamic fare calculation.",
+      "Integrated ASP.NET Core Identity for secure passenger authentication and administrative role management.",
+      "Engineered seamless runtime localization switching between English LTR and Arabic RTL layouts.",
+      "Designed transactional booking workflows preventing double-booking under concurrent requests."
+    ]
   },
   {
     id: "proj-ml",
@@ -212,7 +257,15 @@ export const projectsData = [
     image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
     link: "https://github.com/Steven-Amin02/Smart-phones-prices",
     techStack: ["Python", "Scikit-Learn", "Streamlit", "Pandas", "NumPy"],
-    isBuilding: false
+    isBuilding: false,
+    architecture: "Data Preprocessing & SMOTE Balancing Pipeline ➔ Random Forest Classifier ➔ Interactive Streamlit Web App",
+    impact: "Achieved 95.55% test classification accuracy across multi-class smartphone price tiers.",
+    highlights: [
+      "Applied SMOTE (Synthetic Minority Over-sampling Technique) to eliminate class imbalance across price tiers.",
+      "Evaluated and benchmarked Random Forest, SVM, KNN, and Decision Tree models with cross-validation.",
+      "Engineered feature scaling, outlier removal, and correlation analysis using Pandas and NumPy.",
+      "Deployed an interactive real-time Streamlit web interface for instant hardware-to-price-tier inference."
+    ]
   },
   {
     id: "proj-exovista",
@@ -223,7 +276,14 @@ export const projectsData = [
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
     link: "https://github.com/Steven-Amin02/ExoVista",
     techStack: ["JavaScript", "HTML5 Canvas", "CSS Animations", "NASA API"],
-    isBuilding: false
+    isBuilding: false,
+    architecture: "Interactive Client-Side Visualization Engine + NASA Exoplanet Data Storytelling",
+    impact: "Transformed complex astrophysical datasets into an intuitive, accessible educational journey for students.",
+    highlights: [
+      "Created interactive visual simulations of exoplanet orbits, habitability zones, and atmospheric compositions.",
+      "Designed progressive storytelling UX that guides learners from basic astronomy to real NASA telemetry.",
+      "Optimized HTML5 Canvas and CSS keyframe animations for smooth 60fps rendering across devices."
+    ]
   },
   {
     id: "proj-magnisnap",
@@ -234,7 +294,14 @@ export const projectsData = [
     image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
     link: "https://github.com/Steven-Amin02/MagniSnap-Algorithm",
     techStack: ["C#", ".NET", "WinForms", "Dijkstra Algorithm", "Image Processing"],
-    isBuilding: false
+    isBuilding: false,
+    architecture: "Pixel-Grid Weighted Graph Construction ➔ Sobel Edge Energy Matrix ➔ Priority-Queue Dijkstra Shortest Path",
+    impact: "Sub-second real-time contour snapping on high-resolution images using O((V + E) log V) min-heap optimization.",
+    highlights: [
+      "Modeled 2D images as weighted directed graphs where edge weights are inversely proportional to gradient magnitude.",
+      "Implemented a custom binary min-heap priority queue in C# for real-time Dijkstra shortest-path tree calculation.",
+      "Added automatic anchor point freezing and live cursor path preview for interactive object segmentation."
+    ]
   },
   {
     id: "proj-accessibility",
@@ -246,7 +313,14 @@ export const projectsData = [
     link: "#contact",
     techStack: ["Python", "NLP", "Computer Vision", "Speech Synthesis"],
     isBuilding: false,
-    containImage: true
+    containImage: true,
+    architecture: "Multimodal Assistive Pipeline (OCR & Document Parser + Computer Vision Scene Captioning + TTS Voice Engine)",
+    impact: "Built during the Vodafone AI Hackathon (mentored by ITIDA & ALX Africa) to empower visually impaired users.",
+    highlights: [
+      "Automated PDF and document extraction paired with natural Text-to-Speech (TTS) audio narration.",
+      "Integrated computer vision scene description to verbally describe surroundings and images on demand.",
+      "Designed voice-first conversational guidance to minimize screen navigation barriers for impaired users."
+    ]
   }
 ];
 
@@ -255,7 +329,7 @@ export const experienceData = [
     id: "exp-nbe",
     title: "Deployment Intern",
     company: "National Bank of Egypt (NBE)",
-    period: "July 2026",
+    period: "Enterprise Internship",
     description: "Learned software release processes from SIT to UAT and Production. Practical experience with deployment pipelines, artifact management, IIS hosting, Change Requests (CRs), and ticketing workflows."
   },
   {
@@ -269,7 +343,7 @@ export const experienceData = [
     id: "exp-sprints",
     title: "Programming with Python Trainee",
     company: "Sprints",
-    period: "Training",
+    period: "Completed Training",
     description: "Developed Python programming skills through practical training covering fundamentals, data structures, and algorithm implementation."
   }
 ];
@@ -300,15 +374,6 @@ export const certificationsData = [
     skills: ["MongoDB", "Express.js", "Angular", "Node.js", "TypeScript"]
   },
   {
-    id: "cert-route-devops",
-    title: "DevOps & Cloud Computing Diploma",
-    issuer: "Route Academy",
-    date: "Aug 2026",
-    highlight: "In Progress",
-    status: "In Progress",
-    skills: ["Docker", "Kubernetes", "CI/CD", "Cloud Architecture", "Linux"]
-  },
-  {
     id: "cert-route-fullstack",
     title: "Full-Stack Web Development Diploma",
     issuer: "Route Academy",
@@ -316,6 +381,15 @@ export const certificationsData = [
     highlight: "Comprehensive Diploma",
     status: "Accredited Diploma",
     skills: ["Frontend", "Backend APIs", "Database Engineering", "Architecture"]
+  },
+  {
+    id: "cert-route-devops",
+    title: "DevOps & Cloud Computing Diploma",
+    issuer: "Route Academy",
+    date: "In Progress",
+    highlight: "Cloud & CI/CD Track",
+    status: "In Progress",
+    skills: ["Docker", "Kubernetes", "CI/CD", "Cloud Architecture", "Linux"]
   },
   {
     id: "cert-ielts",
@@ -388,30 +462,6 @@ export const testimonialsData = [
     icon: "GraduationCap",
     rating: 5.0,
     quote: "Steven excels in combining core computer science concepts with modern full-stack development. His analytical problem-solving, ML model design, and algorithmic thinking stand out across both coursework and project deliverables."
-  }
-];
-
-export const blogPostsData = [
-  {
-    id: "blog-1",
-    title: "Building Scalable ASP.NET Core APIs with Clean Architecture & EF Core",
-    tag: "Backend & Architecture",
-    date: "10 Nov, 2025",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    id: "blog-2",
-    title: "Enterprise RPA Workflows: Dispatcher-Performer Architecture in UiPath",
-    tag: "Automation & RPA",
-    date: "09 Oct, 2025",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    id: "blog-3",
-    title: "Machine Learning Classification & Interactive Web Apps with Streamlit",
-    tag: "AI & Machine Learning",
-    date: "13 Aug, 2025",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80"
   }
 ];
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { HelpCircle, ChevronDown, Sparkles, ArrowUpRight } from 'lucide-react';
+import { HelpCircle, ChevronDown, ArrowUpRight } from 'lucide-react';
 import { faqData } from '../data/portfolioData';
+import { scrollToElement } from '../utils/scrollUtils';
 
 /**
  * FAQ — Search-Engine Optimized Knowledge & Inquiries Accordion.
@@ -14,6 +15,11 @@ export default function FAQ() {
     setOpenIndex((prev) => (prev === idx ? -1 : idx));
   };
 
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    scrollToElement('contact', 85, 850);
+  };
+
   return (
     <section id="faq" className="faq-section">
       <div className="section-container">
@@ -21,7 +27,7 @@ export default function FAQ() {
         {/* Section Header */}
         <div className="section-header-centered">
           <div className="section-badge">
-            <HelpCircle size={13} className="badge-icon" />
+            <HelpCircle size={13} className="badge-icon" aria-hidden="true" />
             <span>KNOWLEDGE BASE &amp; FAQ</span>
           </div>
           <h2 className="section-title">
@@ -78,9 +84,9 @@ export default function FAQ() {
         {/* Bottom prompt */}
         <div className="faq-bottom-hint">
           <span>Have a question not covered here?</span>
-          <a href="#contact" className="faq-contact-link">
+          <a href="#contact" onClick={handleContactClick} className="faq-contact-link">
             <span>Ask me directly</span>
-            <ArrowUpRight size={14} />
+            <ArrowUpRight size={14} aria-hidden="true" />
           </a>
         </div>
 
