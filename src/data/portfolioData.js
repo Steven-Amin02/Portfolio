@@ -14,7 +14,7 @@ export const initialProfileData = {
   bio: "Final-year Software Engineering student at Ain Shams University in a dual-degree program with the University of East London (expected 2027). I develop backend and full-stack applications using C#, ASP.NET Core, React, and SQL Server. My NBE internship gave me exposure to enterprise SIT, UAT, and production release workflows.",
   snippet: "Backend engineering, full-stack development, and practical deployment experience.",
   cgpa: "3.22 / 4.0",
-  featuredCount: "9 Projects",
+  featuredCount: "10 Projects",
   internshipsCount: "NBE Internship",
   certifiedStatus: "Ain Shams & UEL",
   educationDegree: "B.Sc. CS & Software Engineering"
@@ -51,7 +51,7 @@ export const bentoCardsData = {
   },
   metrics: [
     { value: "3.22", label: "Dual Degree CGPA", note: "Ain Shams & UEL" },
-    { value: "9", label: "Portfolio Projects", note: "Full-Stack, RPA & AI" },
+    { value: "10", label: "Portfolio Projects", note: "Full-Stack, RPA & AI" },
     { value: "2026", label: "NBE Internship", note: "SQL Server & EF Core" },
     { value: "2027", label: "Expected Graduation", note: "Phone Price Predictor" }
   ]
@@ -285,6 +285,26 @@ export const projectsData = [
       "Evaluated and benchmarked Random Forest, SVM, KNN, and Decision Tree models with cross-validation.",
       "Engineered feature scaling, outlier removal, and correlation analysis using Pandas and NumPy.",
       "Deployed an interactive real-time Streamlit web interface for instant hardware-to-price-tier inference."
+    ]
+  },
+  {
+    id: "proj-route-posts",
+    title: "Route Posts — Social Media Web App",
+    tag: "React 19, TypeScript & Tailwind CSS",
+    category: "frontend",
+    featured: true,
+    description: "Modern single-page social media platform featuring interactive newsfeeds, user profiles, real-time notifications, authentication flows, and a modular service layer.",
+    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=800&q=80",
+    link: "https://github.com/Steven-Amin02/Route-posts-Assignment2/tree/main/Route-posts",
+    techStack: ["React 19", "TypeScript", "Tailwind CSS 4", "HeroUI", "React Router", "Axios"],
+    isBuilding: false,
+    architecture: "React 19 + TypeScript SPA ➔ Nested Layout Router (AuthLayout / MainLayout) ➔ Modular Axios Service Layer (auth & profile services)",
+    impact: "Delivers a responsive, component-driven social networking experience with strict TypeScript type safety and reusable UI primitives.",
+    highlights: [
+      "Architected nested client-side routing using React Router v8 separating AuthLayout (Login/Register) and MainLayout (Newsfeed, Profile, Notifications).",
+      "Abstracted REST API communication into dedicated TypeScript service modules (auth.service.ts and profile.service.ts) powered by Axios.",
+      "Built an accessible, responsive interface combining Tailwind CSS v4, HeroUI components, and Gravity UI icons.",
+      "Implemented modular feed posts, sidebar navigation, user profile views, and notification streams."
     ]
   },
   {
