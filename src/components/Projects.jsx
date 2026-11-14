@@ -49,10 +49,10 @@ export default function Projects() {
             <span>FEATURED PORTFOLIO</span>
           </div>
           <h2 className="section-title">
-            Engineered Systems &amp; <span className="highlight-text">Production Projects</span>
+            Engineering Work &amp; <span className="highlight-text">Selected Projects</span>
           </h2>
           <p className="section-subtitle">
-            A showcase of distributed backend services, full-stack web applications, RPA automation workflows, and machine learning models.
+            A selection of full-stack applications, automation projects, ML work, and an ongoing graduation project.
           </p>
 
           {/* Filter Tabs */}
@@ -124,25 +124,18 @@ export default function Projects() {
 
                 {/* Action Link */}
                 <div className="project-footer-action">
-                  <a
-                    href={project.link}
-                    target={project.link.startsWith('http') ? '_blank' : '_self'}
-                    rel="noreferrer"
-                    className="project-link-btn"
-                  >
-                    {project.isBuilding ? (
-                      <>
-                        <span>Preview Specifications</span>
-                        <ArrowRight size={15} />
-                      </>
-                    ) : (
-                      <>
-                        <Github size={15} />
-                        <span>View Repository</span>
-                        <ArrowRight size={15} className="link-arrow" />
-                      </>
-                    )}
-                  </a>
+                  {project.link ? (
+                    <a href={project.link} target={project.link.startsWith('http') ? '_blank' : '_self'} rel="noreferrer" className="project-link-btn">
+                      <Github size={15} />
+                      <span>View Repository</span>
+                      <ArrowRight size={15} className="link-arrow" />
+                    </a>
+                  ) : (
+                    <span className="project-link-btn" aria-label="Project details coming soon">
+                      <Clock size={15} />
+                      <span>Details coming soon</span>
+                    </span>
+                  )}
                 </div>
               </div>
             </article>
