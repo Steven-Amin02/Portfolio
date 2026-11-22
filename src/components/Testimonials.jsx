@@ -1,5 +1,5 @@
 import React from 'react';
-import { Quote, Building2, Code, GraduationCap, Star, ShieldCheck, Sparkles } from 'lucide-react';
+import { Quote, Building2, Code, GraduationCap, Sparkles } from 'lucide-react';
 import { testimonialsData } from '../data/portfolioData';
 
 /**

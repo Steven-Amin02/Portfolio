@@ -1781,20 +1781,6 @@ html.js-enabled .reveal.visible {
   cursor: pointer;
 }
 
-.project-img-holder picture {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.project-img-holder.contain-img picture {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-
 .project-img-holder img {
   width: 100%;
   height: 100%;

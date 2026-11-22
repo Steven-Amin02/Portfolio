@@ -202,19 +202,16 @@ export default function Hero({ profile }) {
             className="parallax-layer portrait-wrap"
             ref={(node) => { layers.current.portrait = node; }}
           >
-            <picture>
-              <source srcSet="/Steven-Amin-Portrait_nobg.webp" type="image/webp" />
-              <img
-                src="/Steven-Amin-Portrait_nobg.png"
-                alt={`${profile.name} — Software Engineer | Backend & Full-Stack .NET Developer in Cairo, Egypt`}
-                className="hero-portrait"
-                loading="eager"
-                fetchpriority="high"
-                decoding="async"
-                width="413"
-                height="550"
-              />
-            </picture>
+            <img
+              src="/Steven-Amin-Portrait_nobg.webp"
+              alt={`${profile.name} — Software Engineer | Backend & Full-Stack .NET Developer in Cairo, Egypt`}
+              className="hero-portrait"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              width="413"
+              height="550"
+            />
             <div className="portrait-bottom-fade" aria-hidden="true" />
           </div>
         </div>

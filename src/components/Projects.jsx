@@ -138,28 +138,14 @@ export default function Projects({ activeCategory, onCategoryChange, onSelectPro
                     }
                   }}
                 >
-                  {project.fallbackImage ? (
-                    <picture>
-                      <source srcSet={project.image} type="image/webp" />
-                      <img
-                        src={project.fallbackImage}
-                        alt={`${project.title} — Software project by Steven Amin`}
-                        loading="lazy"
-                        decoding="async"
-                        width="600"
-                        height="340"
-                      />
-                    </picture>
-                  ) : (
-                    <img
-                      src={project.image}
-                      alt={`${project.title} — Software project by Steven Amin`}
-                      loading="lazy"
-                      decoding="async"
-                      width="600"
-                      height="340"
-                    />
-                  )}
+                  <img
+                    src={project.image}
+                    alt={`${project.title} — Software project by Steven Amin`}
+                    loading="lazy"
+                    decoding="async"
+                    width="600"
+                    height="340"
+                  />
                   <div className="project-img-overlay" />
                   
                   {project.isBuilding ? (

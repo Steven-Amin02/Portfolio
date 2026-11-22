@@ -169,7 +169,7 @@ export default function App() {
         <Hero profile={profile} />
 
         {/* 2. About Me */}
-        <div className="reveal"><About profile={profile} /></div>
+        <div className="reveal"><About /></div>
 
         {/* 3. Experience (NBE, DEPI, relevant training) */}
         <div className="reveal reveal-delay-1"><ExperienceSection /></div>

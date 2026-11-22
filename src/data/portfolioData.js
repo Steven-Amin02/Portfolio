@@ -213,7 +213,6 @@ export const projectsData = [
     featured: true,
     description: "A marketplace that connects clients with skilled technicians and supports service discovery, requests, bookings, and role-based workflows.",
     image: "/sany3y_banner4.webp",
-    fallbackImage: "/sany3y_banner4.png",
     link: "https://github.com/Steven-Amin02/Sany3y",
     techStack: ["ASP.NET Core 8 MVC", "Entity Framework Core", "SQL Server", "Layered Architecture"],
     isBuilding: false,
