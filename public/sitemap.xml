@@ -27,6 +27,11 @@
       <image:caption>ASP.NET Core 8 MVC &amp; SQL Server layered architecture project</image:caption>
     </image:image>
     <image:image>
+      <image:loc>https://stevenamin.me/ams-banner.webp</image:loc>
+      <image:title>AMS — Airline Management System by Steven Amin</image:title>
+      <image:caption>ASP.NET Core 8 MVC &amp; ASP.NET Identity bilingual airline management and reservation web application</image:caption>
+    </image:image>
+    <image:image>
       <image:loc>https://stevenamin.me/vodafone-egypt.webp</image:loc>
       <image:title>AI Accessibility Assistant — Vodafone AI Hackathon Prototype</image:title>
       <image:caption>Vodafone AI Hackathon accessibility prototype by Steven Amin</image:caption>
