@@ -1926,6 +1926,22 @@ html.js-enabled .reveal.visible {
   flex-wrap: wrap;
 }
 
+.project-footer-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.project-preview-btn {
+  color: var(--primary-orange);
+}
+
+.project-preview-btn:hover {
+  color: var(--primary-orange-hover);
+}
+
 .project-case-study-btn {
   display: inline-flex;
   align-items: center;

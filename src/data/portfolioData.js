@@ -214,9 +214,10 @@ export const projectsData = [
     description: "A marketplace that connects clients with skilled technicians and supports service discovery, requests, bookings, and role-based workflows.",
     image: "/sany3y_banner4.webp",
     link: "https://github.com/Steven-Amin02/Sany3y",
+    liveUrl: "https://sany3y-web.vercel.app/",
     techStack: ["ASP.NET Core 8 MVC", "Entity Framework Core", "SQL Server", "Layered Architecture"],
     isBuilding: false,
-    containImage: true,
+    containImage: false,
     architecture: "Layered MVC Architecture (Presentation MVC ➔ Business Logic Services ➔ Data Access & Repositories ➔ EF Core & SQL Server)",
     impact: "Engineering focus: MVC layering, relational database design, role-based access control, EF Core migrations, and booking business logic.",
     highlights: [

@@ -118,6 +118,7 @@ export default function Projects({ activeCategory, onCategoryChange, onSelectPro
         <div className="projects-grid">
           {filteredProjects.map((project) => {
             const hasExternalRepo = project.link && project.link.startsWith('http');
+            const hasLivePreview = project.liveUrl && project.liveUrl.startsWith('http');
 
             return (
               <article
@@ -191,7 +192,7 @@ export default function Projects({ activeCategory, onCategoryChange, onSelectPro
                     </div>
                   )}
 
-                  {/* Action Links: Overview Modal + Repository / Inquiry */}
+                  {/* Action Links: Overview Modal + Live Preview / Repository / Inquiry */}
                   <div className="project-footer-action">
                     <button
                       type="button"
@@ -202,29 +203,44 @@ export default function Projects({ activeCategory, onCategoryChange, onSelectPro
                       <span>{project.isBuilding ? 'Planned Scope' : 'Project Details'}</span>
                     </button>
 
-                    {hasExternalRepo ? (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-link-btn"
-                        aria-label={`View GitHub repository for ${project.title}`}
-                      >
-                        <Github size={15} aria-hidden="true" />
-                        <span>GitHub Repo</span>
-                        <ArrowRight size={15} className="link-arrow" aria-hidden="true" />
-                      </a>
-                    ) : (
-                      <button
-                        type="button"
-                        onClick={() => handleInquireClick(project)}
-                        className="project-link-btn"
-                      >
-                        <MessageSquare size={15} aria-hidden="true" />
-                        <span>Ask About Project</span>
-                        <ArrowRight size={15} className="link-arrow" aria-hidden="true" />
-                      </button>
-                    )}
+                    <div className="project-footer-links">
+                      {hasLivePreview && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-link-btn project-preview-btn"
+                          aria-label={`Open live preview for ${project.title}`}
+                        >
+                          <ExternalLink size={15} aria-hidden="true" />
+                          <span>Live Preview</span>
+                        </a>
+                      )}
+
+                      {hasExternalRepo ? (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-link-btn"
+                          aria-label={`View GitHub repository for ${project.title}`}
+                        >
+                          <Github size={15} aria-hidden="true" />
+                          <span>GitHub Repo</span>
+                          <ArrowRight size={15} className="link-arrow" aria-hidden="true" />
+                        </a>
+                      ) : !hasLivePreview ? (
+                        <button
+                          type="button"
+                          onClick={() => handleInquireClick(project)}
+                          className="project-link-btn"
+                        >
+                          <MessageSquare size={15} aria-hidden="true" />
+                          <span>Ask About Project</span>
+                          <ArrowRight size={15} className="link-arrow" aria-hidden="true" />
+                        </button>
+                      ) : null}
+                    </div>
                   </div>
                 </div>
               </article>
@@ -316,12 +332,23 @@ export default function Projects({ activeCategory, onCategoryChange, onSelectPro
             </div>
 
             <div className="case-modal-footer">
+              {selectedProject.liveUrl && selectedProject.liveUrl.startsWith('http') && (
+                <a
+                  href={selectedProject.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-portfolio"
+                >
+                  <ExternalLink size={16} aria-hidden="true" />
+                  <span>Live Preview</span>
+                </a>
+              )}
               {selectedProject.link && selectedProject.link.startsWith('http') && (
                 <a
                   href={selectedProject.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-portfolio"
+                  className={selectedProject.liveUrl ? 'btn-hire' : 'btn-portfolio'}
                 >
                   <Github size={17} aria-hidden="true" />
                   <span>View Source on GitHub</span>
