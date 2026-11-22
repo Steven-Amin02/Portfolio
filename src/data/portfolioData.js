@@ -15,7 +15,7 @@ export const initialProfileData = {
   bio: "I am a final-year Software Engineering student at Ain Shams University in a dual-degree program with the University of East London (expected graduation: 2027). I develop backend and full-stack applications using C#, ASP.NET Core, React, and SQL Server. My National Bank of Egypt deployment internship provided exposure to enterprise SIT, UAT, and production release workflows.",
   snippet: "Backend engineering, full-stack .NET & React development, relational databases, and enterprise release workflow exposure.",
   cgpa: "3.22 / 4.0",
-  featuredCount: "10 Projects",
+  featuredCount: "9 Projects",
   internshipsCount: "NBE Internship",
   certifiedStatus: "Ain Shams & UEL",
   educationDegree: "B.Sc. CS & Software Engineering (In Progress)"
@@ -53,7 +53,7 @@ export const bentoCardsData = {
   metrics: [
     { value: "3.22", label: "Current CGPA (/ 4.0)", note: "Ain Shams University" },
     { value: "2027", label: "Expected Graduation", note: "Ain Shams & UEL (In Progress)" },
-    { value: "10", label: "Portfolio Projects", note: ".NET, React, RPA & Python" },
+    { value: "9", label: "Portfolio Projects", note: ".NET, React, RPA & Python" },
     { value: "Jul '26", label: "NBE Internship", note: "5–30 July 2026 • Release Exposure" }
   ]
 };
@@ -73,7 +73,7 @@ export const servicesData = [
     id: "service-2",
     title: "Backend & REST APIs",
     description: "REST APIs and backend services built with C#, ASP.NET Core, Entity Framework Core, SQL Server, and layered architecture.",
-    image: "/diagrams/ai-ticketing-arch.svg",
+    image: "/diagrams/ams-airline-arch.svg",
     tags: ["REST APIs", "EF Core", "Layered Architecture"],
     targetSection: "projects",
     filterCategory: "dotnet",
@@ -93,7 +93,7 @@ export const servicesData = [
     id: "service-4",
     title: "Release & Deployment Exposure",
     description: "Internship exposure to SIT, UAT, and production release stages, change requests, and deployment coordination at NBE.",
-    image: "/diagrams/ams-airline-arch.svg",
+    image: "/diagrams/release-workflow-arch.svg",
     tags: ["SIT / UAT / Prod", "IIS Exposure", "Release Lifecycle"],
     targetSection: "experience",
     filterCategory: null,
@@ -225,35 +225,6 @@ export const projectsData = [
       "Designed relational database tables and managed schema changes using Entity Framework Core migrations.",
       "Built service discovery, service requests, booking management, and status tracking workflows.",
       "Structured application logic using layered MVC architecture to separate presentation from data access."
-    ]
-  },
-  {
-    id: "proj-hero",
-    title: "AI-Powered Support & Ticketing Platform",
-    tag: "In Development • Full-Stack & AI",
-    statusLabel: "In Development",
-    category: "dotnet",
-    featured: true,
-    description: "A support ticketing application in development exploring ticket routing, prioritization, SLA visibility, and AI-assisted classification.",
-    image: "/diagrams/ai-ticketing-arch.svg",
-    link: "",
-    techStack: [
-      "React",
-      "TypeScript",
-      "ASP.NET Core Web API",
-      "PostgreSQL",
-      "JWT",
-      "LLM Ticket Triage (Planned)"
-    ],
-    isBuilding: true,
-    containImage: false,
-    architecture: "In-Development & Planned Architecture: React + TypeScript Frontend + ASP.NET Core Web API + PostgreSQL + Planned LLM Triage Module",
-    impact: "Engineering focus: API design, authorization, frontend/backend integration, validation, and audit-friendly workflows (currently in development).",
-    highlights: [
-      "In Development — API & Authorization: Designing ASP.NET Core Web API endpoints with input validation and JWT-based role authorization.",
-      "In Development — Frontend Integration: Building React and TypeScript views for ticket creation, routing, and SLA status visibility.",
-      "Planned Module — AI-Assisted Triage: Exploring LLM-assisted classification to suggest ticket categories and priority levels.",
-      "Planned Module — Audit Workflows: Designing structured ticket history and SLA tracking rules."
     ]
   },
   {
