@@ -161,10 +161,10 @@ export default function App() {
         Skip to main content
       </a>
 
-      <Navbar
-        activeSection={activeSection}
-        theme={theme}
-        onToggleTheme={toggleTheme}
+      <Navbar 
+        activeSection={activeSection} 
+        theme={theme} 
+        onToggleTheme={toggleTheme} 
       />
 
       <main id="main-content">
