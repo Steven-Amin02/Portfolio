@@ -50,14 +50,13 @@ const SCROLL_SPY_OFFSET = 160;
 /** IntersectionObserver threshold for scroll-reveal animations */
 const REVEAL_THRESHOLD = 0.1;
 
+const THEME_STORAGE_KEY = 'portfolio-theme-mode';
+
 function getInitialTheme() {
   if (typeof window === 'undefined') return 'light';
   try {
-    const saved = localStorage.getItem('portfolio-theme');
+    const saved = localStorage.getItem(THEME_STORAGE_KEY);
     if (saved === 'dark' || saved === 'light') return saved;
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
   } catch {
     // Ignore storage access errors in strict privacy modes
   }
@@ -71,14 +70,9 @@ export default function App() {
   const [inquiryTopic, setInquiryTopic] = useState('');
   const [theme, setTheme] = useState(getInitialTheme);
 
-  // Sync theme with HTML data attribute, localStorage, and browser meta tag
+  // Sync theme with HTML data attribute and browser meta tag
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    try {
-      localStorage.setItem('portfolio-theme', theme);
-    } catch {
-      // Ignore storage write errors
-    }
 
     const metaThemeColor = document.querySelector('meta[name="theme-color"]');
     if (metaThemeColor) {
@@ -86,8 +80,17 @@ export default function App() {
     }
   }, [theme]);
 
+  // Only persist theme when the user explicitly toggles it
   const toggleTheme = useCallback(() => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+    setTheme((prev) => {
+      const next = prev === 'dark' ? 'light' : 'dark';
+      try {
+        localStorage.setItem(THEME_STORAGE_KEY, next);
+      } catch {
+        // Ignore storage write errors
+      }
+      return next;
+    });
   }, []);
 
   // rAF-throttled Scroll-Spy: track which section is currently in view without layout thrashing
@@ -158,10 +161,10 @@ export default function App() {
         Skip to main content
       </a>
 
-      <Navbar 
-        activeSection={activeSection} 
-        theme={theme} 
-        onToggleTheme={toggleTheme} 
+      <Navbar
+        activeSection={activeSection}
+        theme={theme}
+        onToggleTheme={toggleTheme}
       />
 
       <main id="main-content">

@@ -6,14 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#F8F9FC">
 
-  <!-- Prevent Theme Flash (FOUC) before First Paint -->
+  <!-- Prevent Theme Flash (FOUC) before First Paint; Light mode is default unless user explicitly toggled -->
   <script>
     (function () {
       document.documentElement.classList.add('js-enabled');
       try {
-        var saved = localStorage.getItem('portfolio-theme');
-        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        var theme = saved || (prefersDark ? 'dark' : 'light');
+        var saved = localStorage.getItem('portfolio-theme-mode');
+        var theme = (saved === 'dark' || saved === 'light') ? saved : 'light';
         document.documentElement.setAttribute('data-theme', theme);
         var meta = document.querySelector('meta[name="theme-color"]');
         if (meta) meta.setAttribute('content', theme === 'dark' ? '#0A0D14' : '#F8F9FC');
@@ -362,7 +361,7 @@
     ]
   }
   </script>
-  <script type="module" crossorigin src="/assets/index-PhOZmrpM.js"></script>
+  <script type="module" crossorigin src="/assets/index-DDHAjYQR.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-BWtkih0K.css">
 </head>
 
